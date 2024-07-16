@@ -3,15 +3,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:yoori_ecommerce/src/controllers/currency_converter_controller.dart';
-import 'package:yoori_ecommerce/src/controllers/voucher_controller.dart';
-import 'package:yoori_ecommerce/src/utils/app_tags.dart';
-import 'package:yoori_ecommerce/src/utils/app_theme_data.dart';
+import 'package:lazba/src/controllers/currency_converter_controller.dart';
+import 'package:lazba/src/controllers/voucher_controller.dart';
+import 'package:lazba/src/utils/app_tags.dart';
+import 'package:lazba/src/utils/app_theme_data.dart';
 
 import '../../utils/responsive.dart';
 import '../../widgets/loader/shimmer_voucher_list.dart';
-
-
 
 class VoucherList extends StatefulWidget {
   const VoucherList({Key? key}) : super(key: key);
@@ -36,62 +34,64 @@ class _VoucherListState extends State<VoucherList> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        appBar:isMobile(context)? AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-            ),
-            onPressed: () {
-              Get.back();
-            },
-          ),
-          centerTitle: true,
-          title: Text(
-            AppTags.voucherList.tr,
-            style: AppThemeData.headerTextStyle_16,
-          ),
-        ): AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          toolbarHeight: 60.h,
-          leadingWidth: 40.w,
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-              size: 25.r,
-            ),
+        appBar: isMobile(context)
+            ? AppBar(
+                backgroundColor: Colors.white,
+                elevation: 0,
+                leading: IconButton(
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    Get.back();
+                  },
+                ),
+                centerTitle: true,
+                title: Text(
+                  AppTags.voucherList.tr,
+                  style: AppThemeData.headerTextStyle_16,
+                ),
+              )
+            : AppBar(
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                toolbarHeight: 60.h,
+                leadingWidth: 40.w,
+                leading: IconButton(
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                    size: 25.r,
+                  ),
 
-            onPressed: () {
-              Get.back();
-            }, // null disables the button
-          ),
-          centerTitle: true,
-          title: Text(
-            AppTags.voucherList.tr,
-            style: AppThemeData.headerTextStyle_14,
-          ),
-        ),
+                  onPressed: () {
+                    Get.back();
+                  }, // null disables the button
+                ),
+                centerTitle: true,
+                title: Text(
+                  AppTags.voucherList.tr,
+                  style: AppThemeData.headerTextStyle_14,
+                ),
+              ),
         body: Obx(
           () => voucherController.couponListModel.value!.data != null
               ? ListView.builder(
-                  itemCount: voucherController.couponListModel.value!.data!.coupons!.length,
+                  itemCount: voucherController
+                      .couponListModel.value!.data!.coupons!.length,
                   itemBuilder: (context, index) {
                     return Padding(
-                      padding:  EdgeInsets.symmetric(
-                          horizontal: 15.w, vertical: 8.h),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 15.w, vertical: 8.h),
                       child: Container(
-                        height: isMobile(context)? 100.h:120.h,
+                        height: isMobile(context) ? 100.h : 120.h,
                         decoration: BoxDecoration(
                           color: fixedColor[index % fixedColor.length]
                               .withOpacity(0.1),
                           border: Border.all(
                               color: fixedColor[index % fixedColor.length]),
-                          borderRadius:
-                               BorderRadius.all(Radius.circular(10.r)),
+                          borderRadius: BorderRadius.all(Radius.circular(10.r)),
                           boxShadow: [
                             BoxShadow(
                               color: const Color(0xFF404040).withOpacity(0.1),
@@ -121,7 +121,8 @@ class _VoucherListState extends State<VoucherList> {
                                           color: fixedColor[
                                               index % fixedColor.length],
                                           fontFamily: "Poppins",
-                                          fontSize: isMobile(context)? 14.sp:10.sp,
+                                          fontSize:
+                                              isMobile(context) ? 14.sp : 10.sp,
                                         )),
                                     Text(
                                         voucherController.couponListModel.value!
@@ -130,7 +131,8 @@ class _VoucherListState extends State<VoucherList> {
                                         style: TextStyle(
                                           color: const Color(0xFF666666),
                                           fontFamily: "Poppins",
-                                          fontSize:isMobile(context)? 13.sp:9.sp,
+                                          fontSize:
+                                              isMobile(context) ? 13.sp : 9.sp,
                                         )),
                                     Padding(
                                       padding: EdgeInsets.only(
@@ -147,11 +149,12 @@ class _VoucherListState extends State<VoucherList> {
                                                 Clipboard.setData(
                                                   ClipboardData(
                                                       text: voucherController
-                                                          .couponListModel
-                                                          .value!
-                                                          .data!
-                                                          .coupons![index]
-                                                          .code ?? ''),
+                                                              .couponListModel
+                                                              .value!
+                                                              .data!
+                                                              .coupons![index]
+                                                              .code ??
+                                                          ''),
                                                 ).then(
                                                   (value) =>
                                                       ScaffoldMessenger.of(
@@ -170,7 +173,8 @@ class _VoucherListState extends State<VoucherList> {
                                                 elevation: 6,
                                                 shape: RoundedRectangleBorder(
                                                   borderRadius:
-                                                      BorderRadius.circular(4.r),
+                                                      BorderRadius.circular(
+                                                          4.r),
                                                 ),
                                                 shadowColor:
                                                     const Color(0xFF404040)
@@ -185,9 +189,13 @@ class _VoucherListState extends State<VoucherList> {
                                                     AppTags.copy.tr,
                                                     //couponListModel!.data!.coupons![index].code!,
                                                     style: TextStyle(
-                                                      color: const Color(0xFFFFFFFF),
+                                                      color: const Color(
+                                                          0xFFFFFFFF),
                                                       fontFamily: "Poppins",
-                                                      fontSize: isMobile(context)? 12.sp:9.sp,
+                                                      fontSize:
+                                                          isMobile(context)
+                                                              ? 12.sp
+                                                              : 9.sp,
                                                     ),
                                                   ),
                                                   SvgPicture.asset(
@@ -197,19 +205,25 @@ class _VoucherListState extends State<VoucherList> {
                                             ),
                                           ),
                                           Container(
-                                            width: isMobile(context)? 100.w:75.w,
+                                            width: isMobile(context)
+                                                ? 100.w
+                                                : 75.w,
                                             alignment: Alignment.centerRight,
                                             child: Text(
                                               voucherController
                                                   .couponListModel
                                                   .value!
-                                                  .data!.coupons![index].code!
+                                                  .data!
+                                                  .coupons![index]
+                                                  .code!
                                                   .toString(),
                                               style: TextStyle(
                                                   color: fixedColor[index %
                                                       fixedColor.length],
                                                   fontFamily: "Poppins Medium",
-                                                  fontSize: isMobile(context)? 14.sp:10.sp),
+                                                  fontSize: isMobile(context)
+                                                      ? 14.sp
+                                                      : 10.sp),
                                               overflow: TextOverflow.ellipsis,
                                               softWrap: true,
                                             ),
@@ -223,7 +237,8 @@ class _VoucherListState extends State<VoucherList> {
                               Padding(
                                 padding: EdgeInsets.only(top: 15.h),
                                 child: CustomPaint(
-                                  size:  Size(isMobile(context)?3.r:0.r, double.infinity),
+                                  size: Size(isMobile(context) ? 3.r : 0.r,
+                                      double.infinity),
                                   painter: DashedLineVerticalPainter(
                                       fixedColor[index % fixedColor.length]),
                                 ),
@@ -235,7 +250,9 @@ class _VoucherListState extends State<VoucherList> {
                                   children: [
                                     voucherController
                                                 .couponListModel
-                                                .value!.data!.coupons![index]
+                                                .value!
+                                                .data!
+                                                .coupons![index]
                                                 .discountType ==
                                             "percent"
                                         ? Text(
@@ -244,7 +261,9 @@ class _VoucherListState extends State<VoucherList> {
                                               color: fixedColor[
                                                   index % fixedColor.length],
                                               fontFamily: "Poppins Medium",
-                                              fontSize: isMobile(context)? 18.sp:13.sp,
+                                              fontSize: isMobile(context)
+                                                  ? 18.sp
+                                                  : 13.sp,
                                             ),
                                             maxLines: 1,
                                           )
@@ -262,7 +281,9 @@ class _VoucherListState extends State<VoucherList> {
                                                 color: fixedColor[
                                                     index % fixedColor.length],
                                                 fontFamily: "Poppins Medium",
-                                                fontSize: isMobile(context)? 18.sp:13.sp),
+                                                fontSize: isMobile(context)
+                                                    ? 18.sp
+                                                    : 13.sp),
                                             maxLines: 1,
                                             overflow: TextOverflow.ellipsis,
                                           ),
@@ -272,7 +293,9 @@ class _VoucherListState extends State<VoucherList> {
                                           color: fixedColor[
                                               index % fixedColor.length],
                                           fontFamily: "Poppins Medium",
-                                          fontSize:isMobile(context)? 14.sp:11.sp),
+                                          fontSize: isMobile(context)
+                                              ? 14.sp
+                                              : 11.sp),
                                     ),
                                   ],
                                 ),

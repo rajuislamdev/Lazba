@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:yoori_ecommerce/src/models/my_wallet_model.dart';
-import 'package:yoori_ecommerce/src/servers/repository.dart';
+import 'package:lazba/src/models/my_wallet_model.dart';
+import 'package:lazba/src/servers/repository.dart';
 
 class MyWalletController extends GetxController {
   late Rx<MyWalletModel> myWalletModel = MyWalletModel().obs;

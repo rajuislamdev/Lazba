@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 import 'src/_route/routes.dart';
 import 'src/bindings/init_bindings.dart';
@@ -14,11 +13,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initialConfig();
   // await Firebase.initializeApp();
-  await GetStorage.init();
+  // await GetStorage.init();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((_) {
-    runApp(MyApp());
-  });
+      .then((_) {});
 }
 
 Future<void> initialConfig() async {

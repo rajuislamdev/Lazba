@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:yoori_ecommerce/src/data/local_data_helper.dart';
-import 'package:yoori_ecommerce/src/models/order_list_model.dart';
-import 'package:yoori_ecommerce/src/servers/repository.dart';
+import 'package:lazba/src/data/local_data_helper.dart';
+import 'package:lazba/src/models/order_list_model.dart';
+import 'package:lazba/src/servers/repository.dart';
 
 class OrderHistoryController extends GetxController {
   var isLoading = true.obs;
@@ -19,9 +19,9 @@ class OrderHistoryController extends GetxController {
 
   @override
   void onInit() {
-    if(LocalDataHelper().getUserToken() != null){
+    if (LocalDataHelper().getUserToken() != null) {
       getOrderList();
-    } else{
+    } else {
       getGuestOrderList(trxId: LocalDataHelper().getCartTrxId());
     }
     super.onInit();

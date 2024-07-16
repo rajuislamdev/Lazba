@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
-import 'package:yoori_ecommerce/src/_route/routes.dart';
-import 'package:yoori_ecommerce/src/models/add_to_cart_list_model.dart';
-import 'package:yoori_ecommerce/src/utils/analytics_helper.dart';
-import 'package:yoori_ecommerce/src/utils/constants.dart';
-import 'package:yoori_ecommerce/src/data/local_data_helper.dart';
+import 'package:lazba/src/_route/routes.dart';
+import 'package:lazba/src/models/add_to_cart_list_model.dart';
+import 'package:lazba/src/utils/analytics_helper.dart';
+import 'package:lazba/src/utils/constants.dart';
+import 'package:lazba/src/data/local_data_helper.dart';
 
-import 'package:yoori_ecommerce/src/servers/repository.dart';
+import 'package:lazba/src/servers/repository.dart';
 
 class DashboardController extends GetxController {
   var tabIndex = 0.obs;
@@ -13,12 +13,11 @@ class DashboardController extends GetxController {
   void changeTabIndex(int index) {
     if (index == 3 || index == 4) {
       if (LocalDataHelper().getUserToken() == null) {
-        if(index==3){
+        if (index == 3) {
           Get.toNamed(Routes.logIn);
-        }else{
+        } else {
           Get.toNamed(Routes.withOutLoginPage);
         }
-
       } else {
         printLog(tabIndex);
         tabIndex.value = index;

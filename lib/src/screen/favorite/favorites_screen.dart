@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../controllers/favourite_controller.dart';
-import 'package:yoori_ecommerce/src/utils/app_tags.dart';
+import 'package:lazba/src/utils/app_tags.dart';
 import '../../utils/app_theme_data.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
+import 'package:lazba/src/utils/responsive.dart';
 import '../../widgets/loader/shimmer_favorite.dart';
 import 'favorite_product.dart';
 import 'favorite_store.dart';
 
 class FavoritesScreen extends StatelessWidget {
-   FavoritesScreen({Key? key}) : super(key: key);
+  FavoritesScreen({Key? key}) : super(key: key);
   final controller = Get.put(FavouriteController());
 
   @override
@@ -62,8 +62,10 @@ class FavoritesScreen extends StatelessWidget {
                               ? Expanded(
                                   child: TabBarView(
                                     children: [
-                                      FavoriteProduct(favouriteData: controller.data!),
-                                      FavoriteStore(favouriteData: controller.data!),
+                                      FavoriteProduct(
+                                          favouriteData: controller.data!),
+                                      FavoriteStore(
+                                          favouriteData: controller.data!),
                                     ],
                                   ),
                                 )

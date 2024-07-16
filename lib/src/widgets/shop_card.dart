@@ -3,11 +3,11 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:yoori_ecommerce/src/utils/images.dart';
+import 'package:lazba/src/utils/images.dart';
 
 import '../_route/routes.dart';
-import 'package:yoori_ecommerce/src/controllers/favourite_controller.dart';
-import 'package:yoori_ecommerce/src/data/local_data_helper.dart';
+import 'package:lazba/src/controllers/favourite_controller.dart';
+import 'package:lazba/src/data/local_data_helper.dart';
 import '../utils/app_tags.dart';
 import '../utils/app_theme_data.dart';
 import '../utils/responsive.dart';
@@ -101,7 +101,10 @@ class _ShopCardState extends State<ShopCard> {
                         ),
                         Text(
                           widget.shop.shopName!,
-                          style: isMobile(context)? AppThemeData.titleTextStyle_14.copyWith(fontSize: 12.sp):AppThemeData.titleTextStyle_11Tab,
+                          style: isMobile(context)
+                              ? AppThemeData.titleTextStyle_14
+                                  .copyWith(fontSize: 12.sp)
+                              : AppThemeData.titleTextStyle_11Tab,
                           maxLines: 1,
                         ),
                       ],
@@ -132,7 +135,7 @@ class _ShopCardState extends State<ShopCard> {
               },
               child: Container(
                 height: 23.h,
-                width: isMobile(context)? 25.w:18.w,
+                width: isMobile(context) ? 25.w : 18.w,
                 margin: EdgeInsets.all(7.r),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
@@ -147,7 +150,7 @@ class _ShopCardState extends State<ShopCard> {
                   ],
                 ),
                 child: Padding(
-                  padding:  EdgeInsets.all(5.r),
+                  padding: EdgeInsets.all(5.r),
                   child: isFollowed!
                       ? SvgPicture.asset(Images.heartOn)
                       : SvgPicture.asset(Images.heartOff),
@@ -159,12 +162,14 @@ class _ShopCardState extends State<ShopCard> {
             left: 32.w,
             child: Container(
               height: 45.h,
-              width: isMobile(context)? 45.w:28.w,
+              width: isMobile(context) ? 45.w : 28.w,
               alignment: Alignment.center,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                    image: NetworkImage(widget.shop.logo!.toString(),),
+                    image: NetworkImage(
+                      widget.shop.logo!.toString(),
+                    ),
                     fit: BoxFit.cover),
                 boxShadow: [
                   BoxShadow(

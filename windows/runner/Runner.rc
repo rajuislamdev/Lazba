@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.spagreen.yoori" "\0"
-            VALUE "FileDescription", "yoori_ecommerce" "\0"
+            VALUE "FileDescription", "lazba" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "yoori_ecommerce" "\0"
+            VALUE "InternalName", "lazba" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2022 com.spagreen.yoori. All rights reserved." "\0"
-            VALUE "OriginalFilename", "yoori_ecommerce.exe" "\0"
-            VALUE "ProductName", "yoori_ecommerce" "\0"
+            VALUE "OriginalFilename", "lazba.exe" "\0"
+            VALUE "ProductName", "lazba" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

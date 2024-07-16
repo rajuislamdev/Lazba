@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../utils/app_theme_data.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
+import 'package:lazba/src/utils/responsive.dart';
 
 class ShimmerVideoShopping extends StatelessWidget {
   const ShimmerVideoShopping({Key? key}) : super(key: key);
@@ -12,7 +12,6 @@ class ShimmerVideoShopping extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: SafeArea(
-
         child: Column(
           children: [
             Padding(
@@ -80,10 +79,12 @@ class ShimmerVideoShopping extends StatelessWidget {
                           borderRadius: BorderRadius.all(Radius.circular(7.r)),
                           boxShadow: [
                             BoxShadow(
-                              color: AppThemeData.boxShadowColor.withOpacity(0.1),
+                              color:
+                                  AppThemeData.boxShadowColor.withOpacity(0.1),
                               spreadRadius: 0,
                               blurRadius: 10.r,
-                              offset: const Offset(0, 3), // changes position of shadow
+                              offset: const Offset(
+                                  0, 3), // changes position of shadow
                             ),
                           ],
                         ),
@@ -121,8 +122,8 @@ class ShimmerVideoShopping extends StatelessWidget {
                                       // width: 80.w,
                                       decoration: BoxDecoration(
                                           color: Colors.white,
-                                          borderRadius:
-                                          BorderRadius.all(Radius.circular(4.r))),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(4.r))),
                                     ),
                                   ),
                                 ),
@@ -142,4 +143,3 @@ class ShimmerVideoShopping extends StatelessWidget {
     );
   }
 }
-

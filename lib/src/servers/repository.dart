@@ -54,7 +54,7 @@ import '../utils/app_tags.dart';
 import '../utils/constants.dart';
 import '../utils/validators.dart';
 import '../../config.dart';
-import 'package:yoori_ecommerce/src/data/local_data_helper.dart';
+import 'package:lazba/src/data/local_data_helper.dart';
 import '../models/all_brand_model.dart';
 import 'network_service.dart';
 
@@ -1066,7 +1066,8 @@ class Repository {
   //All Shop
   Future<List<all_shop.Data>> getAllShop({int page = 1}) async {
     String? token = LocalDataHelper().getUserToken();
-    var url = "${NetworkService.apiUrl}/all-shop?page=$page&$langCurrCode&token=$token";
+    var url =
+        "${NetworkService.apiUrl}/all-shop?page=$page&$langCurrCode&token=$token";
     final response = await _service.fetchJsonData(url);
     return all_shop.AllShopModel.fromJson(response).data;
   }
@@ -1149,7 +1150,8 @@ class Repository {
   Future<ShippingAddressModel> getShippingAddress() async {
     ShippingAddressModel shippingAddressModel;
     var headers = {"apiKey": Config.apiKey};
-    var url = Uri.parse("${NetworkService.apiUrl}/user/shipping-addresses?token=${LocalDataHelper().getUserToken()}&$langCurrCode");
+    var url = Uri.parse(
+        "${NetworkService.apiUrl}/user/shipping-addresses?token=${LocalDataHelper().getUserToken()}&$langCurrCode");
     final response = await http.get(url, headers: headers);
 
     try {

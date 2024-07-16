@@ -3,9 +3,9 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:yoori_ecommerce/src/utils/images.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
-import 'package:yoori_ecommerce/src/_route/routes.dart';
+import 'package:lazba/src/utils/images.dart';
+import 'package:lazba/src/utils/responsive.dart';
+import 'package:lazba/src/_route/routes.dart';
 import '../../../models/campaign_details_model.dart';
 import '../../../utils/app_tags.dart';
 import '../../../utils/app_theme_data.dart';
@@ -28,13 +28,14 @@ class _CampaignByShopState extends State<CampaignByShop> {
           Expanded(
             child: GridView.builder(
               scrollDirection: Axis.vertical,
-              padding: EdgeInsets.symmetric(horizontal: isMobile(context)? 15.w:10.w, vertical: 8.h),
+              padding: EdgeInsets.symmetric(
+                  horizontal: isMobile(context) ? 15.w : 10.w, vertical: 8.h),
               shrinkWrap: true,
               itemCount: widget.campaignDetailsModel!.data!.shops!.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: isMobile(context) ? 2 : 3,
-                crossAxisSpacing: isMobile(context)?15:20,
-                mainAxisSpacing: isMobile(context)?15:20,
+                crossAxisSpacing: isMobile(context) ? 15 : 20,
+                mainAxisSpacing: isMobile(context) ? 15 : 20,
                 childAspectRatio: 0.75,
               ),
               itemBuilder: (context, index) {
@@ -43,7 +44,9 @@ class _CampaignByShopState extends State<CampaignByShop> {
                     Get.toNamed(
                       Routes.shopScreen,
                       parameters: {
-                        'shopId': widget.campaignDetailsModel!.data!.shops![index].id!.toString(),
+                        'shopId': widget
+                            .campaignDetailsModel!.data!.shops![index].id!
+                            .toString(),
                       },
                     );
                   },
@@ -101,9 +104,11 @@ class _CampaignByShopState extends State<CampaignByShop> {
                                                 height: 30.h,
                                               ),
                                               Padding(
-                                                padding:
-                                                EdgeInsets.symmetric(
-                                                        horizontal: isMobile(context)? 10.w:5.w),
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal:
+                                                        isMobile(context)
+                                                            ? 10.w
+                                                            : 5.w),
                                                 child: Center(
                                                   child: Text(
                                                     widget
@@ -113,7 +118,10 @@ class _CampaignByShopState extends State<CampaignByShop> {
                                                         .shopName!
                                                         .toString(),
                                                     style: TextStyle(
-                                                      fontSize: isMobile(context)? 13.sp:10.sp,
+                                                      fontSize:
+                                                          isMobile(context)
+                                                              ? 13.sp
+                                                              : 10.sp,
                                                       color: Colors.white,
                                                     ),
                                                     maxLines: 1,
@@ -149,14 +157,15 @@ class _CampaignByShopState extends State<CampaignByShop> {
                                                     itemSize: 18.r,
                                                     direction: Axis.horizontal,
                                                   ),
-                                                   Text(
-                                                    "(${widget.campaignDetailsModel!
-                                                        .data!
-                                                        .shops![index]
-                                                        .reviewsCount} ${AppTags.review.tr})",
+                                                  Text(
+                                                    "(${widget.campaignDetailsModel!.data!.shops![index].reviewsCount} ${AppTags.review.tr})",
                                                     style: TextStyle(
-                                                      fontSize: isMobile(context)?10.sp:8.sp,
-                                                      color: AppThemeData.textFieldTextColor,
+                                                      fontSize:
+                                                          isMobile(context)
+                                                              ? 10.sp
+                                                              : 8.sp,
+                                                      color: AppThemeData
+                                                          .textFieldTextColor,
                                                     ),
                                                   ),
                                                 ],
@@ -168,18 +177,24 @@ class _CampaignByShopState extends State<CampaignByShop> {
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
                                                         .spaceEvenly,
-                                                children:  [
+                                                children: [
                                                   Text(
                                                     "${AppTags.products.tr}: ${widget.campaignDetailsModel!.data!.shops![index].totalProduct!}",
                                                     style: TextStyle(
-                                                      fontSize:  isMobile(context)?10.sp:6.sp,
+                                                      fontSize:
+                                                          isMobile(context)
+                                                              ? 10.sp
+                                                              : 6.sp,
                                                       color: Colors.white,
                                                     ),
                                                   ),
                                                   Text(
                                                     "${AppTags.joined.tr}: ${widget.campaignDetailsModel!.data!.shops![index].joinDate}",
-                                                    style:  TextStyle(
-                                                      fontSize: isMobile(context)?10.sp:6.sp,
+                                                    style: TextStyle(
+                                                      fontSize:
+                                                          isMobile(context)
+                                                              ? 10.sp
+                                                              : 6.sp,
                                                       color: Colors.white,
                                                     ),
                                                   ),
@@ -191,8 +206,8 @@ class _CampaignByShopState extends State<CampaignByShop> {
                                         Positioned(
                                           top: -25.h,
                                           child: Container(
-                                            width: isMobile(context)? 50.w:35.w,
-
+                                            width:
+                                                isMobile(context) ? 50.w : 35.w,
                                             height: 50.h,
                                             decoration: BoxDecoration(
                                               border: Border.all(
@@ -224,18 +239,20 @@ class _CampaignByShopState extends State<CampaignByShop> {
                           child: Row(
                             children: [
                               Padding(
-                                padding: EdgeInsets.only(left: isMobile(context)? 14.w:5.w),
+                                padding: EdgeInsets.only(
+                                    left: isMobile(context) ? 14.w : 5.w),
                                 child: Text(
                                   AppTags.visitStore.tr,
                                   style: TextStyle(
-                                    fontSize:  isMobile(context)? 12.sp:8.sp,
+                                    fontSize: isMobile(context) ? 12.sp : 8.sp,
                                     color: Colors.black,
                                   ),
                                 ),
                               ),
                               Padding(
                                 padding: EdgeInsets.only(left: 4.w),
-                                child: SvgPicture.asset(Images.campaignShopArrow),
+                                child:
+                                    SvgPicture.asset(Images.campaignShopArrow),
                               ),
                             ],
                           ),

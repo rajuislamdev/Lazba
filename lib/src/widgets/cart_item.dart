@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:get/get.dart';
-import 'package:yoori_ecommerce/src/controllers/cart_content_controller.dart';
-import 'package:yoori_ecommerce/src/controllers/currency_converter_controller.dart';
+import 'package:lazba/src/controllers/cart_content_controller.dart';
+import 'package:lazba/src/controllers/currency_converter_controller.dart';
 import '../models/add_to_cart_list_model.dart';
 import '../utils/app_tags.dart';
 import '../utils/app_theme_data.dart';
@@ -81,7 +81,8 @@ class CartItem extends StatelessWidget {
                         Text(
                           cart.productName.toString(),
                           style: isMobile(context)
-                              ? AppThemeData.labelTextStyle_16.copyWith(fontSize: 14.sp)
+                              ? AppThemeData.labelTextStyle_16
+                                  .copyWith(fontSize: 14.sp)
                               : AppThemeData.todayDealDiscountPriceStyle,
                           textScaleFactor: 1.0,
                           maxLines: 2,
@@ -134,8 +135,8 @@ class CartItem extends StatelessWidget {
                                 BoxShadow(
                                   spreadRadius: 3,
                                   blurRadius: 5,
-                                  color:
-                                      AppThemeData.boxShadowColor.withOpacity(0.1),
+                                  color: AppThemeData.boxShadowColor
+                                      .withOpacity(0.1),
                                   offset: const Offset(0, 0),
                                 )
                               ],

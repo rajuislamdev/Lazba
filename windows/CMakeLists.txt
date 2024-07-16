@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(yoori_ecommerce LANGUAGES CXX)
+project(lazba LANGUAGES CXX)
 
-set(BINARY_NAME "yoori_ecommerce")
+set(BINARY_NAME "lazba")
 
 cmake_policy(SET CMP0063 NEW)
 

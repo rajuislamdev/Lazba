@@ -7,7 +7,7 @@ import '../../../models/all_product_model.dart';
 import '../../../utils/app_tags.dart';
 import '../../../utils/app_theme_data.dart';
 import '../../../servers/repository.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
+import 'package:lazba/src/utils/responsive.dart';
 import '../../../widgets/product_card_widgets/category_product_card.dart';
 import '../../../widgets/loader/shimmer_load_data.dart';
 import '../../../widgets/loader/shimmer_products.dart';
@@ -40,45 +40,47 @@ class _AllProductViewState extends State<AllProductView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: isMobile(context)? AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          leading: IconButton(
-            icon: const Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-            ),
-            onPressed: () {
-              Get.back();
-            }, // null disables the button
-          ),
-          centerTitle: true,
-          title: Text(
-            AppTags.allProduct.tr,
-            style: AppThemeData.headerTextStyle_16,
-          ),
-        ): AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          toolbarHeight: 60.h,
-          leadingWidth: 40.w,
-          leading: IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-              size: 25.r,
-            ),
+        appBar: isMobile(context)
+            ? AppBar(
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                leading: IconButton(
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {
+                    Get.back();
+                  }, // null disables the button
+                ),
+                centerTitle: true,
+                title: Text(
+                  AppTags.allProduct.tr,
+                  style: AppThemeData.headerTextStyle_16,
+                ),
+              )
+            : AppBar(
+                backgroundColor: Colors.transparent,
+                elevation: 0,
+                toolbarHeight: 60.h,
+                leadingWidth: 40.w,
+                leading: IconButton(
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                    size: 25.r,
+                  ),
 
-            onPressed: () {
-              Get.back();
-            }, // null disables the button
-          ),
-          centerTitle: true,
-          title: Text(
-            AppTags.allProduct.tr,
-            style: AppThemeData.headerTextStyle_14,
-          ),
-        ),
+                  onPressed: () {
+                    Get.back();
+                  }, // null disables the button
+                ),
+                centerTitle: true,
+                title: Text(
+                  AppTags.allProduct.tr,
+                  style: AppThemeData.headerTextStyle_14,
+                ),
+              ),
         body: PaginationView<Data>(
           key: key,
           paginationViewType: paginationViewType,
@@ -87,13 +89,13 @@ class _AllProductViewState extends State<AllProductView> {
           onError: (dynamic error) => Center(
             child: Text(AppTags.someErrorOccurred.tr),
           ),
-          onEmpty:  Center(
+          onEmpty: Center(
             child: Text(AppTags.noProduct.tr),
           ),
           bottomLoader: const ShimmerLoadData(),
           initialLoader: const ShimmerProducts(),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: isMobile(context)? 2:3,
+            crossAxisCount: isMobile(context) ? 2 : 3,
             childAspectRatio: 0.68,
             mainAxisSpacing: 15,
             crossAxisSpacing: 15,

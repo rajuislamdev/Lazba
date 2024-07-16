@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:yoori_ecommerce/src/utils/images.dart';
+import 'package:lazba/src/utils/images.dart';
 
 import '../models/all_notifications.dart';
 import '../utils/app_theme_data.dart';
@@ -18,7 +18,7 @@ class NotificationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: isMobile(context)?6.h:10.h),
+      margin: EdgeInsets.only(bottom: isMobile(context) ? 6.h : 10.h),
       width: double.infinity,
       //height: 95,
       decoration: BoxDecoration(
@@ -34,7 +34,7 @@ class NotificationWidget extends StatelessWidget {
         ],
       ),
       child: Padding(
-        padding:  EdgeInsets.only(left: 16.w, right: 11.w),
+        padding: EdgeInsets.only(left: 16.w, right: 11.w),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,31 +71,33 @@ class NotificationWidget extends StatelessWidget {
                   ),
                   Text(
                     notification.title,
-                    style:  TextStyle(
-                      fontSize: isMobile(context)? 14.sp:11.sp,
+                    style: TextStyle(
+                      fontSize: isMobile(context) ? 14.sp : 11.sp,
                       color: Colors.black,
                       fontFamily: "Poppins",
                     ),
                   ),
-                  Text(
-                    notification.details,
-                    style: isMobile(context)? AppThemeData.addressDefaultTextStyle_10.copyWith(fontSize: 13.sp):AppThemeData.addressDefaultTextStyle_10
-                  )
+                  Text(notification.details,
+                      style: isMobile(context)
+                          ? AppThemeData.addressDefaultTextStyle_10
+                              .copyWith(fontSize: 13.sp)
+                          : AppThemeData.addressDefaultTextStyle_10)
                 ],
               ),
             ),
             Column(
               children: [
                 SizedBox(
-                  height: isMobile(context)? 14.sp:11.sp,
+                  height: isMobile(context) ? 14.sp : 11.sp,
                 ),
                 Text(
-                  isOtherNotification
-                      ? extractDate(notification.createdAt)
-                      : extractTime(notification.createdAt),
-                  style: isMobile(context)? AppThemeData.hintTextStyle_10Tab:AppThemeData.hintTextStyle_10Tab.copyWith(fontSize: 8.sp)
-
-                )
+                    isOtherNotification
+                        ? extractDate(notification.createdAt)
+                        : extractTime(notification.createdAt),
+                    style: isMobile(context)
+                        ? AppThemeData.hintTextStyle_10Tab
+                        : AppThemeData.hintTextStyle_10Tab
+                            .copyWith(fontSize: 8.sp))
               ],
             )
           ],

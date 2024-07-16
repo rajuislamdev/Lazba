@@ -5,17 +5,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:yoori_ecommerce/src/utils/images.dart';
+import 'package:lazba/src/utils/images.dart';
 import '../../controllers/phone_auth_controller.dart';
 import '../../data/local_data_helper.dart';
-import 'package:yoori_ecommerce/src/utils/app_tags.dart';
+import 'package:lazba/src/utils/app_tags.dart';
 import '../../utils/app_theme_data.dart';
 
 class PhoneLoginScreen extends StatelessWidget {
   PhoneLoginScreen({Key? key}) : super(key: key);
 
   final TextEditingController phoneController = TextEditingController();
-  final PhoneAuthController phoneAuthController = Get.put(PhoneAuthController());
+  final PhoneAuthController phoneAuthController =
+      Get.put(PhoneAuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +53,8 @@ class PhoneLoginScreen extends StatelessWidget {
             SizedBox(
               height: 6.h,
             ),
-             Text(
-             AppTags.loginToContinue.tr,
+            Text(
+              AppTags.loginToContinue.tr,
               style: AppThemeData.headerPhoneTextStyle_16,
             ),
             SizedBox(
@@ -86,9 +87,18 @@ class PhoneLoginScreen extends StatelessWidget {
                         padding: EdgeInsets.only(left: 20.w),
                         child: CountryPickerDropdown(
                           isFirstDefaultIfInitialValueNotProvided: false,
-                          initialValue:
-                          LocalDataHelper().getConfigData().data!.appConfig!.defaultCountry!.isNotEmpty?
-                          LocalDataHelper().getConfigData().data!.appConfig!.defaultCountry!:'BD',
+                          initialValue: LocalDataHelper()
+                                  .getConfigData()
+                                  .data!
+                                  .appConfig!
+                                  .defaultCountry!
+                                  .isNotEmpty
+                              ? LocalDataHelper()
+                                  .getConfigData()
+                                  .data!
+                                  .appConfig!
+                                  .defaultCountry!
+                              : 'BD',
                           isExpanded: true,
                           itemBuilder: (Country country) => Row(
                             children: <Widget>[
@@ -100,7 +110,6 @@ class PhoneLoginScreen extends StatelessWidget {
                           onValuePicked: (Country country) {
                             phoneCode = country.phoneCode;
                           },
-
                         ),
                       ),
                     ),
@@ -124,34 +133,42 @@ class PhoneLoginScreen extends StatelessWidget {
               height: 20.h,
             ),
             Obx(() => Padding(
-              padding: EdgeInsets.only(right: 30.w),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  InkWell(
-                    onTap: () async {
-                      if(LocalDataHelper().getConfigData().data!.appConfig!.disableOtp!){
-                        await phoneAuthController.sendOtpLogin(phoneNumber: "+$phoneCode${phoneController.text}");
-                      }else{
-                        await phoneAuthController.phoneLogin(phoneNumber: "+$phoneCode${phoneController.text}");
-                      }
-                    },
-                    splashColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    child: SizedBox(
-                      width: 48.w,
-                      height: 48.h,
-                      child:  CircleAvatar(
-                        backgroundColor: AppThemeData.buttonColor,
-                        child: phoneAuthController.isLoading.value? SvgPicture.asset(Images.arrowForward):const CircularProgressIndicator(),
-                      )
-                    ),
+                  padding: EdgeInsets.only(right: 30.w),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      InkWell(
+                        onTap: () async {
+                          if (LocalDataHelper()
+                              .getConfigData()
+                              .data!
+                              .appConfig!
+                              .disableOtp!) {
+                            await phoneAuthController.sendOtpLogin(
+                                phoneNumber:
+                                    "+$phoneCode${phoneController.text}");
+                          } else {
+                            await phoneAuthController.phoneLogin(
+                                phoneNumber:
+                                    "+$phoneCode${phoneController.text}");
+                          }
+                        },
+                        splashColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
+                        hoverColor: Colors.transparent,
+                        child: SizedBox(
+                            width: 48.w,
+                            height: 48.h,
+                            child: CircleAvatar(
+                              backgroundColor: AppThemeData.buttonColor,
+                              child: phoneAuthController.isLoading.value
+                                  ? SvgPicture.asset(Images.arrowForward)
+                                  : const CircularProgressIndicator(),
+                            )),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            )
-            ),
+                )),
           ],
         ),
       ),

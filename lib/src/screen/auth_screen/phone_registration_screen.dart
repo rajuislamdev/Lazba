@@ -4,23 +4,23 @@ import 'package:country_pickers/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:yoori_ecommerce/src/data/local_data_helper.dart';
-import 'package:yoori_ecommerce/src/utils/app_tags.dart';
-import 'package:yoori_ecommerce/src/utils/images.dart';
+import 'package:lazba/src/data/local_data_helper.dart';
+import 'package:lazba/src/utils/app_tags.dart';
+import 'package:lazba/src/utils/images.dart';
 import '../../utils/app_theme_data.dart';
 import '../../utils/constants.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
+import 'package:lazba/src/utils/responsive.dart';
 
 import '../../controllers/phone_auth_controller.dart';
 import '../../widgets/login_edit_textform_field.dart';
-
 
 class PhoneRegistrationScreen extends StatelessWidget {
   PhoneRegistrationScreen({Key? key}) : super(key: key);
   final firstNameController = TextEditingController();
   final lastNameController = TextEditingController();
   final phoneController = TextEditingController();
-  final PhoneAuthController phoneAuthController = Get.put(PhoneAuthController());
+  final PhoneAuthController phoneAuthController =
+      Get.put(PhoneAuthController());
 
   @override
   Widget build(BuildContext context) {
@@ -89,9 +89,18 @@ class PhoneRegistrationScreen extends StatelessWidget {
                         padding: EdgeInsets.only(left: 20.w),
                         child: CountryPickerDropdown(
                           isFirstDefaultIfInitialValueNotProvided: false,
-                          initialValue:
-                          LocalDataHelper().getConfigData().data!.appConfig!.defaultCountry!.isNotEmpty?
-                          LocalDataHelper().getConfigData().data!.appConfig!.defaultCountry!:'BD',
+                          initialValue: LocalDataHelper()
+                                  .getConfigData()
+                                  .data!
+                                  .appConfig!
+                                  .defaultCountry!
+                                  .isNotEmpty
+                              ? LocalDataHelper()
+                                  .getConfigData()
+                                  .data!
+                                  .appConfig!
+                                  .defaultCountry!
+                              : 'BD',
                           isExpanded: true,
                           itemBuilder: (Country country) => Row(
                             children: <Widget>[
@@ -124,45 +133,65 @@ class PhoneRegistrationScreen extends StatelessWidget {
             SizedBox(
               height: 50.h,
             ),
-            Obx(() =>  Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.w),
-              child: SizedBox(
-                width: double.infinity,
-                height: 48.h,
-                child: ElevatedButton(
-                  onPressed: () async {
-                    printLog(LocalDataHelper().getConfigData().data!.appConfig!.disableOtp!);
-                    if(LocalDataHelper().getConfigData().data!.appConfig!.disableOtp!){
-                      printLog("Yes Otp disable");
-                      await phoneAuthController.sendOtpRegistration(
-                          firstName: firstNameController.text,
-                          lastName: lastNameController.text,
-                          phoneNumber: "+$phoneCode${phoneController.text}");
-                    }else{
-                      await phoneAuthController.phoneRegistration(
-                          firstName: firstNameController.text,
-                          lastName: lastNameController.text,
-                          phoneNumber: "+$phoneCode${phoneController.text}");
-                    }
-                    printLog("+$phoneCode${phoneController.text} ${firstNameController.text} ${lastNameController.text}");
-
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: AppThemeData.buttonColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.r),
+            Obx(() => Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15.w),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 48.h,
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        printLog(LocalDataHelper()
+                            .getConfigData()
+                            .data!
+                            .appConfig!
+                            .disableOtp!);
+                        if (LocalDataHelper()
+                            .getConfigData()
+                            .data!
+                            .appConfig!
+                            .disableOtp!) {
+                          printLog("Yes Otp disable");
+                          await phoneAuthController.sendOtpRegistration(
+                              firstName: firstNameController.text,
+                              lastName: lastNameController.text,
+                              phoneNumber:
+                                  "+$phoneCode${phoneController.text}");
+                        } else {
+                          await phoneAuthController.phoneRegistration(
+                              firstName: firstNameController.text,
+                              lastName: lastNameController.text,
+                              phoneNumber:
+                                  "+$phoneCode${phoneController.text}");
+                        }
+                        printLog(
+                            "+$phoneCode${phoneController.text} ${firstNameController.text} ${lastNameController.text}");
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppThemeData.buttonColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.r),
+                        ),
+                      ),
+                      child: phoneAuthController.isLoading.value
+                          ? Padding(
+                              padding: EdgeInsets.all(14.r),
+                              child: Text(
+                                LocalDataHelper()
+                                        .getConfigData()
+                                        .data!
+                                        .appConfig!
+                                        .disableOtp!
+                                    ? AppTags.login.tr
+                                    : AppTags.getOTP.tr,
+                                style: isMobile(context)
+                                    ? AppThemeData.buttonTextStyle_14
+                                    : AppThemeData.buttonTextStyle_11Tab,
+                              ),
+                            )
+                          : const CircularProgressIndicator(),
                     ),
                   ),
-                  child: phoneAuthController.isLoading.value? Padding(
-                    padding: EdgeInsets.all(14.r),
-                    child: Text(
-                      LocalDataHelper().getConfigData().data!.appConfig!.disableOtp!?AppTags.login.tr:AppTags.getOTP.tr,
-                      style: isMobile(context)? AppThemeData.buttonTextStyle_14:AppThemeData.buttonTextStyle_11Tab,
-                    ),
-                  ): const CircularProgressIndicator(),
-                ),
-              ),
-            )),
+                )),
           ],
         ),
       ),

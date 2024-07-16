@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:yoori_ecommerce/src/utils/images.dart';
+import 'package:lazba/src/utils/images.dart';
 
 import '../../_route/routes.dart';
-import 'package:yoori_ecommerce/src/utils/app_tags.dart';
+import 'package:lazba/src/utils/app_tags.dart';
 import '../../utils/app_theme_data.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
+import 'package:lazba/src/utils/responsive.dart';
 
 class ProfileWithoutLoginScreen extends StatelessWidget {
   const ProfileWithoutLoginScreen({Key? key}) : super(key: key);
@@ -23,7 +23,9 @@ class ProfileWithoutLoginScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           AppTags.profile.tr,
-          style: isMobile(context)?AppThemeData.headerTextStyle_16:AppThemeData.headerTextStyleTab,
+          style: isMobile(context)
+              ? AppThemeData.headerTextStyle_16
+              : AppThemeData.headerTextStyleTab,
         ),
         actions: [
           Padding(
@@ -34,8 +36,7 @@ class ProfileWithoutLoginScreen extends StatelessWidget {
                   onTap: () {
                     Get.toNamed(Routes.trackingOrder);
                   },
-                  child:
-                      SvgPicture.asset(Images.locationProfileWl),
+                  child: SvgPicture.asset(Images.locationProfileWl),
                 ),
                 SizedBox(
                   width: 15.h,
@@ -44,10 +45,13 @@ class ProfileWithoutLoginScreen extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 8.0),
                   child: InkWell(
                     onTap: () {
-                       Get.toNamed(Routes.settings);
+                      Get.toNamed(Routes.settings);
                     },
-                    child:
-                        SvgPicture.asset(Images.settings,height: 20,width: 20,),
+                    child: SvgPicture.asset(
+                      Images.settings,
+                      height: 20,
+                      width: 20,
+                    ),
                   ),
                 ),
               ],
@@ -71,7 +75,7 @@ class ProfileWithoutLoginScreen extends StatelessWidget {
             Text(
               AppTags.notLoggedIn.tr,
               style: TextStyle(
-                fontSize:isMobile(context)? 16.sp:12.sp,
+                fontSize: isMobile(context) ? 16.sp : 12.sp,
                 fontFamily: "Poppins Medium",
                 color: Colors.black,
               ),
@@ -83,7 +87,9 @@ class ProfileWithoutLoginScreen extends StatelessWidget {
               width: 231.w,
               child: Text(
                 AppTags.noContent.tr,
-                style: isMobile(context)?AppThemeData.orderHistoryTextStyle_12:AppThemeData.orderHistoryTextStyle_9Tab,
+                style: isMobile(context)
+                    ? AppThemeData.orderHistoryTextStyle_12
+                    : AppThemeData.orderHistoryTextStyle_9Tab,
                 textAlign: TextAlign.center,
               ),
             ),
@@ -101,7 +107,7 @@ class ProfileWithoutLoginScreen extends StatelessWidget {
                       Get.toNamed(Routes.logIn);
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor:  AppThemeData.buttonShadowColor,
+                      backgroundColor: AppThemeData.buttonShadowColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -111,7 +117,7 @@ class ProfileWithoutLoginScreen extends StatelessWidget {
                     child: Text(
                       AppTags.signIn.tr,
                       style: TextStyle(
-                        fontSize: isMobile(context)? 14.sp:11.sp,
+                        fontSize: isMobile(context) ? 14.sp : 11.sp,
                         fontFamily: "Poppins",
                         color: AppThemeData.lightBackgroundColor,
                       ),
@@ -139,7 +145,7 @@ class ProfileWithoutLoginScreen extends StatelessWidget {
                     child: Text(
                       AppTags.signUp.tr,
                       style: TextStyle(
-                        fontSize: isMobile(context)? 14.sp:11.sp,
+                        fontSize: isMobile(context) ? 14.sp : 11.sp,
                         fontFamily: "Poppins",
                         color: AppThemeData.lightBackgroundColor,
                       ),
@@ -164,13 +170,19 @@ class ProfileWithoutLoginScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SvgPicture.asset(Images.arrowBack,height: 10.h,width: 10.w,),
+                        SvgPicture.asset(
+                          Images.arrowBack,
+                          height: 10.h,
+                          width: 10.w,
+                        ),
                         SizedBox(
                           width: 5.w,
                         ),
                         Text(
                           AppTags.backToShopping.tr,
-                          style: isMobile(context)? AppThemeData.backToHomeTextStyle_12:AppThemeData.categoryTitleTextStyle_9Tab,
+                          style: isMobile(context)
+                              ? AppThemeData.backToHomeTextStyle_12
+                              : AppThemeData.categoryTitleTextStyle_9Tab,
                         ),
                       ],
                     ),

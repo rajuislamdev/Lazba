@@ -1,17 +1,16 @@
-
 import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:open_file_plus/open_file_plus.dart';
-import 'package:yoori_ecommerce/src/controllers/color_selection_controller.dart';
-import 'package:yoori_ecommerce/src/data/local_data_helper.dart';
-import 'package:yoori_ecommerce/src/models/product_details_model.dart';
-import 'package:yoori_ecommerce/src/servers/repository.dart';
-import 'package:yoori_ecommerce/src/utils/analytics_helper.dart';
-import 'package:yoori_ecommerce/src/utils/constants.dart';
-import 'package:yoori_ecommerce/src/utils/validators.dart';
+import 'package:lazba/src/controllers/color_selection_controller.dart';
+import 'package:lazba/src/data/local_data_helper.dart';
+import 'package:lazba/src/models/product_details_model.dart';
+import 'package:lazba/src/servers/repository.dart';
+import 'package:lazba/src/utils/analytics_helper.dart';
+import 'package:lazba/src/utils/constants.dart';
+import 'package:lazba/src/utils/validators.dart';
 
 class DetailsPageController extends GetxController {
   PageController pageController = PageController();
@@ -27,8 +26,7 @@ class DetailsPageController extends GetxController {
   var hassleFree = false.obs;
   var groupProduct = false.obs;
   var isObsecure = true.obs;
-  var isReviewLoading=true.obs;
-
+  var isReviewLoading = true.obs;
 
   late Rx<AppLifecycleState> appState;
 
@@ -42,22 +40,22 @@ class DetailsPageController extends GetxController {
   var totalPrice = 0.0.obs;
   String colorId = '';
   String colorValue = '';
-  var pageView=0.obs;
+  var pageView = 0.obs;
 
-  updatePageIncrement(){
+  updatePageIncrement() {
     int imageLength = productDetail.value.data!.descriptionImages!.length;
-    if(pageView<imageLength-1){
+    if (pageView < imageLength - 1) {
       pageView.value++;
     }
   }
-  updatePageDecrement(){
-    if(pageView>0){
+
+  updatePageDecrement() {
+    if (pageView > 0) {
       pageView.value--;
     }
   }
 
   var productId = Get.parameters['productId'];
-
 
   //PDf File Reader
   Future<void> openFile(var url) async {
@@ -67,20 +65,21 @@ class DetailsPageController extends GetxController {
 
   userReviewIndex() {
     printLog(LocalDataHelper().getUserAllData()!.data!.userId!);
-    int lengthReview= productDetail.value.data!.reviews!.length;
-    for(int i=0; i<=lengthReview;i++){
-      if(productDetail.value.data!.reviews![i].user!.id==LocalDataHelper().getUserAllData()!.data!.userId!){
+    int lengthReview = productDetail.value.data!.reviews!.length;
+    for (int i = 0; i <= lengthReview; i++) {
+      if (productDetail.value.data!.reviews![i].user!.id ==
+          LocalDataHelper().getUserAllData()!.data!.userId!) {
         return i;
       }
     }
   }
 
-
   File? image;
   late String imagePath;
   final _picker = ImagePicker();
   Future<void> getImage() async {
-    final pickedFile = await _picker.pickImage(source: ImageSource.gallery,imageQuality: 20);
+    final pickedFile =
+        await _picker.pickImage(source: ImageSource.gallery, imageQuality: 20);
     if (pickedFile != null) {
       image = File(pickedFile.path);
       imagePath = pickedFile.path;
@@ -91,8 +90,6 @@ class DetailsPageController extends GetxController {
     }
   }
 
-
-
   Future postReviewSubmit({
     required String productId,
     required String title,
@@ -100,25 +97,27 @@ class DetailsPageController extends GetxController {
     required String rating,
     File? image,
   }) async {
-    isReviewLoading.value=false;
-    await Repository().postReviewSubmit(
-        productId: productId,
-        title: title,
-        comment: comment,
-        rating: rating,
-        image: image).then((value) {
-          isReviewLoading.value=true;
+    isReviewLoading.value = false;
+    await Repository()
+        .postReviewSubmit(
+            productId: productId,
+            title: title,
+            comment: comment,
+            rating: rating,
+            image: image)
+        .then((value) {
+      isReviewLoading.value = true;
     });
-    isReviewLoading.value=true;
+    isReviewLoading.value = true;
     update();
   }
-  Future reviewReply({String? reviewId, String? reply}) async{
+
+  Future reviewReply({String? reviewId, String? reply}) async {
     await Repository().postReviewReply(
       reviewId: reviewId,
       reply: reply,
     );
   }
-
 
   Future likeAndUnlike({required int reviewId}) async {
     await Repository().getLikeAndUnlike(reviewId: reviewId);
@@ -212,7 +211,6 @@ class DetailsPageController extends GetxController {
       return false;
     }
   }
-
 
   @override
   void onInit() {

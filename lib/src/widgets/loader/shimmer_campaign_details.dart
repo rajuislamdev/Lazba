@@ -3,8 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../utils/app_theme_data.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
-
+import 'package:lazba/src/utils/responsive.dart';
 
 class ShimmerCampaignDetails extends StatelessWidget {
   const ShimmerCampaignDetails({Key? key}) : super(key: key);
@@ -20,10 +19,10 @@ class ShimmerCampaignDetails extends StatelessWidget {
             child: GridView.builder(
               physics: const NeverScrollableScrollPhysics(),
               itemCount: 15,
-              gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount:  isMobile(context)? 2 : 3,
-                crossAxisSpacing:  isMobile(context)? 15:20,
-                mainAxisSpacing:  isMobile(context)? 15:20,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: isMobile(context) ? 2 : 3,
+                crossAxisSpacing: isMobile(context) ? 15 : 20,
+                mainAxisSpacing: isMobile(context) ? 15 : 20,
                 childAspectRatio: 1.6,
               ),
               itemBuilder: (_, __) => Shimmer.fromColors(
@@ -43,7 +42,8 @@ class ShimmerCampaignDetails extends StatelessWidget {
                         color: AppThemeData.boxShadowColor.withOpacity(0.05),
                         spreadRadius: 0,
                         blurRadius: 30,
-                        offset: const Offset(0, 15), // changes position of shadow
+                        offset:
+                            const Offset(0, 15), // changes position of shadow
                       ),
                     ],
                   ),

@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../utils/app_theme_data.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
+import 'package:lazba/src/utils/responsive.dart';
 
 class ShimmerShop extends StatelessWidget {
   const ShimmerShop({Key? key}) : super(key: key);
@@ -16,13 +16,13 @@ class ShimmerShop extends StatelessWidget {
       body: Container(
         alignment: Alignment.center,
         child: Padding(
-          padding:  EdgeInsets.all(15.r),
+          padding: EdgeInsets.all(15.r),
           child: SizedBox(
             child: GridView.builder(
               physics: const NeverScrollableScrollPhysics(),
               itemCount: 15,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: isMobile(context)? 3 : 4,
+                crossAxisCount: isMobile(context) ? 3 : 4,
                 crossAxisSpacing: 15,
                 mainAxisSpacing: 16,
                 childAspectRatio: 0.73,
@@ -54,7 +54,7 @@ class ShimmerShop extends StatelessWidget {
                           baseColor: Colors.grey[200]!,
                           child: Container(
                             height: 70.h,
-                            width: isMobile(context)? 110.w:90.w,
+                            width: isMobile(context) ? 110.w : 90.w,
                             decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.only(
@@ -93,11 +93,11 @@ class ShimmerShop extends StatelessWidget {
                           baseColor: Colors.grey[200]!,
                           child: Container(
                             height: 20.h,
-                            width: isMobile(context)?80.w:50.w,
+                            width: isMobile(context) ? 80.w : 50.w,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius:
-                                BorderRadius.all(Radius.circular(4.r))),
+                                    BorderRadius.all(Radius.circular(4.r))),
                           ),
                         ),
                       ),

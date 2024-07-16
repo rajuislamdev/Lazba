@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../utils/app_theme_data.dart';
 import '../../../models/campaign_details_model.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
+import 'package:lazba/src/utils/responsive.dart';
 import '../category/product_by_brand_screen.dart';
 
 class CampaignByBrand extends StatelessWidget {
@@ -14,16 +14,16 @@ class CampaignByBrand extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Padding(
       padding: EdgeInsets.only(top: 20.h),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: isMobile(context)? 15.w:10.w),
+        padding:
+            EdgeInsets.symmetric(horizontal: isMobile(context) ? 15.w : 10.w),
         child: GridView.builder(
           shrinkWrap: true,
           itemCount: campaignDetailsModel!.data!.brands!.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount:   isMobile(context) ? 3 : 5,
+            crossAxisCount: isMobile(context) ? 3 : 5,
             childAspectRatio: 1,
           ),
           itemBuilder: (context, index) {
@@ -33,8 +33,7 @@ class CampaignByBrand extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (_) => ProductByBrand(
                       id: campaignDetailsModel!.data!.brands![index].id!,
-                      title:
-                          campaignDetailsModel!.data!.brands![index].title!,
+                      title: campaignDetailsModel!.data!.brands![index].title!,
                     ),
                   ),
                 );

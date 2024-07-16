@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:yoori_ecommerce/src/utils/images.dart';
+import 'package:lazba/src/utils/images.dart';
 import '../../controllers/dashboard_controller.dart';
-import 'package:yoori_ecommerce/src/utils/app_tags.dart';
+import 'package:lazba/src/utils/app_tags.dart';
 import '../../utils/app_theme_data.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
-
+import 'package:lazba/src/utils/responsive.dart';
 
 class EmptyCartScreen extends StatelessWidget {
   EmptyCartScreen({Key? key}) : super(key: key);
@@ -44,14 +43,15 @@ class EmptyCartScreen extends StatelessWidget {
           width: 172.w,
           child: Text(
             AppTags.emptyCartText.tr,
-            style: isMobile(context)?AppThemeData.dateTextStyle_12:AppThemeData.dateTextStyle_9Tab,
+            style: isMobile(context)
+                ? AppThemeData.dateTextStyle_12
+                : AppThemeData.dateTextStyle_9Tab,
             textAlign: TextAlign.center,
           ),
         ),
         SizedBox(
           height: 90.h,
         ),
-
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 30.w),
           child: SizedBox(
@@ -69,10 +69,10 @@ class EmptyCartScreen extends StatelessWidget {
                 elevation: 5,
                 shadowColor: AppThemeData.headlineTextColor,
               ),
-              child: Text(
-                AppTags.continueShopping.tr,
-                style: isMobile(context)? AppThemeData.buttonTextStyle_14:AppThemeData.buttonTextStyle_11Tab
-              ),
+              child: Text(AppTags.continueShopping.tr,
+                  style: isMobile(context)
+                      ? AppThemeData.buttonTextStyle_14
+                      : AppThemeData.buttonTextStyle_11Tab),
             ),
           ),
         ),

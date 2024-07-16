@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pagination_view/pagination_view.dart';
-import 'package:yoori_ecommerce/src/controllers/home_screen_controller.dart';
-import 'package:yoori_ecommerce/src/utils/app_tags.dart';
+import 'package:lazba/src/controllers/home_screen_controller.dart';
+import 'package:lazba/src/utils/app_tags.dart';
 import '../../../models/offer_ending_product_model.dart';
 import '../../../utils/app_theme_data.dart';
 import '../../../servers/repository.dart';
@@ -14,7 +14,8 @@ class OfferEndingProductsView extends StatefulWidget {
   const OfferEndingProductsView({Key? key}) : super(key: key);
 
   @override
-  State<OfferEndingProductsView> createState() => _OfferEndingProductsViewState();
+  State<OfferEndingProductsView> createState() =>
+      _OfferEndingProductsViewState();
 }
 
 class _OfferEndingProductsViewState extends State<OfferEndingProductsView> {

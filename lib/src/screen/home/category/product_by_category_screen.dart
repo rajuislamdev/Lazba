@@ -5,7 +5,7 @@ import 'package:pagination_view/pagination_view.dart';
 import '../../../controllers/home_screen_controller.dart';
 import '../../../models/product_by_category_model.dart';
 import '../../../utils/app_theme_data.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
+import 'package:lazba/src/utils/responsive.dart';
 import '../../../widgets/product_card_widgets/category_product_card.dart';
 import '../../../servers/repository.dart';
 import '../../../utils/app_tags.dart';
@@ -41,45 +41,47 @@ class _ProductByCategoryState extends State<ProductByCategory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: isMobile(context)? AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-          onPressed: () {
-            Get.back();
-          },
-        ),
-        centerTitle: true,
-        title: Text(
-          widget.title.toString(),
-          style: AppThemeData.headerTextStyle_16,
-        ),
-      ): AppBar(
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      toolbarHeight: 60.h,
-      leadingWidth: 40.w,
-      leading: IconButton(
-        icon: Icon(
-          Icons.arrow_back,
-          color: Colors.black,
-          size: 25.r,
-        ),
+      appBar: isMobile(context)
+          ? AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              leading: IconButton(
+                icon: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.black,
+                ),
+                onPressed: () {
+                  Get.back();
+                },
+              ),
+              centerTitle: true,
+              title: Text(
+                widget.title.toString(),
+                style: AppThemeData.headerTextStyle_16,
+              ),
+            )
+          : AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              toolbarHeight: 60.h,
+              leadingWidth: 40.w,
+              leading: IconButton(
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: Colors.black,
+                  size: 25.r,
+                ),
 
-        onPressed: () {
-          Get.back();
-        }, // null disables the button
-      ),
-      centerTitle: true,
-      title: Text(
-        widget.title.toString(),
-        style: AppThemeData.headerTextStyle_14,
-      ),
-    ),
+                onPressed: () {
+                  Get.back();
+                }, // null disables the button
+              ),
+              centerTitle: true,
+              title: Text(
+                widget.title.toString(),
+                style: AppThemeData.headerTextStyle_14,
+              ),
+            ),
       body: PaginationView<CategoryProductData>(
         key: key,
         paginationViewType: PaginationViewType.gridView,
@@ -94,10 +96,10 @@ class _ProductByCategoryState extends State<ProductByCategory> {
         bottomLoader: const ShimmerLoadData(),
         initialLoader: const ShimmerProducts(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: isMobile(context)? 2:3,
+          crossAxisCount: isMobile(context) ? 2 : 3,
           childAspectRatio: 0.68,
-          mainAxisSpacing: isMobile(context)? 15:20,
-          crossAxisSpacing:  isMobile(context)? 15:20,
+          mainAxisSpacing: isMobile(context) ? 15 : 20,
+          crossAxisSpacing: isMobile(context) ? 15 : 20,
         ),
         itemBuilder:
             (BuildContext context, CategoryProductData product, int index) {

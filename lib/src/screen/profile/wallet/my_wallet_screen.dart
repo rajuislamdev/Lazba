@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:yoori_ecommerce/src/_route/routes.dart';
+import 'package:lazba/src/_route/routes.dart';
 import '../../../controllers/currency_converter_controller.dart';
 import '../../../controllers/my_wallet_controller.dart';
 import '../../../data/local_data_helper.dart';
 import '../../../models/user_data_model.dart';
 import '../../../utils/app_tags.dart';
 import '../../../utils/app_theme_data.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
+import 'package:lazba/src/utils/responsive.dart';
 import '../../../widgets/loader/loader_widget.dart';
 
 class MyWalletScreen extends StatelessWidget {
@@ -149,15 +149,34 @@ class MyWalletScreen extends StatelessWidget {
                                       children: [
                                         Text(
                                           AppTags.balance.tr,
-                                          style: isMobile(context)?
-                                              AppThemeData.profileTextStyle_13:AppThemeData.profileTextStyle_10Tab,
+                                          style: isMobile(context)
+                                              ? AppThemeData.profileTextStyle_13
+                                              : AppThemeData
+                                                  .profileTextStyle_10Tab,
                                         ),
                                         SizedBox(height: 5.h),
                                         Text(
-                                          currencyConverterController.convertCurrency(
-                                           myWalletController.myWalletModel.value.data!.balance!.balance != null ? myWalletController.myWalletModel.value.data!.balance!.balance!.toStringAsFixed(3) : "0"),
-                                          style: isMobile(context)?
-                                              AppThemeData.balanceTextStyle_16:AppThemeData.buttonDltTextStyle_12,
+                                          currencyConverterController
+                                              .convertCurrency(
+                                                  myWalletController
+                                                              .myWalletModel
+                                                              .value
+                                                              .data!
+                                                              .balance!
+                                                              .balance !=
+                                                          null
+                                                      ? myWalletController
+                                                          .myWalletModel
+                                                          .value
+                                                          .data!
+                                                          .balance!
+                                                          .balance!
+                                                          .toStringAsFixed(3)
+                                                      : "0"),
+                                          style: isMobile(context)
+                                              ? AppThemeData.balanceTextStyle_16
+                                              : AppThemeData
+                                                  .buttonDltTextStyle_12,
                                           overflow: TextOverflow.ellipsis,
                                           maxLines: 2,
                                         ),
@@ -191,8 +210,11 @@ class MyWalletScreen extends StatelessWidget {
                                         children: [
                                           Text(
                                             AppTags.recharge.tr,
-                                            style: isMobile(context)?
-                                            AppThemeData.profileTextStyle_13:AppThemeData.profileTextStyle_10Tab,
+                                            style: isMobile(context)
+                                                ? AppThemeData
+                                                    .profileTextStyle_13
+                                                : AppThemeData
+                                                    .profileTextStyle_10Tab,
                                           ),
                                           SizedBox(height: 5.h),
                                           SvgPicture.asset(
@@ -228,9 +250,13 @@ class MyWalletScreen extends StatelessWidget {
                                 color: myWalletController.myWalletModel.value
                                             .data!.recharges![index].type ==
                                         "income"
-                                    ? AppThemeData.walletMultipleColor[1 % AppThemeData.walletMultipleColor.length]
+                                    ? AppThemeData.walletMultipleColor[1 %
+                                            AppThemeData
+                                                .walletMultipleColor.length]
                                         .withOpacity(0.1)
-                                    : AppThemeData.walletMultipleColor[0 % AppThemeData.walletMultipleColor.length]
+                                    : AppThemeData.walletMultipleColor[0 %
+                                            AppThemeData
+                                                .walletMultipleColor.length]
                                         .withOpacity(0.1),
                                 borderRadius: BorderRadius.circular(10.r),
                               ),
@@ -247,7 +273,10 @@ class MyWalletScreen extends StatelessWidget {
                                       children: [
                                         Text(
                                           AppTags.orderTotalAmount.tr,
-                                          style: isMobile(context)? AppThemeData.walletTextStyle_12:AppThemeData.walletTextStyle_10Tab,
+                                          style: isMobile(context)
+                                              ? AppThemeData.walletTextStyle_12
+                                              : AppThemeData
+                                                  .walletTextStyle_10Tab,
                                         ),
                                         Text(
                                           myWalletController
@@ -267,10 +296,18 @@ class MyWalletScreen extends StatelessWidget {
                                                         .recharges![index]
                                                         .type ==
                                                     "income"
-                                                ? AppThemeData.walletMultipleColor[
-                                                    1 % AppThemeData.walletMultipleColor.length]
-                                                : AppThemeData.walletMultipleColor[
-                                                    0 % AppThemeData.walletMultipleColor.length],
+                                                ? AppThemeData
+                                                        .walletMultipleColor[
+                                                    1 %
+                                                        AppThemeData
+                                                            .walletMultipleColor
+                                                            .length]
+                                                : AppThemeData
+                                                        .walletMultipleColor[
+                                                    0 %
+                                                        AppThemeData
+                                                            .walletMultipleColor
+                                                            .length],
                                             fontFamily: "Poppins",
                                             fontSize: 16.sp,
                                             overflow: TextOverflow.clip,
@@ -302,7 +339,8 @@ class MyWalletScreen extends StatelessWidget {
                                           width: 80.w,
                                           alignment: Alignment.center,
                                           decoration: BoxDecoration(
-                                              color: AppThemeData.walletBoxColors
+                                              color: AppThemeData
+                                                  .walletBoxColors
                                                   .withOpacity(0.16),
                                               borderRadius:
                                                   BorderRadius.circular(5)),
@@ -342,7 +380,11 @@ class MyWalletScreen extends StatelessWidget {
                                                     .status
                                                     .toString()
                                                     .capitalizeFirstOfEach,
-                                                style: isMobile(context)? AppThemeData.paymentStatusTextStyle_13: AppThemeData.walletTextStyle_12)),
+                                                style: isMobile(context)
+                                                    ? AppThemeData
+                                                        .paymentStatusTextStyle_13
+                                                    : AppThemeData
+                                                        .walletTextStyle_12)),
                                       ],
                                     ),
                                   ],
@@ -415,7 +457,9 @@ class MyWalletScreen extends StatelessWidget {
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: AppTags.enterYourAmount.tr,
-                  hintStyle:isMobile(context)? AppThemeData.hintTextStyle_13:AppThemeData.hintTextStyle_10Tab,
+                  hintStyle: isMobile(context)
+                      ? AppThemeData.hintTextStyle_13
+                      : AppThemeData.hintTextStyle_10Tab,
                   contentPadding: EdgeInsets.only(
                     left: 8.w,
                     right: 8.w,

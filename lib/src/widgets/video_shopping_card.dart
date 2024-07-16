@@ -1,7 +1,7 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:yoori_ecommerce/src/utils/images.dart';
+import 'package:lazba/src/utils/images.dart';
 import '../utils/app_theme_data.dart';
 import 'package:flutter/material.dart';
 
@@ -24,8 +24,7 @@ class VideoShoppingCard extends StatelessWidget {
         Get.toNamed(
           Routes.detailsVideoShopping,
           parameters: {
-            'videoSlug': dataModel.slug
-                .toString(),
+            'videoSlug': dataModel.slug.toString(),
           },
         );
       },
@@ -44,16 +43,22 @@ class VideoShoppingCard extends StatelessWidget {
               ),
             ),
           ),
-          isMobile(context)?
-          Positioned(child: SvgPicture.asset(Images.playVideo)):
-          Positioned(child: SvgPicture.asset(Images.playVideo,height: 30.h,)),
+          isMobile(context)
+              ? Positioned(child: SvgPicture.asset(Images.playVideo))
+              : Positioned(
+                  child: SvgPicture.asset(
+                  Images.playVideo,
+                  height: 30.h,
+                )),
           dataModel.isLive
               ? Positioned(
                   top: 5.h,
                   left: 10.w,
                   child: Text(
                     "LIVE",
-                    style: isMobile(context)? AppThemeData.todayDealNewStyle:AppThemeData.todayDealNewStyleTab,
+                    style: isMobile(context)
+                        ? AppThemeData.todayDealNewStyle
+                        : AppThemeData.todayDealNewStyleTab,
                   ),
                 )
               : const SizedBox(),
@@ -63,7 +68,9 @@ class VideoShoppingCard extends StatelessWidget {
             right: 3.w,
             child: Text(
               dataModel.title,
-              style: isMobile(context)? AppThemeData.timeDateTextStyle_12:AppThemeData.timeDateTextStyleTab,
+              style: isMobile(context)
+                  ? AppThemeData.timeDateTextStyle_12
+                  : AppThemeData.timeDateTextStyleTab,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,
             ),

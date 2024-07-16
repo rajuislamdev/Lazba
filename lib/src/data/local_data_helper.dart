@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:yoori_ecommerce/src/models/config_model.dart';
-import 'package:yoori_ecommerce/src/models/home_data_model.dart';
-import 'package:yoori_ecommerce/src/models/profile_data_model.dart';
-import 'package:yoori_ecommerce/src/models/user_data_model.dart';
-import 'package:yoori_ecommerce/src/widgets/network_image_checker.dart';
-
+import 'package:lazba/src/models/config_model.dart';
+import 'package:lazba/src/models/home_data_model.dart';
+import 'package:lazba/src/models/profile_data_model.dart';
+import 'package:lazba/src/models/user_data_model.dart';
+import 'package:lazba/src/widgets/network_image_checker.dart';
 
 class LocalDataHelper {
   var box = GetStorage();
@@ -23,7 +22,6 @@ class LocalDataHelper {
     await box.write('userToken', userToken);
     //_profileContentController.update();
   }
-
 
   String? getUserToken() {
     String? getData = box.read("userToken");
@@ -64,10 +62,11 @@ class LocalDataHelper {
     return false;
   }
 
-  Widget getRefundIcon(){
-    return NetworkImageCheckerWidget(image: getRefundAddon() != null &&
+  Widget getRefundIcon() {
+    return NetworkImageCheckerWidget(
+        image: getRefundAddon() != null &&
                 getRefundAddon()!.addonData != null &&
-               getRefundAddon()!.addonData!.sticker != null
+                getRefundAddon()!.addonData!.sticker != null
             ? getRefundAddon()!.addonData!.sticker!
             : "");
   }

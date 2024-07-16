@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
+import 'package:lazba/src/utils/responsive.dart';
 
 class ShimmerAllBrand extends StatelessWidget {
   const ShimmerAllBrand({Key? key}) : super(key: key);
@@ -14,15 +14,15 @@ class ShimmerAllBrand extends StatelessWidget {
       body: Container(
         alignment: Alignment.center,
         child: Padding(
-          padding:  EdgeInsets.all(15.r),
+          padding: EdgeInsets.all(15.r),
           child: SizedBox(
             child: GridView.builder(
               physics: const NeverScrollableScrollPhysics(),
               itemCount: 20,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: isMobile(context)? 3:5,
-                crossAxisSpacing: isMobile(context)? 16:20,
-                mainAxisSpacing: isMobile(context)?16:20,
+                crossAxisCount: isMobile(context) ? 3 : 5,
+                crossAxisSpacing: isMobile(context) ? 16 : 20,
+                mainAxisSpacing: isMobile(context) ? 16 : 20,
                 childAspectRatio: 1,
               ),
               itemBuilder: (_, __) => Shimmer.fromColors(
@@ -31,8 +31,7 @@ class ShimmerAllBrand extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius:
-                      BorderRadius.all(Radius.circular(4.r))),
+                      borderRadius: BorderRadius.all(Radius.circular(4.r))),
                 ),
               ),
             ),

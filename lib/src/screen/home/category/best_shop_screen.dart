@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pagination_view/pagination_view.dart';
-import 'package:yoori_ecommerce/src/models/best_shop_model.dart';
+import 'package:lazba/src/models/best_shop_model.dart';
 import '../../../utils/app_tags.dart';
 import '../../../utils/app_theme_data.dart';
 import '../../../widgets/shop_card.dart';
 import '../../../servers/repository.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
+import 'package:lazba/src/utils/responsive.dart';
 import '../../../widgets/loader/shimmer_shop.dart';
 import '../../../widgets/loader/shimmer_shop_load.dart';
 
@@ -94,7 +94,8 @@ class _BestShopState extends State<BestShop> {
             mainAxisSpacing: isMobile(context) ? 15 : 20,
             crossAxisSpacing: isMobile(context) ? 15 : 20,
           ),
-          itemBuilder: (BuildContext context, BestShopModelData shop, int index) {
+          itemBuilder:
+              (BuildContext context, BestShopModelData shop, int index) {
             return ShopCard(shop: shop);
           },
           padding: EdgeInsets.symmetric(

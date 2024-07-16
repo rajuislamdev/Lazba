@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:video_player/video_player.dart';
 import '../models/video_shopping_details_model.dart';
-import 'package:yoori_ecommerce/src/servers/repository.dart';
+import 'package:lazba/src/servers/repository.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class VideoShoppingDetailsController extends GetxController{
-
-  Rx<VideoShoppingDetailsModel> videoShoppingDetailsModel = VideoShoppingDetailsModel().obs;
-  var isLoader=true.obs;
+class VideoShoppingDetailsController extends GetxController {
+  Rx<VideoShoppingDetailsModel> videoShoppingDetailsModel =
+      VideoShoppingDetailsModel().obs;
+  var isLoader = true.obs;
   var videoSlug = Get.parameters['videoSlug'];
   late YoutubePlayerController controller;
   var isPlayerReady = false.obs;
@@ -18,24 +18,25 @@ class VideoShoppingDetailsController extends GetxController{
 
   var vimeoLink = "".obs;
 
-  Future videoShoppingDetail(String videoSlug) async{
-  await Repository().videoShoppingDetails(videoSlug)
-      .then((value) async {
-        if(value != null){
-          videoShoppingDetailsModel.value = value;
-          if(value.data!.video!.videoType=="youtube"){
-            _youTubeVideoPlayer(videoShoppingDetailsModel.value.data!.video!.videoUrl.toString());
-          }else if(value.data!.video!.videoType=="mp4"){
-            await initializePlayer(videoShoppingDetailsModel.value.data!.video!.videoUrl.toString());
-          }else if(value.data!.video!.videoType=="vimeo"){
-            vimeoLink.value = 'https://vimeo.com/${videoShoppingDetailsModel.value.data!.video!.videoUrl.toString()}';
-          }
+  Future videoShoppingDetail(String videoSlug) async {
+    await Repository().videoShoppingDetails(videoSlug).then((value) async {
+      if (value != null) {
+        videoShoppingDetailsModel.value = value;
+        if (value.data!.video!.videoType == "youtube") {
+          _youTubeVideoPlayer(
+              videoShoppingDetailsModel.value.data!.video!.videoUrl.toString());
+        } else if (value.data!.video!.videoType == "mp4") {
+          await initializePlayer(
+              videoShoppingDetailsModel.value.data!.video!.videoUrl.toString());
+        } else if (value.data!.video!.videoType == "vimeo") {
+          vimeoLink.value =
+              'https://vimeo.com/${videoShoppingDetailsModel.value.data!.video!.videoUrl.toString()}';
         }
-        isLoader.value=false;
-        update();
-  });
+      }
+      isLoader.value = false;
+      update();
+    });
   }
-
 
   Future<void> initializePlayer(String videoUrl) async {
     videoPlayerController = VideoPlayerController.network(videoUrl);
@@ -66,7 +67,7 @@ class VideoShoppingDetailsController extends GetxController{
   }
 
   //Youtube Video player
-  void _youTubeVideoPlayer(String videoUrl){
+  void _youTubeVideoPlayer(String videoUrl) {
     controller = YoutubePlayerController(
       initialVideoId: videoUrl,
       flags: const YoutubePlayerFlags(
@@ -81,24 +82,22 @@ class VideoShoppingDetailsController extends GetxController{
     );
   }
 
-
-  findYoutubeVideoId(){
-   return videoShoppingDetailsModel.value.data!.video!.videoUrl.toString();
+  findYoutubeVideoId() {
+    return videoShoppingDetailsModel.value.data!.video!.videoUrl.toString();
   }
 
-  bool productStyle(){
-    String style = videoShoppingDetailsModel.value.data!.video!.style.toString();
-    if(style=="style_1"||style=="style_2"){
+  bool productStyle() {
+    String style =
+        videoShoppingDetailsModel.value.data!.video!.style.toString();
+    if (style == "style_1" || style == "style_2") {
       return true;
-    }else{
+    } else {
       return false;
     }
   }
 
-
-
   @override
-  void onInit(){
+  void onInit() {
     videoShoppingDetail(videoSlug.toString());
     super.onInit();
   }
@@ -108,6 +107,4 @@ class VideoShoppingDetailsController extends GetxController{
   //     update();
   //   }
   // }
-
-
 }

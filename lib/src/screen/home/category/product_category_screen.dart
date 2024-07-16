@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:yoori_ecommerce/src/servers/repository.dart';
+import 'package:lazba/src/servers/repository.dart';
 import '../../../models/all_category_product_model.dart';
 import '../../../utils/app_theme_data.dart';
 import '../../../utils/app_tags.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
+import 'package:lazba/src/utils/responsive.dart';
 import '../../../widgets/loader/shimmer_category_content.dart';
 import 'product_by_category_screen.dart';
 
@@ -93,7 +93,8 @@ class _ProductCategoryState extends State<ProductCategory> {
                                             height: 70.h,
                                             color: _featuredIndex
                                                 ? Colors.white
-                                                : AppThemeData.productContentColor,
+                                                : AppThemeData
+                                                    .productContentColor,
                                             alignment: Alignment.center,
                                             child: Column(
                                               mainAxisAlignment:
@@ -152,7 +153,8 @@ class _ProductCategoryState extends State<ProductCategory> {
                                   Container(
                                     height: 100.h,
                                     decoration: BoxDecoration(
-                                      color: AppThemeData.productContentBoxColor,
+                                      color:
+                                          AppThemeData.productContentBoxColor,
                                       borderRadius: BorderRadius.all(
                                         Radius.circular(10.r),
                                       ),
@@ -236,16 +238,17 @@ class _ProductCategoryState extends State<ProductCategory> {
                                                 Radius.circular(10.r),
                                               ),
                                               border: Border.all(
-                                                color: AppThemeData.productCategoryBorderColor,
+                                                color: AppThemeData
+                                                    .productCategoryBorderColor,
                                                 width: 1,
                                               ),
                                               boxShadow: [
                                                 BoxShadow(
                                                     spreadRadius: 30.r,
                                                     blurRadius: 1,
-                                                    color:
-                                                    AppThemeData.boxShadowColor
-                                                            .withOpacity(0.01),
+                                                    color: AppThemeData
+                                                        .boxShadowColor
+                                                        .withOpacity(0.01),
                                                     offset: const Offset(0, 15))
                                               ],
                                             ),
@@ -258,7 +261,9 @@ class _ProductCategoryState extends State<ProductCategory> {
                                                       allCategoryProductModel!
                                                           .data!
                                                           .featuredCategory!
-                                                          .featuredSubCategories![index].image!
+                                                          .featuredSubCategories![
+                                                              index]
+                                                          .image!
                                                           .toString(),
                                                     ),
                                                   ),
@@ -267,9 +272,13 @@ class _ProductCategoryState extends State<ProductCategory> {
                                                       allCategoryProductModel!
                                                           .data!
                                                           .featuredCategory!
-                                                          .featuredSubCategories![index].title.toString(),
+                                                          .featuredSubCategories![
+                                                              index]
+                                                          .title
+                                                          .toString(),
                                                       maxLines: 1,
-                                                      overflow: TextOverflow.ellipsis,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
                                                       style: AppThemeData
                                                           .categoryTitleTextStyle_12,
                                                     ),
@@ -298,7 +307,8 @@ class _ProductCategoryState extends State<ProductCategory> {
                                   Container(
                                     height: 100.h,
                                     decoration: BoxDecoration(
-                                      color: AppThemeData.productContentBoxColor,
+                                      color:
+                                          AppThemeData.productContentBoxColor,
                                       borderRadius: const BorderRadius.all(
                                           Radius.circular(10)),
                                       image: DecorationImage(
@@ -370,9 +380,12 @@ class _ProductCategoryState extends State<ProductCategory> {
                                                       allCategoryProductModel!
                                                           .data!
                                                           .categories![_index]
-                                                          .subCategories![subCtIndex].title
+                                                          .subCategories![
+                                                              subCtIndex]
+                                                          .title
                                                           .toString(),
-                                                      style: AppThemeData.priceTextStyle_14,
+                                                      style: AppThemeData
+                                                          .priceTextStyle_14,
                                                     ),
                                                     SizedBox(height: 10.h),
                                                     GridView.builder(
@@ -439,7 +452,8 @@ class _ProductCategoryState extends State<ProductCategory> {
                                                                 .center,
                                                             decoration:
                                                                 BoxDecoration(
-                                                              color: Colors.white,
+                                                              color:
+                                                                  Colors.white,
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .all(
@@ -448,7 +462,8 @@ class _ProductCategoryState extends State<ProductCategory> {
                                                               ),
                                                               border:
                                                                   Border.all(
-                                                                color: AppThemeData.productCategoryBorderColor,
+                                                                color: AppThemeData
+                                                                    .productCategoryBorderColor,
                                                                 width: 1,
                                                               ),
                                                               boxShadow: [
@@ -456,7 +471,8 @@ class _ProductCategoryState extends State<ProductCategory> {
                                                                   spreadRadius:
                                                                       30.r,
                                                                   blurRadius: 1,
-                                                                  color: AppThemeData.boxShadowColor
+                                                                  color: AppThemeData
+                                                                      .boxShadowColor
                                                                       .withOpacity(
                                                                           0.01),
                                                                   offset:
@@ -560,7 +576,8 @@ class _ProductCategoryState extends State<ProductCategory> {
                                                         Radius.circular(10.r),
                                                       ),
                                                       border: Border.all(
-                                                        color: AppThemeData.productCategoryBorderColor,
+                                                        color: AppThemeData
+                                                            .productCategoryBorderColor,
                                                         width: 1.w,
                                                       ),
                                                     ),
@@ -607,16 +624,24 @@ class _ProductCategoryState extends State<ProductCategory> {
                                                                     .title
                                                                     .toString(),
                                                                 style: TextStyle(
-                                                                    fontSize: isMobile(context)? 12.sp:9.sp,
+                                                                    fontSize: isMobile(
+                                                                            context)
+                                                                        ? 12.sp
+                                                                        : 9.sp,
                                                                     fontWeight:
-                                                                        FontWeight.w600,
+                                                                        FontWeight
+                                                                            .w600,
                                                                     fontFamily:
                                                                         "Poppins_Medium"),
                                                               ),
                                                               Text(
-                                                                "${AppTags.totalProduct.tr}: ${allCategoryProductModel!.data!.categories![_index].subCategories![subCtIndex].childCategories!.length}",
-                                                                style: isMobile(context)? AppThemeData.walletTextStyle_12:AppThemeData.walletTextStyle_10Tab
-                                                              ),
+                                                                  "${AppTags.totalProduct.tr}: ${allCategoryProductModel!.data!.categories![_index].subCategories![subCtIndex].childCategories!.length}",
+                                                                  style: isMobile(
+                                                                          context)
+                                                                      ? AppThemeData
+                                                                          .walletTextStyle_12
+                                                                      : AppThemeData
+                                                                          .walletTextStyle_10Tab),
                                                             ],
                                                           ),
                                                         ),
@@ -665,7 +690,7 @@ class _ProductCategoryState extends State<ProductCategory> {
               MdiIcons.fromString(
                 data.data!.categories![index].icon!.substring(8),
               ),
-              size: isMobile(context)? 30.sp:25.sp,
+              size: isMobile(context) ? 30.sp : 25.sp,
             ),
             SizedBox(height: 5.h),
             Text(

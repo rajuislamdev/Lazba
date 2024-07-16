@@ -7,8 +7,8 @@ import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:yoori_ecommerce/src/_route/routes.dart';
-import 'package:yoori_ecommerce/src/utils/images.dart';
+import 'package:lazba/src/_route/routes.dart';
+import 'package:lazba/src/utils/images.dart';
 import '../../../controllers/cart_content_controller.dart';
 import '../../../controllers/color_selection_controller.dart';
 import '../../../controllers/currency_converter_controller.dart';
@@ -21,7 +21,7 @@ import '../../../models/product_details_model.dart';
 import '../../../utils/app_tags.dart';
 import '../../../utils/app_theme_data.dart';
 import '../../../utils/constants.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
+import 'package:lazba/src/utils/responsive.dart';
 import '../../../utils/validators.dart';
 import '../../../widgets/button_widget.dart';
 import '../../../widgets/loader/shimmer_details_page.dart';
@@ -55,7 +55,8 @@ class DetailsPage extends StatelessWidget {
       builder: (controller) {
         return controller.isLoading.value
             ? const Center(child: ShimmerDetailsPage())
-            : _detailsPageUI(controller.productDetail.value, context,currencyConverterController);
+            : _detailsPageUI(controller.productDetail.value, context,
+                currencyConverterController);
       },
     ));
   }
@@ -109,10 +110,13 @@ class DetailsPage extends StatelessWidget {
                     animationDuration: const Duration(milliseconds: 300),
                     animationType: badges.BadgeAnimationType.slide,
                     badgeContent: Text(
-                      cartContentController.addToCartListModel.data!.carts!.length.toString(),
+                      cartContentController
+                          .addToCartListModel.data!.carts!.length
+                          .toString(),
                       style: const TextStyle(color: Colors.white),
                     ),
-                    child: SvgPicture.asset(Images.shoppingBag,
+                    child: SvgPicture.asset(
+                      Images.shoppingBag,
                       color: AppThemeData.headlineTextColor,
                     ),
                   ),
@@ -153,7 +157,8 @@ class DetailsPage extends StatelessWidget {
                           color: AppThemeData.boxShadowColor.withOpacity(0.13),
                           spreadRadius: 1,
                           blurRadius: 10.r,
-                          offset: const Offset(0, 2), // changes position of shadow
+                          offset:
+                              const Offset(0, 2), // changes position of shadow
                         ),
                       ],
                     ),
@@ -226,7 +231,9 @@ class DetailsPage extends StatelessWidget {
                     animationDuration: const Duration(milliseconds: 300),
                     animationType: badges.BadgeAnimationType.slide,
                     badgeContent: Text(
-                      cartContentController.addToCartListModel.data!.carts!.length.toString(),
+                      cartContentController
+                          .addToCartListModel.data!.carts!.length
+                          .toString(),
                       style: TextStyle(color: Colors.white, fontSize: 10.sp),
                     ),
                     child: SvgPicture.asset(
@@ -294,7 +301,8 @@ class DetailsPage extends StatelessWidget {
     );
   }
 
-  Widget _detailsPageUI(ProductDetailsModel detailsModel, context,currencyConverterController) {
+  Widget _detailsPageUI(
+      ProductDetailsModel detailsModel, context, currencyConverterController) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: isMobile(context) ? mobileAppbar() : tabAppbar(),
@@ -316,8 +324,10 @@ class DetailsPage extends StatelessWidget {
                       clipBehavior: Clip.none,
                       children: [
                         InkWell(
-                          onTap: (){
-                            Get.to(()=>DetailsImageViewScreen(productDetailsImages: detailsController.productDetail.value.data!.images));
+                          onTap: () {
+                            Get.to(() => DetailsImageViewScreen(
+                                productDetailsImages: detailsController
+                                    .productDetail.value.data!.images));
                           },
                           child: PageView.builder(
                             itemCount: detailsModel.data!.images!.length,
@@ -361,7 +371,8 @@ class DetailsPage extends StatelessWidget {
                                             : Container(
                                                 height: 20.h,
                                                 decoration: BoxDecoration(
-                                                  color: AppThemeData.productBoxDecorationColor
+                                                  color: AppThemeData
+                                                      .productBoxDecorationColor
                                                       .withOpacity(0.06),
                                                   borderRadius:
                                                       BorderRadius.all(
@@ -389,7 +400,8 @@ class DetailsPage extends StatelessWidget {
                                                 : Container(
                                                     height: 20.h,
                                                     decoration: BoxDecoration(
-                                                      color: AppThemeData.productBoxDecorationColor
+                                                      color: AppThemeData
+                                                          .productBoxDecorationColor
                                                           .withOpacity(0.06),
                                                       borderRadius:
                                                           BorderRadius.all(
@@ -419,7 +431,8 @@ class DetailsPage extends StatelessWidget {
                                     ? Container(
                                         height: 20.h,
                                         decoration: BoxDecoration(
-                                          color: AppThemeData.productBoxDecorationColor
+                                          color: AppThemeData
+                                              .productBoxDecorationColor
                                               .withOpacity(0.06),
                                           borderRadius: BorderRadius.all(
                                             Radius.circular(3.r),
@@ -514,7 +527,8 @@ class DetailsPage extends StatelessWidget {
                                           Container(
                                             width: 44.w,
                                             decoration: BoxDecoration(
-                                              color: AppThemeData.productBoxDecorationColor
+                                              color: AppThemeData
+                                                  .productBoxDecorationColor
                                                   .withOpacity(0.10),
                                               borderRadius: BorderRadius.all(
                                                   Radius.circular(3.r)),
@@ -545,7 +559,8 @@ class DetailsPage extends StatelessWidget {
                                           Container(
                                             width: 44.w,
                                             decoration: BoxDecoration(
-                                              color: AppThemeData.productBoxDecorationColor
+                                              color: AppThemeData
+                                                  .productBoxDecorationColor
                                                   .withOpacity(0.10),
                                               borderRadius: BorderRadius.all(
                                                   Radius.circular(3.r)),
@@ -586,7 +601,8 @@ class DetailsPage extends StatelessWidget {
                                           Container(
                                             width: 44.w,
                                             decoration: BoxDecoration(
-                                              color: AppThemeData.productBoxDecorationColor
+                                              color: AppThemeData
+                                                  .productBoxDecorationColor
                                                   .withOpacity(0.10),
                                               borderRadius: BorderRadius.all(
                                                   Radius.circular(3.r)),
@@ -627,7 +643,8 @@ class DetailsPage extends StatelessWidget {
                                           Container(
                                             width: 44.w,
                                             decoration: BoxDecoration(
-                                              color: AppThemeData.productBoxDecorationColor
+                                              color: AppThemeData
+                                                  .productBoxDecorationColor
                                                   .withOpacity(0.10),
                                               borderRadius: BorderRadius.all(
                                                   Radius.circular(3.r)),
@@ -734,8 +751,7 @@ class DetailsPage extends StatelessWidget {
                                       isMobile(context)
                                           ? SvgPicture.asset(Images.ratingIcon)
                                           : SvgPicture.asset(Images.ratingIcon,
-                                              width: 15.w,
-                                              height: 15.h),
+                                              width: 15.w, height: 15.h),
                                       SizedBox(width: 4.w),
                                       Text(
                                         detailsModel.data!.rating.toString(),
@@ -763,12 +779,14 @@ class DetailsPage extends StatelessWidget {
                                     child: Row(
                                       children: [
                                         SizedBox(width: 10.w),
-                                        SvgPicture.asset(Images.detailsCallButton),
+                                        SvgPicture.asset(
+                                            Images.detailsCallButton),
                                         SizedBox(width: 32.w),
                                         Obx(
                                           () => InkWell(
                                             onTap: () {
-                                              detailsController.isObsecureUpdate();
+                                              detailsController
+                                                  .isObsecureUpdate();
                                             },
                                             child: Column(
                                                 mainAxisAlignment:
@@ -804,14 +822,17 @@ class DetailsPage extends StatelessWidget {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
                                     children: [
-                                      detailsModel.data!.specialDiscount == "0.000"
+                                      detailsModel.data!.specialDiscount ==
+                                              "0.000"
                                           ? Row(
                                               children: [
                                                 Text(
                                                   "${currencyConverterController.convertCurrency(detailsModel.data!.price)}",
                                                   style: isMobile(context)
-                                                      ? AppThemeData.seccessfulPayTextStyle_18
-                                                      : AppThemeData.headerTextStyle_14,
+                                                      ? AppThemeData
+                                                          .seccessfulPayTextStyle_18
+                                                      : AppThemeData
+                                                          .headerTextStyle_14,
                                                 ),
                                               ],
                                             )
@@ -820,15 +841,20 @@ class DetailsPage extends StatelessWidget {
                                                 Text(
                                                   "${currencyConverterController.convertCurrency(detailsModel.data!.discountPrice)}",
                                                   style: isMobile(context)
-                                                      ? AppThemeData.seccessfulPayTextStyle_18
-                                                      : AppThemeData.headerTextStyle_14,
+                                                      ? AppThemeData
+                                                          .seccessfulPayTextStyle_18
+                                                      : AppThemeData
+                                                          .headerTextStyle_14,
                                                 ),
                                                 SizedBox(width: 5.w),
                                                 Text(
                                                   "${currencyConverterController.convertCurrency(detailsModel.data!.price)}",
                                                   style: TextStyle(
-                                                    decoration: TextDecoration.lineThrough,
-                                                    fontSize: isMobile(context) ? 14.sp : 11.sp,
+                                                    decoration: TextDecoration
+                                                        .lineThrough,
+                                                    fontSize: isMobile(context)
+                                                        ? 14.sp
+                                                        : 11.sp,
                                                     fontFamily: "Poppins",
                                                   ),
                                                 ),
@@ -840,11 +866,14 @@ class DetailsPage extends StatelessWidget {
                                               () => SizedBox(
                                                 width: 75.w,
                                                 child: Row(
-                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
                                                   children: [
                                                     InkWell(
                                                       onTap: () {
-                                                        detailsController.decrementProductQuantity();
+                                                        detailsController
+                                                            .decrementProductQuantity();
                                                       },
                                                       child: Container(
                                                         height: 23.h,
@@ -853,16 +882,26 @@ class DetailsPage extends StatelessWidget {
                                                             Alignment.center,
                                                         decoration:
                                                             BoxDecoration(
-                                                          color: AppThemeData.borderSideColor,
+                                                          color: AppThemeData
+                                                              .borderSideColor,
                                                           borderRadius:
-                                                              BorderRadius.all(Radius.circular(3.r)),
+                                                              BorderRadius.all(
+                                                                  Radius
+                                                                      .circular(
+                                                                          3.r)),
                                                         ),
-                                                        child: Icon(Icons.remove, size: 16.r),
+                                                        child: Icon(
+                                                            Icons.remove,
+                                                            size: 16.r),
                                                       ),
                                                     ),
                                                     AnimatedSwitcher(
-                                                      duration: const Duration(milliseconds: 500),
-                                                      transitionBuilder: (Widget child, Animation<double>animation) {
+                                                      duration: const Duration(
+                                                          milliseconds: 500),
+                                                      transitionBuilder:
+                                                          (Widget child,
+                                                              Animation<double>
+                                                                  animation) {
                                                         return ScaleTransition(
                                                           scale: animation,
                                                           child: child,
@@ -878,24 +917,36 @@ class DetailsPage extends StatelessWidget {
                                                             : AppThemeData
                                                                 .labelTextStyle_12tab
                                                                 .copyWith(
-                                                                fontFamily: "Poppins",
+                                                                fontFamily:
+                                                                    "Poppins",
                                                                 fontSize: 13.sp,
                                                               ),
                                                         key: ValueKey(
-                                                            detailsController.productQuantity.value),
+                                                            detailsController
+                                                                .productQuantity
+                                                                .value),
                                                       ),
                                                     ),
                                                     InkWell(
                                                       onTap: () {
-                                                        detailsController.incrementProductQuantity();
+                                                        detailsController
+                                                            .incrementProductQuantity();
                                                       },
                                                       child: Container(
                                                           height: 23.h,
                                                           width: 23.w,
-                                                          alignment: Alignment.center,
+                                                          alignment:
+                                                              Alignment.center,
                                                           decoration:
-                                                          BoxDecoration(color: AppThemeData.borderSideColor,
-                                                            borderRadius: BorderRadius.all(Radius.circular(3.r),),
+                                                              BoxDecoration(
+                                                            color: AppThemeData
+                                                                .borderSideColor,
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .all(
+                                                              Radius.circular(
+                                                                  3.r),
+                                                            ),
                                                           ),
                                                           child: Icon(
                                                             Icons.add,
@@ -933,7 +984,8 @@ class DetailsPage extends StatelessWidget {
                                         Text("${AppTags.delivery.tr}:",
                                             style: isMobile(context)
                                                 ? AppThemeData.titleTextStyle_13
-                                                : AppThemeData.titleTextStyleTab),
+                                                : AppThemeData
+                                                    .titleTextStyleTab),
                                         SizedBox(width: 5.w),
                                         Text(
                                           "${detailsModel.data!.delivery.toString()} days, ${detailsModel.data!.returnData.toString()} days return",
@@ -1019,17 +1071,30 @@ class DetailsPage extends StatelessWidget {
                                                               EdgeInsets.only(
                                                                   right: 10.w),
                                                           child: Container(
-                                                            decoration: BoxDecoration(
-                                                              border: Border.all(
-                                                                color: Color(int.parse("0xff${detailsModel.data!.colors![index].hexCode.toString()}") == AppThemeData.colorWhite ?
-                                                                AppThemeData.colorBlack: int.parse("0xff${detailsModel.data!.colors![index].hexCode.toString()}")),
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              border:
+                                                                  Border.all(
+                                                                color: Color(int.parse(
+                                                                            "0xff${detailsModel.data!.colors![index].hexCode.toString()}") ==
+                                                                        AppThemeData
+                                                                            .colorWhite
+                                                                    ? AppThemeData
+                                                                        .colorBlack
+                                                                    : int.parse(
+                                                                        "0xff${detailsModel.data!.colors![index].hexCode.toString()}")),
                                                               ),
-                                                              borderRadius: BorderRadius.all(
-                                                                Radius.circular(5.r),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .all(
+                                                                Radius.circular(
+                                                                    5.r),
                                                               ),
                                                             ),
                                                             child: Padding(
-                                                              padding: EdgeInsets.all(4.r),
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .all(4.r),
                                                               child: Obx(() =>
                                                                   Container(
                                                                       decoration:
@@ -1064,15 +1129,13 @@ class DetailsPage extends StatelessWidget {
                                                                       child: _colorSelectionController.selectedIndex.value ==
                                                                               index
                                                                           ? Padding(
-                                                                          padding: EdgeInsets.all(6.r),
-                                                                          child: SvgPicture.asset(Images.confirm,color: Color(
-                                                                            int.parse("0xff${detailsModel.data!.colors![index].hexCode.toString()}")==
-                                                                                AppThemeData.colorWhite ?
-                                                                            AppThemeData.colorBlack:AppThemeData.colorWhite),
-                                                                        ),
-                                                                      )
-                                                                          : const SizedBox())
-                                                              ),
+                                                                              padding: EdgeInsets.all(6.r),
+                                                                              child: SvgPicture.asset(
+                                                                                Images.confirm,
+                                                                                color: Color(int.parse("0xff${detailsModel.data!.colors![index].hexCode.toString()}") == AppThemeData.colorWhite ? AppThemeData.colorBlack : AppThemeData.colorWhite),
+                                                                              ),
+                                                                            )
+                                                                          : const SizedBox())),
                                                             ),
                                                           ),
                                                         ),
@@ -1099,8 +1162,8 @@ class DetailsPage extends StatelessWidget {
                                               child: Container(
                                                 decoration: BoxDecoration(
                                                   border: Border.all(
-                                                    color:
-                                                    AppThemeData.borderSideColor,
+                                                    color: AppThemeData
+                                                        .borderSideColor,
                                                   ),
                                                   color: Colors.white,
                                                   borderRadius:
@@ -1156,61 +1219,78 @@ class DetailsPage extends StatelessWidget {
                                                                 onTap: () {
                                                                   _colorSelectionController
                                                                       .changeAttrSelection(
-                                                                          attrIndex: i,
-                                                                          value: index);
+                                                                          attrIndex:
+                                                                              i,
+                                                                          value:
+                                                                              index);
                                                                   _colorSelectionController.insertAttrNameToList(
                                                                       name: detailsModel
                                                                           .data!
-                                                                          .attributes![i]
-                                                                          .attributeValue![index]
+                                                                          .attributes![
+                                                                              i]
+                                                                          .attributeValue![
+                                                                              index]
                                                                           .value!,
                                                                       index: i);
                                                                   _colorSelectionController.insertAttrIdToList(
                                                                       id: detailsModel
                                                                           .data!
-                                                                          .attributes![i]
-                                                                          .attributeValue![index]
+                                                                          .attributes![
+                                                                              i]
+                                                                          .attributeValue![
+                                                                              index]
                                                                           .id!
                                                                           .toString(),
                                                                       index: i);
                                                                 },
-                                                                child: Obx(() =>
-                                                                    Container(
-                                                                        height: 24
-                                                                            .h,
-                                                                        alignment:
-                                                                            Alignment
-                                                                                .center,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          border:
-                                                                              Border.all(
-                                                                            color: _colorSelectionController.selectedArray[i] == index
-                                                                                ? const Color(0xffF51E46)
-                                                                                : const Color(0xffF4F4F4),
-                                                                          ),
-                                                                          borderRadius:
-                                                                              BorderRadius.all(
-                                                                            Radius.circular(3.r),
-                                                                          ),
-                                                                        ),
-                                                                        child:
-                                                                            Padding(
-                                                                          padding:
-                                                                              EdgeInsets.symmetric(horizontal: 8.w),
-                                                                          child:
-                                                                              Text(
-                                                                            detailsModel.data!.attributes![i].attributeValue![index].value!,
-                                                                            style: _colorSelectionController.selectedArray[i] == index
-                                                                                ? isMobile(context)
-                                                                                    ? AppThemeData.detwailsScreenBottomSheetTitle.copyWith(color: AppThemeData.productBoxDecorationColor)
-                                                                                    : AppThemeData.detailsScreenBottomSheetTitleTab.copyWith(color: AppThemeData.productBoxDecorationColor)
-                                                                                : isMobile(context)
-                                                                                    ? AppThemeData.detwailsScreenBottomSheetTitle
-                                                                                    : AppThemeData.detailsScreenBottomSheetTitleTab,
-                                                                          ),
-                                                                        ),
+                                                                child: Obx(
+                                                                  () =>
+                                                                      Container(
+                                                                    height:
+                                                                        24.h,
+                                                                    alignment:
+                                                                        Alignment
+                                                                            .center,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      border:
+                                                                          Border
+                                                                              .all(
+                                                                        color: _colorSelectionController.selectedArray[i] ==
+                                                                                index
+                                                                            ? const Color(0xffF51E46)
+                                                                            : const Color(0xffF4F4F4),
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius
+                                                                              .all(
+                                                                        Radius.circular(
+                                                                            3.r),
+                                                                      ),
                                                                     ),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsets.symmetric(
+                                                                          horizontal:
+                                                                              8.w),
+                                                                      child:
+                                                                          Text(
+                                                                        detailsModel
+                                                                            .data!
+                                                                            .attributes![i]
+                                                                            .attributeValue![index]
+                                                                            .value!,
+                                                                        style: _colorSelectionController.selectedArray[i] ==
+                                                                                index
+                                                                            ? isMobile(context)
+                                                                                ? AppThemeData.detwailsScreenBottomSheetTitle.copyWith(color: AppThemeData.productBoxDecorationColor)
+                                                                                : AppThemeData.detailsScreenBottomSheetTitleTab.copyWith(color: AppThemeData.productBoxDecorationColor)
+                                                                            : isMobile(context)
+                                                                                ? AppThemeData.detwailsScreenBottomSheetTitle
+                                                                                : AppThemeData.detailsScreenBottomSheetTitleTab,
+                                                                      ),
+                                                                    ),
+                                                                  ),
                                                                 ),
                                                               ),
                                                             );
@@ -1231,93 +1311,93 @@ class DetailsPage extends StatelessWidget {
                             //Refund section
                             LocalDataHelper().isRefundAddonAvailable()
                                 ? Container(
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: AppThemeData.borderSideColor,
-                                ),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(3.r),
-                                ),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(4.r),
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          height: 44.h,
-                                          width: 44.w,
-                                          alignment: Alignment.center,
-                                          decoration: BoxDecoration(
-                                            //color: Color(0xffF5F5F5),
-                                            borderRadius:
-                                            BorderRadius.all(
-                                              Radius.circular(5.r),
-                                            ),
-                                          ),
-                                          child: LocalDataHelper()
-                                              .getRefundIcon(),
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              LocalDataHelper()
-                                                  .getRefundAddon() !=
-                                                  null &&
-                                                  LocalDataHelper()
-                                                      .getRefundAddon()!
-                                                      .addonData !=
-                                                      null
-                                                  ? LocalDataHelper()
-                                                  .getRefundAddon()!
-                                                  .addonData!
-                                                  .title!
-                                                  : "",
-                                              style: isMobile(context)
-                                                  ? AppThemeData
-                                                  .titleTextStyle_13
-                                                  : AppThemeData
-                                                  .titleTextStyleTab,
-                                              overflow:
-                                              TextOverflow.ellipsis,
-                                            ),
-                                            Text(
-                                                LocalDataHelper()
-                                                    .getRefundAddon() !=
-                                                    null &&
-                                                    LocalDataHelper()
-                                                        .getRefundAddon()!
-                                                        .addonData !=
-                                                        null
-                                                    ? LocalDataHelper()
-                                                    .getRefundAddon()!
-                                                    .addonData!
-                                                    .subTitle!
-                                                    : "",
-                                                style: isMobile(context)
-                                                    ? AppThemeData
-                                                    .whyUsTextStyle_13
-                                                    : AppThemeData
-                                                    .whyUsTextStyle_10Tab,
-                                                overflow: TextOverflow
-                                                    .ellipsis),
-                                          ],
-                                        ),
-                                      ],
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: AppThemeData.borderSideColor,
+                                      ),
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(3.r),
+                                      ),
                                     ),
-                                  ],
-                                ),
-                              ),
-                            )
+                                    child: Padding(
+                                      padding: EdgeInsets.all(4.r),
+                                      child: Column(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                height: 44.h,
+                                                width: 44.w,
+                                                alignment: Alignment.center,
+                                                decoration: BoxDecoration(
+                                                  //color: Color(0xffF5F5F5),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                    Radius.circular(5.r),
+                                                  ),
+                                                ),
+                                                child: LocalDataHelper()
+                                                    .getRefundIcon(),
+                                              ),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    LocalDataHelper()
+                                                                    .getRefundAddon() !=
+                                                                null &&
+                                                            LocalDataHelper()
+                                                                    .getRefundAddon()!
+                                                                    .addonData !=
+                                                                null
+                                                        ? LocalDataHelper()
+                                                            .getRefundAddon()!
+                                                            .addonData!
+                                                            .title!
+                                                        : "",
+                                                    style: isMobile(context)
+                                                        ? AppThemeData
+                                                            .titleTextStyle_13
+                                                        : AppThemeData
+                                                            .titleTextStyleTab,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                  ),
+                                                  Text(
+                                                      LocalDataHelper()
+                                                                      .getRefundAddon() !=
+                                                                  null &&
+                                                              LocalDataHelper()
+                                                                      .getRefundAddon()!
+                                                                      .addonData !=
+                                                                  null
+                                                          ? LocalDataHelper()
+                                                              .getRefundAddon()!
+                                                              .addonData!
+                                                              .subTitle!
+                                                          : "",
+                                                      style: isMobile(context)
+                                                          ? AppThemeData
+                                                              .whyUsTextStyle_13
+                                                          : AppThemeData
+                                                              .whyUsTextStyle_10Tab,
+                                                      overflow: TextOverflow
+                                                          .ellipsis),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  )
                                 : const SizedBox(),
                             LocalDataHelper().isRefundAddonAvailable()
                                 ? SizedBox(height: 10.h)
@@ -1341,9 +1421,9 @@ class DetailsPage extends StatelessWidget {
                                   children: [
                                     Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.start,
+                                          MainAxisAlignment.start,
                                       crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         InkWell(
                                           onTap: () {
@@ -1359,9 +1439,9 @@ class DetailsPage extends StatelessWidget {
                                           },
                                           child: Container(
                                             height:
-                                            isMobile(context) ? 38.h : 40.h,
+                                                isMobile(context) ? 38.h : 40.h,
                                             width:
-                                            isMobile(context) ? 38.w : 40.w,
+                                                isMobile(context) ? 38.w : 40.w,
                                             alignment: Alignment.center,
                                             decoration: BoxDecoration(
                                               color: const Color(0xffF5F5F5),
@@ -1369,7 +1449,8 @@ class DetailsPage extends StatelessWidget {
                                                 Radius.circular(5.r),
                                               ),
                                             ),
-                                            child: SvgPicture.asset(Images.facebook,
+                                            child: SvgPicture.asset(
+                                              Images.facebook,
                                               height: 15.h,
                                               width: 8.w,
                                             ),
@@ -1381,16 +1462,18 @@ class DetailsPage extends StatelessWidget {
                                             Get.toNamed(
                                               Routes.wvScreen,
                                               parameters: {
-                                                'url': detailsModel.data!.links!.linkedin.toString(),
+                                                'url': detailsModel
+                                                    .data!.links!.linkedin
+                                                    .toString(),
                                                 'title': "Linkedin",
                                               },
                                             );
                                           },
                                           child: Container(
                                             height:
-                                            isMobile(context) ? 38.h : 40.h,
+                                                isMobile(context) ? 38.h : 40.h,
                                             width:
-                                            isMobile(context) ? 38.w : 40.w,
+                                                isMobile(context) ? 38.w : 40.w,
                                             alignment: Alignment.center,
                                             decoration: BoxDecoration(
                                               color: const Color(0xffF5F5F5),
@@ -1398,7 +1481,8 @@ class DetailsPage extends StatelessWidget {
                                                 Radius.circular(5.r),
                                               ),
                                             ),
-                                            child: SvgPicture.asset(Images.linkedin,
+                                            child: SvgPicture.asset(
+                                              Images.linkedin,
                                               height: 14.h,
                                               width: 14.w,
                                             ),
@@ -1419,9 +1503,9 @@ class DetailsPage extends StatelessWidget {
                                           },
                                           child: Container(
                                             height:
-                                            isMobile(context) ? 38.h : 40.h,
+                                                isMobile(context) ? 38.h : 40.h,
                                             width:
-                                            isMobile(context) ? 38.w : 40.w,
+                                                isMobile(context) ? 38.w : 40.w,
                                             alignment: Alignment.center,
                                             decoration: BoxDecoration(
                                               color: const Color(0xffF5F5F5),
@@ -1429,7 +1513,8 @@ class DetailsPage extends StatelessWidget {
                                                 Radius.circular(5.r),
                                               ),
                                             ),
-                                            child: SvgPicture.asset(Images.twitter,
+                                            child: SvgPicture.asset(
+                                              Images.twitter,
                                               height: 14.h,
                                               width: 17.w,
                                             ),
@@ -1438,15 +1523,19 @@ class DetailsPage extends StatelessWidget {
                                         SizedBox(width: 8.w),
                                         InkWell(
                                           onTap: () {
-                                            launchUrl(Uri.parse(detailsModel.data!.links!.whatsapp.toString()),
-                                              mode: LaunchMode.externalApplication,
+                                            launchUrl(
+                                              Uri.parse(detailsModel
+                                                  .data!.links!.whatsapp
+                                                  .toString()),
+                                              mode: LaunchMode
+                                                  .externalApplication,
                                             );
                                           },
                                           child: Container(
                                             height:
-                                            isMobile(context) ? 38.h : 40.h,
+                                                isMobile(context) ? 38.h : 40.h,
                                             width:
-                                            isMobile(context) ? 38.w : 40.w,
+                                                isMobile(context) ? 38.w : 40.w,
                                             alignment: Alignment.center,
                                             decoration: BoxDecoration(
                                               color: const Color(0xffF5F5F5),
@@ -1510,10 +1599,12 @@ class DetailsPage extends StatelessWidget {
                                                           .isSpecific.value
                                                       ? Icon(Icons.remove,
                                                           size: 16.r,
-                                                          color: AppThemeData.detailsIconColor)
+                                                          color: AppThemeData
+                                                              .detailsIconColor)
                                                       : Icon(Icons.add,
                                                           size: 16.r,
-                                                          color: AppThemeData.detailsIconColor)
+                                                          color: AppThemeData
+                                                              .detailsIconColor)
                                                 ],
                                               ),
                                             ),
@@ -1540,8 +1631,14 @@ class DetailsPage extends StatelessWidget {
                                                                   EdgeInsets
                                                                       .all(8.r),
                                                               child: Text(
-                                                                AppTags.noSpecifications.tr,
-                                                                style: AppThemeData.labelTextStyle_12tab.copyWith(fontFamily: "Poppins"),
+                                                                AppTags
+                                                                    .noSpecifications
+                                                                    .tr,
+                                                                style: AppThemeData
+                                                                    .labelTextStyle_12tab
+                                                                    .copyWith(
+                                                                        fontFamily:
+                                                                            "Poppins"),
                                                               ),
                                                             )
                                                     ],
@@ -1591,11 +1688,13 @@ class DetailsPage extends StatelessWidget {
                                                     .isDescription.value
                                                 ? Icon(Icons.remove,
                                                     size: 16.r,
-                                                    color: AppThemeData.detailsIconColor)
+                                                    color: AppThemeData
+                                                        .detailsIconColor)
                                                 : Icon(
                                                     Icons.add,
                                                     size: 16.r,
-                                                    color: AppThemeData.detailsIconColor,
+                                                    color: AppThemeData
+                                                        .detailsIconColor,
                                                   )
                                           ],
                                         ),
@@ -1605,84 +1704,105 @@ class DetailsPage extends StatelessWidget {
                                       () =>
                                           detailsController.isDescription.value
                                               ? Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.start,
                                                   children: [
                                                     SizedBox(height: 4.h),
                                                     detailsModel.data!.details!
                                                             .isNotEmpty
                                                         ? ListView(
-                                                          shrinkWrap: true,
-                                                          physics: const NeverScrollableScrollPhysics(),
-                                                          children: [
-                                                            ProductDescription(
-                                                              details: detailsModel.data!.details!,
-                                                            ),
-                                                            detailsModel.data!.descriptionImages!.isNotEmpty?
-                                                            Obx(() => Stack(
-                                                              alignment: Alignment.center,
-                                                              children: [
-                                                                InkWell(
-                                                                  onTap: (){
-                                                                    Get.to(()=>DescriptionImageViewScreen(descriptionImage: detailsController.productDetail.value.data!.descriptionImages));
-                                                                  },
-                                                                  child: SizedBox(
-                                                                    child: Padding(
-                                                                      padding: const EdgeInsets.all(2.0),
-                                                                      child: Image.network(detailsModel.data!.descriptionImages![detailsController.pageView.value].toString(),fit: BoxFit.fitWidth),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                                Positioned(
-                                                                  left: 5.w,
-                                                                  child: InkWell(
-                                                                    onTap: (){
-                                                                      detailsController.updatePageDecrement();
-                                                                    },
-                                                                    child: Container(
-                                                                      width: 25.w,
-                                                                      height: 25.h,
-                                                                      alignment: Alignment.center,
-                                                                      decoration:  BoxDecoration(
-                                                                        borderRadius: BorderRadius.circular(2),
-                                                                        color: Colors.black.withOpacity(0.8),
+                                                            shrinkWrap: true,
+                                                            physics:
+                                                                const NeverScrollableScrollPhysics(),
+                                                            children: [
+                                                              ProductDescription(
+                                                                details:
+                                                                    detailsModel
+                                                                        .data!
+                                                                        .details!,
+                                                              ),
+                                                              detailsModel
+                                                                      .data!
+                                                                      .descriptionImages!
+                                                                      .isNotEmpty
+                                                                  ? Obx(
+                                                                      () =>
+                                                                          Stack(
+                                                                        alignment:
+                                                                            Alignment.center,
+                                                                        children: [
+                                                                          InkWell(
+                                                                            onTap:
+                                                                                () {
+                                                                              Get.to(() => DescriptionImageViewScreen(descriptionImage: detailsController.productDetail.value.data!.descriptionImages));
+                                                                            },
+                                                                            child:
+                                                                                SizedBox(
+                                                                              child: Padding(
+                                                                                padding: const EdgeInsets.all(2.0),
+                                                                                child: Image.network(detailsModel.data!.descriptionImages![detailsController.pageView.value].toString(), fit: BoxFit.fitWidth),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                          Positioned(
+                                                                            left:
+                                                                                5.w,
+                                                                            child:
+                                                                                InkWell(
+                                                                              onTap: () {
+                                                                                detailsController.updatePageDecrement();
+                                                                              },
+                                                                              child: Container(
+                                                                                width: 25.w,
+                                                                                height: 25.h,
+                                                                                alignment: Alignment.center,
+                                                                                decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(2),
+                                                                                  color: Colors.black.withOpacity(0.8),
+                                                                                ),
+                                                                                child: Icon(
+                                                                                  Icons.arrow_back_ios_new,
+                                                                                  color: Colors.white,
+                                                                                  size: 18.r,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          ),
+                                                                          Positioned(
+                                                                            right:
+                                                                                5.w,
+                                                                            child:
+                                                                                InkWell(
+                                                                              onTap: () {
+                                                                                detailsController.updatePageIncrement();
+                                                                              },
+                                                                              child: Container(
+                                                                                width: 25.w,
+                                                                                height: 25.h,
+                                                                                alignment: Alignment.center,
+                                                                                decoration: BoxDecoration(
+                                                                                  borderRadius: BorderRadius.circular(2),
+                                                                                  color: Colors.black.withOpacity(0.8),
+                                                                                ),
+                                                                                child: Icon(
+                                                                                  Icons.arrow_forward_ios,
+                                                                                  color: Colors.white,
+                                                                                  size: 18.r,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          )
+                                                                        ],
                                                                       ),
-                                                                      child: Icon(
-                                                                        Icons.arrow_back_ios_new,
-                                                                        color: Colors.white,
-                                                                        size: 18.r,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                                Positioned(
-                                                                  right: 5.w,
-                                                                  child: InkWell(
-                                                                    onTap: (){
-                                                                      detailsController.updatePageIncrement();
-                                                                    },
-                                                                    child: Container(
-                                                                      width: 25.w,
-                                                                      height: 25.h,
-                                                                      alignment: Alignment.center,
-                                                                      decoration:  BoxDecoration(
-                                                                        borderRadius: BorderRadius.circular(2),
-                                                                        color: Colors.black.withOpacity(0.8),
-                                                                      ),
-                                                                      child: Icon(
-                                                                        Icons.arrow_forward_ios,
-                                                                        color: Colors.white,
-                                                                        size: 18.r,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                )
-                                                              ],
-                                                            ),
-                                                            ):const SizedBox()
-                                                          ],
-                                                        ) : Text(AppTags.noDescription.tr),
+                                                                    )
+                                                                  : const SizedBox()
+                                                            ],
+                                                          )
+                                                        : Text(AppTags
+                                                            .noDescription.tr),
                                                   ],
-                                                ) : const SizedBox(),
+                                                )
+                                              : const SizedBox(),
                                     )
                                   ],
                                 ),
@@ -1753,7 +1873,8 @@ class DetailsPage extends StatelessWidget {
                                                   .productDetail
                                                   .value
                                                   .data!
-                                                  .wholesalePrices!.length,
+                                                  .wholesalePrices!
+                                                  .length,
                                               itemBuilder: (context, index) =>
                                                   WholesaleDataWidget(
                                                 wholesalePrice:
@@ -2002,7 +2123,8 @@ class DetailsPage extends StatelessWidget {
                                                                   BoxDecoration(
                                                                 //color: const Color(0xff56A8C7),
                                                                 border: Border.all(
-                                                                    color: AppThemeData.borderSideColor),
+                                                                    color: AppThemeData
+                                                                        .borderSideColor),
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .all(
@@ -2017,11 +2139,12 @@ class DetailsPage extends StatelessWidget {
                                                                         .spaceEvenly,
                                                                 children: [
                                                                   Icon(
-                                                                      Icons
-                                                                          .remove,
-                                                                      size:
-                                                                          14.r,
-                                                                      color: AppThemeData.headlineTextColor,),
+                                                                    Icons
+                                                                        .remove,
+                                                                    size: 14.r,
+                                                                    color: AppThemeData
+                                                                        .headlineTextColor,
+                                                                  ),
                                                                   const Text(
                                                                       "1"),
                                                                   Icon(
@@ -2103,7 +2226,8 @@ class DetailsPage extends StatelessWidget {
                                                                   BoxDecoration(
                                                                 //color: const Color(0xff56A8C7),
                                                                 border: Border.all(
-                                                                    color: AppThemeData.borderSideColor),
+                                                                    color: AppThemeData
+                                                                        .borderSideColor),
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .all(
@@ -2150,8 +2274,6 @@ class DetailsPage extends StatelessWidget {
                             detailsController.groupProduct.value
                                 ? SizedBox(height: 10.h)
                                 : const SizedBox(),
-
-
                           ],
                         ),
                       ),
@@ -2193,46 +2315,54 @@ class DetailsPage extends StatelessWidget {
                                       : AppThemeData.labelTextStyle_12tab,
                                 ),
                                 InkWell(
-                                    onTap: () {
-                                      if (_favouriteController.token != null) {
-                                        showModalBottomSheet(
-                                          //expand: true,
-                                          context: context,
-                                          enableDrag: true,
-                                          isScrollControlled: true,
-                                          backgroundColor: Colors.transparent,
-                                          builder: (context) => Material(
-                                            child: SafeArea(
-                                              top: false,
-                                              child: Padding(
-                                                padding: EdgeInsets.only(top: 20,  right: 20,  left: 20,
-                                                    bottom: MediaQuery.of(context).viewInsets.bottom),
-                                                child: buildSheet(
-                                                    detailsModel, context),
-                                              ),
+                                  onTap: () {
+                                    if (_favouriteController.token != null) {
+                                      showModalBottomSheet(
+                                        //expand: true,
+                                        context: context,
+                                        enableDrag: true,
+                                        isScrollControlled: true,
+                                        backgroundColor: Colors.transparent,
+                                        builder: (context) => Material(
+                                          child: SafeArea(
+                                            top: false,
+                                            child: Padding(
+                                              padding: EdgeInsets.only(
+                                                  top: 20,
+                                                  right: 20,
+                                                  left: 20,
+                                                  bottom: MediaQuery.of(context)
+                                                      .viewInsets
+                                                      .bottom),
+                                              child: buildSheet(
+                                                  detailsModel, context),
                                             ),
                                           ),
-                                        );
-                                      } else {
-                                        Get.snackbar(
-                                          AppTags.login.tr,
-                                          AppTags.pleaseLoginFirst.tr,
-                                          snackPosition: SnackPosition.BOTTOM,
-                                          duration: const Duration(seconds: 3),
-                                          colorText: Colors.white,
-                                          backgroundColor: Colors.black,
-                                          forwardAnimationCurve: Curves.decelerate,
-                                          shouldIconPulse: false,
-                                        );
-                                      }
-                                    },
-                                    child: Text(
-                                      detailsModel.data!.isReviewed!? "Edit Review":AppTags.writeReview.tr,
-                                      style: isMobile(context)
-                                          ? AppThemeData.writeReviewTextStyle_13
-                                          : AppThemeData
-                                              .detailsScreenPhoneNumberShow,
-                                    ),
+                                        ),
+                                      );
+                                    } else {
+                                      Get.snackbar(
+                                        AppTags.login.tr,
+                                        AppTags.pleaseLoginFirst.tr,
+                                        snackPosition: SnackPosition.BOTTOM,
+                                        duration: const Duration(seconds: 3),
+                                        colorText: Colors.white,
+                                        backgroundColor: Colors.black,
+                                        forwardAnimationCurve:
+                                            Curves.decelerate,
+                                        shouldIconPulse: false,
+                                      );
+                                    }
+                                  },
+                                  child: Text(
+                                    detailsModel.data!.isReviewed!
+                                        ? "Edit Review"
+                                        : AppTags.writeReview.tr,
+                                    style: isMobile(context)
+                                        ? AppThemeData.writeReviewTextStyle_13
+                                        : AppThemeData
+                                            .detailsScreenPhoneNumberShow,
+                                  ),
                                 ),
                               ],
                             ),
@@ -2330,16 +2460,16 @@ class DetailsPage extends StatelessWidget {
                             Expanded(
                               child: InkWell(
                                 onTap: () {
-                                  if(detailsModel.data!.hasVariant!){
+                                  if (detailsModel.data!.hasVariant!) {
                                     if (_colorSelectionController
-                                        .selectedAttrId.value !=
-                                        "" &&
+                                                .selectedAttrId.value !=
+                                            "" &&
                                         _colorSelectionController
-                                            .selectedAttrName.value !=
+                                                .selectedAttrName.value !=
                                             "") {
                                       if (!_colorSelectionController
-                                          .selectedAttrId.value
-                                          .contains("**") &&
+                                              .selectedAttrId.value
+                                              .contains("**") &&
                                           !_colorSelectionController
                                               .selectedAttrName.value
                                               .contains("**")) {
@@ -2350,18 +2480,20 @@ class DetailsPage extends StatelessWidget {
                                               .toString(),
                                           variantsIds: _colorSelectionController
                                               .selectedAttrId.value,
-                                          variantsNames: _colorSelectionController
-                                              .selectedAttrName.value,
+                                          variantsNames:
+                                              _colorSelectionController
+                                                  .selectedAttrName.value,
                                         );
-                                      }else{
-                                        showCustomSnackBar(AppTags.selectAttr.tr,
+                                      } else {
+                                        showCustomSnackBar(
+                                            AppTags.selectAttr.tr,
                                             isError: true);
                                       }
                                     } else {
                                       showCustomSnackBar(AppTags.selectAttr.tr,
                                           isError: true);
                                     }
-                                  }else{
+                                  } else {
                                     _cartController.addToCart(
                                       productId: productId.toString(),
                                       quantity: detailsController
@@ -2419,7 +2551,6 @@ class DetailsPage extends StatelessWidget {
       ),
     );
   }
-
 
   Widget reviewWidget(detailsModel, context) {
     return ListView.builder(
@@ -2563,9 +2694,14 @@ class DetailsPage extends StatelessWidget {
                   InkWell(
                       onTap: () async {
                         if (_favouriteController.token != null) {
-                          await detailsController.likeAndUnlike(reviewId: int.parse(detailsModel.data!.reviews![index].id.toString()))
+                          await detailsController
+                              .likeAndUnlike(
+                                  reviewId: int.parse(detailsModel
+                                      .data!.reviews![index].id
+                                      .toString()))
                               .then((value) {
-                            detailsController.getProductDetails(int.parse(productId!));
+                            detailsController
+                                .getProductDetails(int.parse(productId!));
                           });
                         } else {
                           Get.snackbar(
@@ -2579,43 +2715,46 @@ class DetailsPage extends StatelessWidget {
                             shouldIconPulse: false,
                           );
                         }
-
-
                       },
                       child: detailsModel.data!.reviews![index].isLiked!
-                          ? SvgPicture.asset(Images.like,
-                        height: 13.h,
-                        width: 14.w,
-                        color: Colors.blue,
-                      )
-                          : SvgPicture.asset(Images.like,
-                        height: 13.h,
-                        width: 14.w,
-                      )
-                  ),
+                          ? SvgPicture.asset(
+                              Images.like,
+                              height: 13.h,
+                              width: 14.w,
+                              color: Colors.blue,
+                            )
+                          : SvgPicture.asset(
+                              Images.like,
+                              height: 13.h,
+                              width: 14.w,
+                            )),
                   SizedBox(width: 10.w),
                   InkWell(
                     onTap: () {
                       if (_favouriteController.token != null) {
                         showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                            actions: <Widget>[
-                                buildReplyReview(index, detailsModel, context),
-                            ],
-                        ));
-                    } else {
-                    Get.snackbar(
-                      AppTags.login.tr,
-                      AppTags.pleaseLoginFirst.tr,
-                      snackPosition: SnackPosition.BOTTOM,
-                      duration: const Duration(seconds: 3),
-                      colorText: Colors.white,
-                      backgroundColor: Colors.black,
-                      forwardAnimationCurve: Curves.decelerate,
-                      shouldIconPulse: false,
-                    );}},
-                    child: SvgPicture.asset(Images.comment,
+                            context: context,
+                            builder: (context) => AlertDialog(
+                                  actions: <Widget>[
+                                    buildReplyReview(
+                                        index, detailsModel, context),
+                                  ],
+                                ));
+                      } else {
+                        Get.snackbar(
+                          AppTags.login.tr,
+                          AppTags.pleaseLoginFirst.tr,
+                          snackPosition: SnackPosition.BOTTOM,
+                          duration: const Duration(seconds: 3),
+                          colorText: Colors.white,
+                          backgroundColor: Colors.black,
+                          forwardAnimationCurve: Curves.decelerate,
+                          shouldIconPulse: false,
+                        );
+                      }
+                    },
+                    child: SvgPicture.asset(
+                      Images.comment,
                       height: 14.h,
                       width: 15.w,
                     ),
@@ -2657,7 +2796,9 @@ class DetailsPage extends StatelessWidget {
                         shape: BoxShape.circle,
                         image: DecorationImage(
                             fit: BoxFit.cover,
-                            image: NetworkImage(detailsModel.data!.reviews![indexId].replies![index].user!.image.toString()))),
+                            image: NetworkImage(detailsModel.data!
+                                .reviews![indexId].replies![index].user!.image
+                                .toString()))),
                   ),
                   SizedBox(width: 8.w),
                   Expanded(
@@ -2707,7 +2848,7 @@ class DetailsPage extends StatelessWidget {
   }
 
   Widget buildSheet(detailsModel, context) {
-   return Padding(
+    return Padding(
       padding: EdgeInsets.all(10.r),
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -2740,7 +2881,11 @@ class DetailsPage extends StatelessWidget {
                   height: 8.7.h,
                 ),
                 RatingBar.builder(
-                  initialRating: detailsModel.data!.isReviewed!? double.parse(detailsModel.data!.reviews![detailsController.userReviewIndex()!].rating.toString()):1,
+                  initialRating: detailsModel.data!.isReviewed!
+                      ? double.parse(detailsModel.data!
+                          .reviews![detailsController.userReviewIndex()!].rating
+                          .toString())
+                      : 1,
                   minRating: 1,
                   direction: Axis.horizontal,
                   allowHalfRating: true,
@@ -2749,9 +2894,9 @@ class DetailsPage extends StatelessWidget {
                   itemSize: 20.r,
                   itemPadding: EdgeInsets.symmetric(horizontal: 0.w),
                   itemBuilder: (context, _) => Icon(
-                        detailsController.selectedIcon ?? Icons.star,
-                        color: Colors.amber,
-                      ),
+                    detailsController.selectedIcon ?? Icons.star,
+                    color: Colors.amber,
+                  ),
                   onRatingUpdate: (rating) {
                     detailsController.ratingUpdate(rating);
                   },
@@ -2777,7 +2922,6 @@ class DetailsPage extends StatelessWidget {
                               onTap: () {
                                 detailsController.getImage();
                               },
-
                               splashColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               hoverColor: Colors.transparent,
@@ -2786,8 +2930,8 @@ class DetailsPage extends StatelessWidget {
                                 width: 60.w,
                                 decoration: BoxDecoration(
                                     color: AppThemeData.borderSideColor,
-                                    borderRadius:
-                                    BorderRadius.all(Radius.circular(10.r))),
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(10.r))),
                                 child: Padding(
                                   padding: EdgeInsets.all(15.r),
                                   child: SvgPicture.asset(Images.bxCamera),
@@ -2795,28 +2939,29 @@ class DetailsPage extends StatelessWidget {
                               ),
                             ),
                           ],
-                        )
+                        )),
+                    const SizedBox(
+                      width: 10,
                     ),
-                    const SizedBox(width: 10,),
-                     detailsController.image!=null? SizedBox(
-                        height: 53.h,
-                        child: Container(
-
-                          width: 60.w,
-                          decoration: BoxDecoration(
-                              color: AppThemeData.borderSideColor,
-                              borderRadius:
-                              BorderRadius.all(Radius.circular(10.r))),
-                          child:ClipRRect(
-                            borderRadius: BorderRadius.circular(10.0),
-                            child: Image.file(detailsController.image!,fit: BoxFit.fill,),
-                          )
-                        )
-                    ):const SizedBox(),
-
+                    detailsController.image != null
+                        ? SizedBox(
+                            height: 53.h,
+                            child: Container(
+                                width: 60.w,
+                                decoration: BoxDecoration(
+                                    color: AppThemeData.borderSideColor,
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(10.r))),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  child: Image.file(
+                                    detailsController.image!,
+                                    fit: BoxFit.fill,
+                                  ),
+                                )))
+                        : const SizedBox(),
                   ],
                 ),
-
                 SizedBox(
                   height: 8.h,
                 ),
@@ -2839,7 +2984,7 @@ class DetailsPage extends StatelessWidget {
                     contentPadding: EdgeInsets.all(8.r),
                     focusedBorder: OutlineInputBorder(
                       borderSide:
-                      BorderSide(color: Colors.greenAccent, width: 1.w),
+                          BorderSide(color: Colors.greenAccent, width: 1.w),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
@@ -2847,7 +2992,13 @@ class DetailsPage extends StatelessWidget {
                         width: 1.w,
                       ),
                     ),
-                    hintText: detailsModel.data!.isReviewed!? detailsModel.data!.reviews![detailsController.userReviewIndex()!].title.toString(): AppTags.reviewTitle.tr,
+                    hintText: detailsModel.data!.isReviewed!
+                        ? detailsModel
+                            .data!
+                            .reviews![detailsController.userReviewIndex()!]
+                            .title
+                            .toString()
+                        : AppTags.reviewTitle.tr,
                     // pass the hint text parameter here
                     hintStyle: const TextStyle(color: Colors.grey),
                   ),
@@ -2859,7 +3010,7 @@ class DetailsPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                       AppTags.writeReview.tr,
+                      AppTags.writeReview.tr,
                       style: isMobile(context)
                           ? AppThemeData.detwailsScreenBottomSheetTitle
                           : AppThemeData.detailsScreenPhoneNumberShow,
@@ -2874,64 +3025,91 @@ class DetailsPage extends StatelessWidget {
                     contentPadding: EdgeInsets.all(8.r),
                     focusedBorder: OutlineInputBorder(
                       borderSide:
-                      BorderSide(color: Colors.greenAccent, width: 1.w),
+                          BorderSide(color: Colors.greenAccent, width: 1.w),
                     ),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                           color: AppThemeData.borderSideColor, width: 1.w),
                     ),
-                    hintText:
-                      detailsModel.data!.isReviewed!? detailsModel.data!.reviews![detailsController.userReviewIndex()!].comment: AppTags.review.tr,
+                    hintText: detailsModel.data!.isReviewed!
+                        ? detailsModel
+                            .data!
+                            .reviews![detailsController.userReviewIndex()!]
+                            .comment
+                        : AppTags.review.tr,
                     // pass the hint text parameter here
                     hintStyle: const TextStyle(color: Colors.grey),
                   ),
                 )
-
               ],
             ),
             SizedBox(height: 10.h),
-
-            Obx(() =>
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: 15.w, vertical: 0.h),
-                  child: InkWell(
-                    onTap: () async {
-                        await detailsController.postReviewSubmit(
+            Obx(
+              () => Padding(
+                padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 0.h),
+                child: InkWell(
+                  onTap: () async {
+                    await detailsController
+                        .postReviewSubmit(
                             productId:
-                            detailsModel.data!.form!.productId!.toString(),
-                            title: titleController.text.isEmpty? detailsModel.data!.reviews![detailsController.userReviewIndex()!].title.toString(): titleController.text,
-                            comment: writeReviewController.text.isEmpty? detailsModel.data!.reviews![detailsController.userReviewIndex()!].comment.toString(): writeReviewController.text,
-                            rating: detailsController.rating.isNaN? detailsModel.data!.reviews![detailsController.userReviewIndex()!].rating.toString(): detailsController.rating.toString(),
+                                detailsModel.data!.form!.productId!.toString(),
+                            title: titleController.text.isEmpty
+                                ? detailsModel
+                                    .data!
+                                    .reviews![
+                                        detailsController.userReviewIndex()!]
+                                    .title
+                                    .toString()
+                                : titleController.text,
+                            comment: writeReviewController.text.isEmpty
+                                ? detailsModel
+                                    .data!
+                                    .reviews![
+                                        detailsController.userReviewIndex()!]
+                                    .comment
+                                    .toString()
+                                : writeReviewController.text,
+                            rating: detailsController.rating.isNaN
+                                ? detailsModel
+                                    .data!
+                                    .reviews![
+                                        detailsController.userReviewIndex()!]
+                                    .rating
+                                    .toString()
+                                : detailsController.rating.toString(),
                             image: detailsController.image
-                          //image: image
-                        ).then((value) {
-                          detailsController.getProductDetails(int.parse(productId!));
-                          Get.back();
-                        }
-                        );
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      width: 315.w,
-                      decoration: BoxDecoration(
-                        color: AppThemeData.headlineTextColor,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10.r),
-                        ),
+                            //image: image
+                            )
+                        .then((value) {
+                      detailsController
+                          .getProductDetails(int.parse(productId!));
+                      Get.back();
+                    });
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    width: 315.w,
+                    decoration: BoxDecoration(
+                      color: AppThemeData.headlineTextColor,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10.r),
                       ),
-                      child: Padding(
-                        padding: EdgeInsets.all(12.r),
-                        child: detailsController.isReviewLoading.value ? Text(
-                          AppTags.postReview.tr,
-                          style: AppThemeData.detwailsScreenBottomSheetTitle
-                              .copyWith(color: Colors.white),
-                        ) : const CircularProgressIndicator(
-                          color: Colors.white,),
-                      ),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(12.r),
+                      child: detailsController.isReviewLoading.value
+                          ? Text(
+                              AppTags.postReview.tr,
+                              style: AppThemeData.detwailsScreenBottomSheetTitle
+                                  .copyWith(color: Colors.white),
+                            )
+                          : const CircularProgressIndicator(
+                              color: Colors.white,
+                            ),
                     ),
                   ),
                 ),
+              ),
             )
           ],
         ),
@@ -2995,10 +3173,14 @@ class DetailsPage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 0.h),
                 child: InkWell(
                   onTap: () async {
-                    await detailsController.reviewReply(
-                      reviewId: detailsModel.data!.reviews![index].id.toString(),
-                      reply: writeReviewReplyController.text,
-                    ).then((value) => detailsController.getProductDetails(int.parse(productId!)));
+                    await detailsController
+                        .reviewReply(
+                          reviewId:
+                              detailsModel.data!.reviews![index].id.toString(),
+                          reply: writeReviewReplyController.text,
+                        )
+                        .then((value) => detailsController
+                            .getProductDetails(int.parse(productId!)));
                     Get.back();
                   },
                   child: Container(

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../utils/app_theme_data.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
+import 'package:lazba/src/utils/responsive.dart';
 
 class ShimmerFavorite extends StatelessWidget {
   const ShimmerFavorite({Key? key}) : super(key: key);
@@ -20,11 +20,11 @@ class ShimmerFavorite extends StatelessWidget {
             child: GridView.builder(
               physics: const NeverScrollableScrollPhysics(),
               itemCount: 15,
-              gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: isMobile(context)? 2:3,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: isMobile(context) ? 2 : 3,
                 crossAxisSpacing: 16.h,
                 mainAxisSpacing: 16.w,
-                childAspectRatio: isMobile(context)? 0.8:0.7,
+                childAspectRatio: isMobile(context) ? 0.8 : 0.7,
               ),
               itemBuilder: (_, __) => Container(
                 alignment: Alignment.center,
@@ -47,36 +47,36 @@ class ShimmerFavorite extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-
                       Shimmer.fromColors(
                         highlightColor: Colors.grey[300]!,
                         baseColor: Colors.grey[200]!,
                         child: Padding(
-                          padding:  EdgeInsets.all(8.r),
+                          padding: EdgeInsets.all(8.r),
                           child: Container(
                             height: 150.h,
                             // width: 80.w,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius:
-                                BorderRadius.all(Radius.circular(4.r))),
+                                    BorderRadius.all(Radius.circular(4.r))),
                           ),
                         ),
                       ),
-
-                      SizedBox(height: 10.h,),
+                      SizedBox(
+                        height: 10.h,
+                      ),
                       Shimmer.fromColors(
                         highlightColor: Colors.grey[300]!,
                         baseColor: Colors.grey[200]!,
                         child: Padding(
-                          padding:  EdgeInsets.symmetric(horizontal: 8.w),
+                          padding: EdgeInsets.symmetric(horizontal: 8.w),
                           child: Container(
                             height: 20.h,
                             width: 120.w,
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius:
-                                BorderRadius.all(Radius.circular(4.r))),
+                                    BorderRadius.all(Radius.circular(4.r))),
                           ),
                         ),
                       ),

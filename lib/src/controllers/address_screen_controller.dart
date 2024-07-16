@@ -1,27 +1,27 @@
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:yoori_ecommerce/src/data/local_data_helper.dart';
-import 'package:yoori_ecommerce/src/models/edit_view_model.dart';
-import 'package:yoori_ecommerce/src/models/shipping_address_model/country_list_model.dart';
-import 'package:yoori_ecommerce/src/models/shipping_address_model/get_city_model.dart';
-import 'package:yoori_ecommerce/src/models/shipping_address_model/shipping_address_model.dart';
-import 'package:yoori_ecommerce/src/models/shipping_address_model/state_list_model.dart';
-import 'package:yoori_ecommerce/src/servers/repository.dart';
+import 'package:lazba/src/data/local_data_helper.dart';
+import 'package:lazba/src/models/edit_view_model.dart';
+import 'package:lazba/src/models/shipping_address_model/country_list_model.dart';
+import 'package:lazba/src/models/shipping_address_model/get_city_model.dart';
+import 'package:lazba/src/models/shipping_address_model/shipping_address_model.dart';
+import 'package:lazba/src/models/shipping_address_model/state_list_model.dart';
+import 'package:lazba/src/servers/repository.dart';
 import 'currency_converter_controller.dart';
 
-class AddressScreenController extends GetxController{
+class AddressScreenController extends GetxController {
   final currencyConverterController = Get.find<CurrencyConverterController>();
   String? token = LocalDataHelper().getUserToken();
   var isLoader = true.obs;
 
   var shippingIndex = 0.obs;
   void onShippingTapped(int? index) {
-      shippingIndex.value = index!;
+    shippingIndex.value = index!;
   }
 
   var billingIndex = 0.obs;
   void onBillingTapped(int? index) {
-      billingIndex.value = index!;
+    billingIndex.value = index!;
   }
 
   String? phoneCode = "880";
@@ -34,20 +34,20 @@ class AddressScreenController extends GetxController{
     selectedCountry = value;
     update();
   }
+
   selectStateUpdate(value) {
     selectedState = value;
     update();
   }
+
   selectCityUpdate(value) {
     selectedCity = value;
     update();
-  }// Option 2
-
+  } // Option 2
 
   Rx<ShippingAddressModel> shippingAddressModel = ShippingAddressModel().obs;
   Future getShippingAddress() async {
     shippingAddressModel.value = await Repository().getShippingAddress();
-
   }
 
   CountryListModel countryListModel = CountryListModel();
@@ -69,6 +69,7 @@ class AddressScreenController extends GetxController{
   Future getEditViewAddress(int addressId) async {
     editViewModel = await Repository().getEditViewAddress(addressId);
   }
+
   //Create address
   Future createAddress({
     required String name,
@@ -79,9 +80,8 @@ class AddressScreenController extends GetxController{
     required int cityId,
     required String postalCode,
     required String address,
-    }) async{
-    await Repository()
-        .postCreateAddress(
+  }) async {
+    await Repository().postCreateAddress(
       name: name,
       email: email,
       phoneNo: phoneNo,
@@ -94,16 +94,16 @@ class AddressScreenController extends GetxController{
   }
 
   //Edit address
-  Future editAddress({
-    required String name,
-    required String email,
-    required String phoneNo,
-    required int countryId,
-    required int stateId,
-    required int cityId,
-    required String postalCode,
-    required String address,
-    required int addressId})async{
+  Future editAddress(
+      {required String name,
+      required String email,
+      required String phoneNo,
+      required int countryId,
+      required int stateId,
+      required int cityId,
+      required String postalCode,
+      required String address,
+      required int addressId}) async {
     await Repository().updateEditAddress(
       name: name,
       email: email,
@@ -118,10 +118,8 @@ class AddressScreenController extends GetxController{
   }
 
   //Delete address
-  Future deleteAddress({String? addressId})async{
-    await Repository()
-        .deleteUserAddress(
-        addressId: addressId);
+  Future deleteAddress({String? addressId}) async {
+    await Repository().deleteUserAddress(addressId: addressId);
   }
 
   @override
@@ -131,5 +129,4 @@ class AddressScreenController extends GetxController{
     getShippingAddress();
     super.onInit();
   }
-
 }

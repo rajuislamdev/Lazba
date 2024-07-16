@@ -1,11 +1,10 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:yoori_ecommerce/src/_route/routes.dart';
+import 'package:lazba/src/_route/routes.dart';
 import '../../../controllers/dashboard_controller.dart';
 import '../../../utils/app_tags.dart';
 import '../../../utils/app_theme_data.dart';
-
 
 class RechargeConfirmationScreen extends StatelessWidget {
   RechargeConfirmationScreen({Key? key}) : super(key: key);
@@ -39,7 +38,7 @@ class RechargeConfirmationScreen extends StatelessWidget {
                     height: 126.h,
                     width: 126.w,
                     alignment: Alignment.center,
-                    decoration:  BoxDecoration(
+                    decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10.r)),
                       image: const DecorationImage(
                         alignment: Alignment.center,
@@ -49,18 +48,23 @@ class RechargeConfirmationScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 18.h,),
+                  SizedBox(
+                    height: 18.h,
+                  ),
                   Text(
                     AppTags.successfulPayment.tr,
                     style: AppThemeData.seccessfulPayTextStyle_18,
                   ),
-
-                  SizedBox(height: 5.h,),
+                  SizedBox(
+                    height: 5.h,
+                  ),
                   Text(
                     AppTags.thankYouForRecharge.tr,
                     style: AppThemeData.titleTextStyle_14,
                   ),
-                  SizedBox(height: 50.h,)
+                  SizedBox(
+                    height: 50.h,
+                  )
                 ],
               ),
             ),
@@ -98,7 +102,9 @@ class RechargeConfirmationScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 40.h,)
+            SizedBox(
+              height: 40.h,
+            )
           ],
         ),
       ),

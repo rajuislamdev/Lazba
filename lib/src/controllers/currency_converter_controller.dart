@@ -1,10 +1,11 @@
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:money_formatter/money_formatter.dart';
-import 'package:yoori_ecommerce/src/data/local_data_helper.dart';
-import 'package:yoori_ecommerce/src/models/config_model.dart';
+import 'package:lazba/src/data/local_data_helper.dart';
+import 'package:lazba/src/models/config_model.dart';
 
-class CurrencyConverterController extends GetxController implements GetxService{
+class CurrencyConverterController extends GetxController
+    implements GetxService {
   late String appCurrencyCode;
   late String appCurrencySymbol;
   late String currencySymbolFormat;
@@ -22,7 +23,8 @@ class CurrencyConverterController extends GetxController implements GetxService{
   void fetchCurrencyData() {
     ConfigModel data = LocalDataHelper().getConfigData();
     appCurrencyCode = LocalDataHelper().getCurrCode() ?? "USD";
-    currencyIndex = data.data!.currencies!.indexWhere(((currIndex) => currIndex.code == appCurrencyCode));
+    currencyIndex = data.data!.currencies!
+        .indexWhere(((currIndex) => currIndex.code == appCurrencyCode));
     appCurrencySymbol = data.data!.currencies![currencyIndex].symbol!;
     currencySymbolFormat = data.data!.currencyConfig!.currencySymbolFormat!;
     decimalSeparator = data.data!.currencyConfig!.decimalSeparator!;
@@ -49,7 +51,8 @@ class CurrencyConverterController extends GetxController implements GetxService{
       }
     } else {
       final convertedPrice = double.parse(price) *
-          double.parse(data.data!.currencies![currencyIndex].exchangeRate!.toString());
+          double.parse(
+              data.data!.currencies![currencyIndex].exchangeRate!.toString());
       MoneyFormatter formatter = MoneyFormatter(
         amount: convertedPrice,
         settings: MoneyFormatterSettings(

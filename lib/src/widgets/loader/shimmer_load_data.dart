@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../utils/app_theme_data.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
+import 'package:lazba/src/utils/responsive.dart';
 
 class ShimmerLoadData extends StatelessWidget {
   const ShimmerLoadData({Key? key}) : super(key: key);
@@ -45,8 +45,7 @@ class ShimmerLoadData extends StatelessWidget {
                       width: 60.w,
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius:
-                          BorderRadius.all(Radius.circular(4.r))),
+                          borderRadius: BorderRadius.all(Radius.circular(4.r))),
                     ),
                   ),
                   Shimmer.fromColors(
@@ -58,7 +57,7 @@ class ShimmerLoadData extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius:
-                          BorderRadius.all(Radius.circular(10.r))),
+                              BorderRadius.all(Radius.circular(10.r))),
                     ),
                   ),
                 ],
@@ -74,8 +73,7 @@ class ShimmerLoadData extends StatelessWidget {
                   width: 120.w,
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius:
-                      BorderRadius.all(Radius.circular(4.r))),
+                      borderRadius: BorderRadius.all(Radius.circular(4.r))),
                 ),
               ),
             ),
@@ -89,8 +87,7 @@ class ShimmerLoadData extends StatelessWidget {
                   width: 120.w,
                   decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius:
-                      BorderRadius.all(Radius.circular(4.r))),
+                      borderRadius: BorderRadius.all(Radius.circular(4.r))),
                 ),
               ),
             ),
@@ -106,11 +103,10 @@ class ShimmerLoadData extends StatelessWidget {
                     baseColor: Colors.grey[200]!,
                     child: Container(
                       height: 15.h,
-                      width: isMobile(context)? 50.w:30.w,
+                      width: isMobile(context) ? 50.w : 30.w,
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius:
-                          BorderRadius.all(Radius.circular(4.r))),
+                          borderRadius: BorderRadius.all(Radius.circular(4.r))),
                     ),
                   ),
                   Shimmer.fromColors(
@@ -118,11 +114,10 @@ class ShimmerLoadData extends StatelessWidget {
                     baseColor: Colors.grey[200]!,
                     child: Container(
                       height: 15.h,
-                      width: isMobile(context)? 50.w:30.w,
+                      width: isMobile(context) ? 50.w : 30.w,
                       decoration: BoxDecoration(
                           color: Colors.white,
-                          borderRadius:
-                          BorderRadius.all(Radius.circular(4.r))),
+                          borderRadius: BorderRadius.all(Radius.circular(4.r))),
                     ),
                   ),
                 ],

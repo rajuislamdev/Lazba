@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
-import 'package:yoori_ecommerce/src/data/local_data_helper.dart';
-import 'package:yoori_ecommerce/src/models/profile_data_model.dart';
-import 'package:yoori_ecommerce/src/models/user_data_model.dart';
+import 'package:lazba/src/data/local_data_helper.dart';
+import 'package:lazba/src/models/profile_data_model.dart';
+import 'package:lazba/src/models/user_data_model.dart';
 
-import 'package:yoori_ecommerce/src/servers/repository.dart';
+import 'package:lazba/src/servers/repository.dart';
 
 class ProfileContentController extends GetxController {
   Rx<UserDataModel>? user = UserDataModel().obs;

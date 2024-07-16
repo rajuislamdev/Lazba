@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:yoori_ecommerce/src/controllers/home_screen_controller.dart';
-import 'package:yoori_ecommerce/src/utils/images.dart';
+import 'package:lazba/src/controllers/home_screen_controller.dart';
+import 'package:lazba/src/utils/images.dart';
 import '../../../models/product_by_campaign_model.dart';
 import '../../../utils/app_theme_data.dart';
 import '../../../servers/repository.dart';
@@ -106,8 +106,7 @@ class _ProductByCampaignState extends State<ProductByCampaign> {
                                             decoration: BoxDecoration(
                                               color: const Color(0xFFF51E46)
                                                   .withOpacity(0.06),
-                                              borderRadius:
-                                              BorderRadius.all(
+                                              borderRadius: BorderRadius.all(
                                                 Radius.circular(3.r),
                                               ),
                                             ),
@@ -119,15 +118,23 @@ class _ProductByCampaignState extends State<ProductByCampaign> {
                                               ),
                                             ),
                                           )
-                                    : productByCampaignModel.data![index].specialDiscountType == 'percentage'
-                                        ? productByCampaignModel.data![index].specialDiscount == 0
+                                    : productByCampaignModel.data![index]
+                                                .specialDiscountType ==
+                                            'percentage'
+                                        ? productByCampaignModel.data![index]
+                                                    .specialDiscount ==
+                                                0
                                             ? const SizedBox()
                                             : Container(
                                                 width: 60.w,
                                                 height: 16.h,
                                                 decoration: BoxDecoration(
-                                                  color: const Color(0xFFF51E46).withOpacity(0.06),
-                                                  borderRadius: BorderRadius.all(Radius.circular(3.r),),
+                                                  color: const Color(0xFFF51E46)
+                                                      .withOpacity(0.06),
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                    Radius.circular(3.r),
+                                                  ),
                                                 ),
                                                 child: Center(
                                                   child: Text(
@@ -141,7 +148,8 @@ class _ProductByCampaignState extends State<ProductByCampaign> {
                                         : Container(),
                               ],
                             ),
-                            productByCampaignModel.data![index].currentStock == 0
+                            productByCampaignModel.data![index].currentStock ==
+                                    0
                                 ? Container(
                                     width: 60.w,
                                     height: 16.h,
@@ -186,7 +194,8 @@ class _ProductByCampaignState extends State<ProductByCampaign> {
                                       child: SizedBox(
                                         width: 12.62.w,
                                         height: 14.19.h,
-                                        child: SvgPicture.asset(Images.heartOn,
+                                        child: SvgPicture.asset(
+                                          Images.heartOn,
                                         ),
                                       ),
                                     ),

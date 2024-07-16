@@ -3,15 +3,12 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:yoori_ecommerce/src/utils/app_tags.dart';
-import 'package:yoori_ecommerce/src/utils/images.dart';
+import 'package:lazba/src/utils/app_tags.dart';
+import 'package:lazba/src/utils/images.dart';
 import '../../utils/app_theme_data.dart';
 import '../../_route/routes.dart';
 import '../../models/favorite_product_model.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
-
-
-
+import 'package:lazba/src/utils/responsive.dart';
 
 class FavoriteStore extends StatelessWidget {
   const FavoriteStore({Key? key, required this.favouriteData})
@@ -22,17 +19,17 @@ class FavoriteStore extends StatelessWidget {
   Widget build(BuildContext context) {
     return favouriteData.data!.favouriteShop.isNotEmpty
         ? Padding(
-            padding:  EdgeInsets.only(top: 20.h),
+            padding: EdgeInsets.only(top: 20.h),
             child: GridView.builder(
               scrollDirection: Axis.vertical,
-              padding:  EdgeInsets.symmetric(horizontal: 15.w, vertical: 8.h),
+              padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 8.h),
               shrinkWrap: true,
               itemCount: favouriteData.data!.favouriteShop.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: isMobile(context) ? 2 : 3,
                 crossAxisSpacing: 15.h,
                 mainAxisSpacing: 15.w,
-                childAspectRatio: isMobile(context)?0.75:0.70,
+                childAspectRatio: isMobile(context) ? 0.75 : 0.70,
               ),
               itemBuilder: (context, index) {
                 return InkWell(
@@ -40,7 +37,8 @@ class FavoriteStore extends StatelessWidget {
                     Get.toNamed(
                       Routes.shopScreen,
                       parameters: {
-                        'shopId': favouriteData.data!.favouriteShop[index].id.toString(),
+                        'shopId': favouriteData.data!.favouriteShop[index].id
+                            .toString(),
                       },
                     );
                   },
@@ -49,7 +47,9 @@ class FavoriteStore extends StatelessWidget {
                     // height: 220,
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius:  BorderRadius.all(Radius.circular(10.r),),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10.r),
+                      ),
                       border: Border.all(
                         color: AppThemeData.productCategoryBorderColor,
                         width: 1,
@@ -68,7 +68,9 @@ class FavoriteStore extends StatelessWidget {
                               image: DecorationImage(
                                 fit: BoxFit.cover,
                                 image: NetworkImage(
-                                  favouriteData.data!.favouriteShop[index].banner.toString(),
+                                  favouriteData
+                                      .data!.favouriteShop[index].banner
+                                      .toString(),
                                 ),
                               ),
                             ),
@@ -85,31 +87,44 @@ class FavoriteStore extends StatelessWidget {
                                       clipBehavior: Clip.none,
                                       children: [
                                         Container(
-                                          height: isMobile(context)? 100.h:120.h,
-                                          color: AppThemeData.campaignBoxColor.withOpacity(0.85),
+                                          height:
+                                              isMobile(context) ? 100.h : 120.h,
+                                          color: AppThemeData.campaignBoxColor
+                                              .withOpacity(0.85),
                                           child: Column(
                                             children: [
-                                              SizedBox(height:isMobile(context)? 30.h:45.h,),
+                                              SizedBox(
+                                                height: isMobile(context)
+                                                    ? 30.h
+                                                    : 45.h,
+                                              ),
                                               Padding(
-                                                padding: EdgeInsets.symmetric(horizontal: 10.w),
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 10.w),
                                                 child: Center(
                                                   child: Text(
                                                     favouriteData
                                                         .data!
                                                         .favouriteShop[index]
                                                         .shopName!,
-                                                    style:  TextStyle(
-                                                      fontSize: isMobile(context)? 13.sp:10.sp,
+                                                    style: TextStyle(
+                                                      fontSize:
+                                                          isMobile(context)
+                                                              ? 13.sp
+                                                              : 10.sp,
                                                       color: Colors.white,
                                                     ),
                                                     maxLines: 1,
-                                                    overflow: TextOverflow.ellipsis,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
                                                   ),
                                                 ),
                                               ),
-                                               SizedBox(height: 5.h),
+                                              SizedBox(height: 5.h),
                                               Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
                                                 children: [
                                                   RatingBarIndicator(
                                                     rating: double.parse(
@@ -126,35 +141,52 @@ class FavoriteStore extends StatelessWidget {
                                                       color: Colors.amber,
                                                     ),
                                                     itemCount: 5,
-                                                    itemSize:isMobile(context)? 18:25,
+                                                    itemSize: isMobile(context)
+                                                        ? 18
+                                                        : 25,
                                                     direction: Axis.horizontal,
                                                   ),
                                                   Text(
-                                                    "(${favouriteData.data!.favouriteShop[index].reviewsCount.toString()} ${AppTags.review.tr})",
-                                                    style: isMobile(context)? AppThemeData.hintTextStyle_10Tab:AppThemeData.hintTextStyle_10Tab.copyWith(fontSize: 8.sp)
-                                                  ),
+                                                      "(${favouriteData.data!.favouriteShop[index].reviewsCount.toString()} ${AppTags.review.tr})",
+                                                      style: isMobile(context)
+                                                          ? AppThemeData
+                                                              .hintTextStyle_10Tab
+                                                          : AppThemeData
+                                                              .hintTextStyle_10Tab
+                                                              .copyWith(
+                                                                  fontSize:
+                                                                      8.sp)),
                                                 ],
                                               ),
                                               SizedBox(
                                                 height: 8.h,
                                               ),
                                               Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
                                                 children: [
                                                   Text(
                                                     "${AppTags.products.tr}: ${favouriteData.data!.favouriteShop[index].totalProduct.toString()}",
                                                     style: TextStyle(
-                                                      fontSize: isMobile(context)? 9.sp:6.sp,
+                                                      fontSize:
+                                                          isMobile(context)
+                                                              ? 9.sp
+                                                              : 6.sp,
                                                       color: Colors.white,
                                                     ),
                                                   ),
                                                   Text(
                                                     "${AppTags.joined.tr}: ${favouriteData.data!.favouriteShop[index].joinDate.toString()}",
-                                                    style:  TextStyle(
-                                                      fontSize:isMobile(context)? 9.sp:6.sp,
+                                                    style: TextStyle(
+                                                      fontSize:
+                                                          isMobile(context)
+                                                              ? 9.sp
+                                                              : 6.sp,
                                                       color: Colors.white,
                                                     ),
-                                                    overflow: TextOverflow.ellipsis,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
                                                   ),
                                                 ],
                                               ),
@@ -200,14 +232,15 @@ class FavoriteStore extends StatelessWidget {
                                 child: Text(
                                   AppTags.visitStore.tr,
                                   style: TextStyle(
-                                    fontSize: isMobile(context)?12.sp:9.sp,
+                                    fontSize: isMobile(context) ? 12.sp : 9.sp,
                                     color: Colors.black,
                                   ),
                                 ),
                               ),
                               Padding(
                                 padding: EdgeInsets.only(left: 4.w),
-                                child: SvgPicture.asset(Images.campaignShopArrow,
+                                child: SvgPicture.asset(
+                                  Images.campaignShopArrow,
                                 ),
                               ),
                             ],
@@ -221,8 +254,11 @@ class FavoriteStore extends StatelessWidget {
             ),
           )
         : Center(
-            child: Text(AppTags.noFavStore.tr,
-                style:  isMobile(context)?AppThemeData.favoriteTextStyle_14:AppThemeData.favoriteTextStyle_14.copyWith(fontSize: 11.sp),
+            child: Text(
+              AppTags.noFavStore.tr,
+              style: isMobile(context)
+                  ? AppThemeData.favoriteTextStyle_14
+                  : AppThemeData.favoriteTextStyle_14.copyWith(fontSize: 11.sp),
             ),
           );
   }

@@ -5,11 +5,12 @@ import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import '../../../controllers/details_screen_controller.dart';
 import '../../../utils/app_theme_data.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
+import 'package:lazba/src/utils/responsive.dart';
 
 class DescriptionImageViewScreen extends StatelessWidget {
   final List? descriptionImage;
-  DescriptionImageViewScreen({Key? key,this.descriptionImage}) : super(key: key);
+  DescriptionImageViewScreen({Key? key, this.descriptionImage})
+      : super(key: key);
   final detailsController = Get.put(DetailsPageController());
 
   @override
@@ -18,7 +19,7 @@ class DescriptionImageViewScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       body: Center(
         child: SizedBox(
-          height: MediaQuery.of(context).size.height-30,
+          height: MediaQuery.of(context).size.height - 30,
           child: Stack(
             // alignment: Alignment.center,
             children: [
@@ -38,7 +39,7 @@ class DescriptionImageViewScreen extends StatelessWidget {
                   backgroundDecoration: const BoxDecoration(
                     color: Colors.black,
                   ),
-                  onPageChanged: (index){
+                  onPageChanged: (index) {
                     detailsController.itemCounterUpdate(index);
                   },
                 ),
@@ -47,7 +48,7 @@ class DescriptionImageViewScreen extends StatelessWidget {
                   left: 20.w,
                   top: 40.h,
                   child: InkWell(
-                    onTap: (){
+                    onTap: () {
                       Get.back();
                     },
                     child: Container(
@@ -64,42 +65,52 @@ class DescriptionImageViewScreen extends StatelessWidget {
                               offset: const Offset(0, 5))
                         ],
                       ),
-                      child: Icon(Icons.clear,size: 20.r,color: Colors.white,),
+                      child: Icon(
+                        Icons.clear,
+                        size: 20.r,
+                        color: Colors.white,
+                      ),
                     ),
-                  )
-              ),
-              Obx(() => Positioned(
-                right: MediaQuery.of(context).size.width/2,
-                top: 40.h,
-                child: Container(
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(15.r),
+                  )),
+              Obx(
+                () => Positioned(
+                  right: MediaQuery.of(context).size.width / 2,
+                  top: 40.h,
+                  child: Container(
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(15.r),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          spreadRadius: 1,
+                          blurRadius: 16.r,
+                          color:
+                              AppThemeData.headlineTextColor.withOpacity(0.01),
+                          offset: const Offset(0, 1),
+                        )
+                      ],
                     ),
-                    boxShadow: [
-                      BoxShadow(
-                        spreadRadius: 1,
-                        blurRadius: 16.r,
-                        color: AppThemeData.headlineTextColor
-                            .withOpacity(0.01),
-                        offset: const Offset(0, 1),
-                      )
-                    ],
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: 3.h, horizontal: 8.w),
-                    child: Text(
-                      "${detailsController.productImageNumber.value + 1}/${descriptionImage!.length}",
-                      style: isMobile(context)
-                          ? AppThemeData.orderHistoryTextStyle_12.copyWith(color: Colors.white,fontSize: 14.sp,fontFamily: "Poppins Medium")
-                          : AppThemeData.orderHistoryTextStyle_9Tab.copyWith(color: Colors.white,fontSize: 11.sp,fontFamily: "Poppins Medium"),
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 3.h, horizontal: 8.w),
+                      child: Text(
+                        "${detailsController.productImageNumber.value + 1}/${descriptionImage!.length}",
+                        style: isMobile(context)
+                            ? AppThemeData.orderHistoryTextStyle_12.copyWith(
+                                color: Colors.white,
+                                fontSize: 14.sp,
+                                fontFamily: "Poppins Medium")
+                            : AppThemeData.orderHistoryTextStyle_9Tab.copyWith(
+                                color: Colors.white,
+                                fontSize: 11.sp,
+                                fontFamily: "Poppins Medium"),
+                      ),
                     ),
                   ),
                 ),
-              ),
               ),
             ],
           ),

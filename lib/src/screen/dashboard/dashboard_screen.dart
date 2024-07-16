@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:yoori_ecommerce/src/utils/images.dart';
+import 'package:lazba/src/utils/images.dart';
 import '../../controllers/dashboard_controller.dart';
 import '../../screen/cart/cart_screen.dart';
 import '../../screen/category/category_screen.dart';
@@ -38,7 +38,8 @@ class DashboardScreen extends StatelessWidget {
           onTap: homeController.changeTabIndex,
           currentIndex: homeController.tabIndex.value,
           selectedItemColor: AppThemeData.buttonColor,
-          selectedLabelStyle: const TextStyle(color: AppThemeData.headlineTextColor),
+          selectedLabelStyle:
+              const TextStyle(color: AppThemeData.headlineTextColor),
           elevation: 5.0,
           showSelectedLabels: false,
           showUnselectedLabels: false,
@@ -146,10 +147,7 @@ class DashboardScreen extends StatelessWidget {
                           .toString()
                       : "0"
                   : "0",
-              style:  TextStyle(
-                color: Colors.white,
-                fontSize: 9.sp
-              ),
+              style: TextStyle(color: Colors.white, fontSize: 9.sp),
             ),
             child: SvgPicture.asset(
               Images.cart,

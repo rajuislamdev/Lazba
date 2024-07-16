@@ -1,11 +1,10 @@
-
 import 'package:get/get.dart';
-import 'package:yoori_ecommerce/src/models/add_to_cart_list_model.dart';
-import 'package:yoori_ecommerce/src/models/coupon_applied_list.dart';
-import 'package:yoori_ecommerce/src/utils/analytics_helper.dart';
-import 'package:yoori_ecommerce/src/utils/constants.dart';
-import 'package:yoori_ecommerce/src/servers/repository.dart';
-import 'package:yoori_ecommerce/src/data/local_data_helper.dart';
+import 'package:lazba/src/models/add_to_cart_list_model.dart';
+import 'package:lazba/src/models/coupon_applied_list.dart';
+import 'package:lazba/src/utils/analytics_helper.dart';
+import 'package:lazba/src/utils/constants.dart';
+import 'package:lazba/src/servers/repository.dart';
+import 'package:lazba/src/data/local_data_helper.dart';
 
 class CartContentController extends GetxController {
   final Rx<AddToCartListModel> _addToCartListModel = AddToCartListModel().obs;
@@ -32,11 +31,11 @@ class CartContentController extends GetxController {
     super.onInit();
   }
 
-
-  int incrementProduct(int productId){
-   int? index =  _addToCartListModel.value.data?.carts!.indexWhere((element) =>element.productId==productId);
-   //printLog("index == $index");
-   return index ?? -1;
+  int incrementProduct(int productId) {
+    int? index = _addToCartListModel.value.data?.carts!
+        .indexWhere((element) => element.productId == productId);
+    //printLog("index == $index");
+    return index ?? -1;
   }
 
   Future getCartList({bool isShowLoading = true}) async {
@@ -51,8 +50,8 @@ class CartContentController extends GetxController {
   Future addToCart(
       {required String productId,
       required String quantity,
-        String? variantsIds,
-       String? variantsNames}) async {
+      String? variantsIds,
+      String? variantsNames}) async {
     AnalyticsHelper().setAnalyticsData(
         screenName: "ProductDetailsScreen",
         eventTitle: "AddToCart",
@@ -87,7 +86,7 @@ class CartContentController extends GetxController {
   Future deleteAProductFromCart({required String productId}) async {
     await Repository().deleteCartProduct(productId: productId).then((value) {
       getCartList(isShowLoading: false);
-       AnalyticsHelper().setAnalyticsData(
+      AnalyticsHelper().setAnalyticsData(
           screenName: "ProductDetailsScreen",
           eventTitle: "DeleteFromCart",
           additionalData: {

@@ -1,4 +1,4 @@
-package com.spagreen.yoori
+package com.lazba.app
 
 import io.flutter.embedding.android.FlutterActivity
 

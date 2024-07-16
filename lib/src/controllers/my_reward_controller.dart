@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:yoori_ecommerce/src/models/my_reward_model.dart';
-import 'package:yoori_ecommerce/src/servers/repository.dart';
+import 'package:lazba/src/models/my_reward_model.dart';
+import 'package:lazba/src/servers/repository.dart';
 
 class MyRewardController extends GetxController {
   late Rx<MyRewardModel> myRewardModel = MyRewardModel().obs;
-  final TextEditingController?  convertRewardController = TextEditingController();
+  final TextEditingController? convertRewardController =
+      TextEditingController();
   var convertedReward = '0.0'.obs;
 
-
-  var isLoading=false.obs;
+  var isLoading = false.obs;
 
   Future getMyReward() async {
     await Repository().getMyReward().then((value) {
-
       myRewardModel.value = value!;
     });
     update();
@@ -29,7 +28,7 @@ class MyRewardController extends GetxController {
   @override
   void onInit() {
     convertRewardController!.addListener(() {
-      convertedReward.value=convertRewardController!.text;
+      convertedReward.value = convertRewardController!.text;
     });
     getMyReward();
     super.onInit();

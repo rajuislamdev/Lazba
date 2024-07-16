@@ -7,10 +7,10 @@ import '../../_route/routes.dart';
 import '../../controllers/auth_controller.dart';
 import '../../controllers/dashboard_controller.dart';
 import '../../models/user_data_model.dart';
-import 'package:yoori_ecommerce/src/utils/app_tags.dart';
+import 'package:lazba/src/utils/app_tags.dart';
 import '../../data/local_data_helper.dart';
 import '../../utils/app_theme_data.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
+import 'package:lazba/src/utils/responsive.dart';
 
 class DrawerScreen extends StatefulWidget {
   const DrawerScreen({Key? key}) : super(key: key);
@@ -65,7 +65,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
       width: 112.w,
       color: Colors.white,
       child: Padding(
-        padding:  EdgeInsets.symmetric(vertical: 20.h),
+        padding: EdgeInsets.symmetric(vertical: 20.h),
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -78,7 +78,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                   ? Padding(
                       padding: EdgeInsets.symmetric(vertical: 10.h),
                       child: Container(
-                        width: isMobile(context)? 65.w:40.w,
+                        width: isMobile(context) ? 65.w : 40.w,
                         height: 65.h,
                         decoration: BoxDecoration(
                           color: AppThemeData.categoryColors,
@@ -106,7 +106,6 @@ class _DrawerScreenState extends State<DrawerScreen> {
                           _onItemTapped(index);
                           if (index == 0) {
                             homeScreenController.changeTabIndex(0);
-
                           }
                           if (index == 1) {
                             homeScreenController.changeTabIndex(4);
@@ -121,7 +120,6 @@ class _DrawerScreenState extends State<DrawerScreen> {
                             Get.toNamed(Routes.settings);
                           }
                           if (index == 5) {
-                            
                             AuthController.authInstance.signOut();
                           }
                           Scaffold.of(context).closeDrawer();
@@ -136,12 +134,15 @@ class _DrawerScreenState extends State<DrawerScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SvgPicture.asset(
-                                "assets/icons/${_list[index]["icon"]}.svg",height: 20.h,width: 20.w,
+                                "assets/icons/${_list[index]["icon"]}.svg",
+                                height: 20.h,
+                                width: 20.w,
                                 color: _index == index
                                     ? Colors.white
-                                    : AppThemeData.drawerIconColor.withOpacity(1.0),
+                                    : AppThemeData.drawerIconColor
+                                        .withOpacity(1.0),
                               ),
-                               SizedBox(height: 8.h),
+                              SizedBox(height: 8.h),
                               Text(
                                 _list[index]["title"],
                                 style: TextStyle(
@@ -149,16 +150,14 @@ class _DrawerScreenState extends State<DrawerScreen> {
                                         ? Colors.white
                                         : AppThemeData.headlineTextColor,
                                     fontFamily: 'Poppins',
-                                  fontSize: isMobile(context)? 13.w:9.w
-                                ),
+                                    fontSize: isMobile(context) ? 13.w : 9.w),
                               )
                             ],
                           ),
                         ),
                         //onTap: _onItemTapped,
                       );
-                    }
-                    ),
+                    }),
               ),
             ],
           ),
@@ -179,7 +178,6 @@ class _DrawerScreenState extends State<DrawerScreen> {
         ),
       ),
       btnOkOnPress: () {
-
         // Get.delete<CartContentController>();
       },
       btnCancelOnPress: () {
@@ -187,7 +185,6 @@ class _DrawerScreenState extends State<DrawerScreen> {
       },
     ).show();
   }
-
 
   void _onItemTapped(int index) {
     setState(() {

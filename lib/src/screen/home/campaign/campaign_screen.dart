@@ -7,7 +7,7 @@ import '../../../utils/app_theme_data.dart';
 import '../../../widgets/error_message_widget.dart';
 import '../../../models/campaign_details_model.dart';
 import '../../../servers/repository.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
+import 'package:lazba/src/utils/responsive.dart';
 import '../../../widgets/loader/shimmer_campaign_details.dart';
 import 'campaign_by_brand.dart';
 import 'campaign_by_products.dart';
@@ -30,44 +30,46 @@ class _CampaignContentScreenState extends State<CampaignContentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:isMobile(context)? AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-          onPressed: () {
-            Get.back();
-          },
-        ),
-        centerTitle: true,
-        title: Text(
-          widget.title.toString(),
-          style: AppThemeData.headerTextStyle_16,
-        ),
-      ): AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        toolbarHeight: 60.h,
-        leadingWidth: 40.w,
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-            size: 25.r,
-          ),
-          onPressed: () {
-            Get.back();
-          }, // null disables the button
-        ),
-        centerTitle: true,
-        title: Text(
-          widget.title.toString(),
-          style: AppThemeData.headerTextStyle_14,
-        ),
-      ),
+      appBar: isMobile(context)
+          ? AppBar(
+              backgroundColor: Colors.white,
+              elevation: 0,
+              leading: IconButton(
+                icon: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.black,
+                ),
+                onPressed: () {
+                  Get.back();
+                },
+              ),
+              centerTitle: true,
+              title: Text(
+                widget.title.toString(),
+                style: AppThemeData.headerTextStyle_16,
+              ),
+            )
+          : AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              toolbarHeight: 60.h,
+              leadingWidth: 40.w,
+              leading: IconButton(
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: Colors.black,
+                  size: 25.r,
+                ),
+                onPressed: () {
+                  Get.back();
+                }, // null disables the button
+              ),
+              centerTitle: true,
+              title: Text(
+                widget.title.toString(),
+                style: AppThemeData.headerTextStyle_14,
+              ),
+            ),
       body: FutureBuilder<CampaignDetailsModel?>(
           future: Repository().getCampaignDetails(widget.campainId),
           builder: (context, snapshot) {
@@ -130,7 +132,8 @@ class _CampaignContentScreenState extends State<CampaignContentScreen> {
                           BoxShadow(
                             spreadRadius: 30,
                             blurRadius: 5,
-                            color: AppThemeData.boxShadowColor.withOpacity(0.01),
+                            color:
+                                AppThemeData.boxShadowColor.withOpacity(0.01),
                             offset: const Offset(0, 15),
                           ),
                         ],
@@ -138,7 +141,9 @@ class _CampaignContentScreenState extends State<CampaignContentScreen> {
                       child: Center(
                         child: Text(
                           "${time.days ?? 0}".padLeft(2, '0'),
-                          style: isMobile(context)? AppThemeData.timeDateTextStyle_12:AppThemeData.timeDateTextStyleTab,
+                          style: isMobile(context)
+                              ? AppThemeData.timeDateTextStyle_12
+                              : AppThemeData.timeDateTextStyleTab,
                         ),
                       ),
                     ),
@@ -157,7 +162,8 @@ class _CampaignContentScreenState extends State<CampaignContentScreen> {
                           BoxShadow(
                             spreadRadius: 30,
                             blurRadius: 5,
-                            color: AppThemeData.boxShadowColor.withOpacity(0.01),
+                            color:
+                                AppThemeData.boxShadowColor.withOpacity(0.01),
                             offset: const Offset(0, 15),
                           ),
                         ],
@@ -165,34 +171,9 @@ class _CampaignContentScreenState extends State<CampaignContentScreen> {
                       child: Center(
                         child: Text(
                           "${time.hours ?? 0}".padLeft(2, '0'),
-                          style: isMobile(context)? AppThemeData.timeDateTextStyle_12:AppThemeData.timeDateTextStyleTab,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 5.w,
-                    ),
-                    Container(
-                      width: 38.w,
-                      height: 38.h,
-                      decoration: BoxDecoration(
-                        color: AppThemeData.campaignBoxColor,
-                        borderRadius:  BorderRadius.all(
-                          Radius.circular(5.r),
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            spreadRadius: 30,
-                            blurRadius: 5,
-                            color: AppThemeData.boxShadowColor.withOpacity(0.01),
-                            offset: const Offset(0, 15),
-                          ),
-                        ],
-                      ),
-                      child: Center(
-                        child: Text(
-                          "${time.min ?? 0}".padLeft(2, '0'),
-                          style: isMobile(context)? AppThemeData.timeDateTextStyle_12:AppThemeData.timeDateTextStyleTab,
+                          style: isMobile(context)
+                              ? AppThemeData.timeDateTextStyle_12
+                              : AppThemeData.timeDateTextStyleTab,
                         ),
                       ),
                     ),
@@ -211,7 +192,38 @@ class _CampaignContentScreenState extends State<CampaignContentScreen> {
                           BoxShadow(
                             spreadRadius: 30,
                             blurRadius: 5,
-                            color: AppThemeData.boxShadowColor.withOpacity(0.01),
+                            color:
+                                AppThemeData.boxShadowColor.withOpacity(0.01),
+                            offset: const Offset(0, 15),
+                          ),
+                        ],
+                      ),
+                      child: Center(
+                        child: Text(
+                          "${time.min ?? 0}".padLeft(2, '0'),
+                          style: isMobile(context)
+                              ? AppThemeData.timeDateTextStyle_12
+                              : AppThemeData.timeDateTextStyleTab,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 5.w,
+                    ),
+                    Container(
+                      width: 38.w,
+                      height: 38.h,
+                      decoration: BoxDecoration(
+                        color: AppThemeData.campaignBoxColor,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(5.r),
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            spreadRadius: 30,
+                            blurRadius: 5,
+                            color:
+                                AppThemeData.boxShadowColor.withOpacity(0.01),
                             offset: const Offset(0, 15),
                           ),
                         ],
@@ -219,7 +231,9 @@ class _CampaignContentScreenState extends State<CampaignContentScreen> {
                       child: Center(
                         child: Text(
                           "${time.sec ?? 0}".padLeft(2, '0'),
-                          style: isMobile(context)? AppThemeData.timeDateTextStyle_12:AppThemeData.timeDateTextStyleTab,
+                          style: isMobile(context)
+                              ? AppThemeData.timeDateTextStyle_12
+                              : AppThemeData.timeDateTextStyleTab,
                         ),
                       ),
                     ),
@@ -239,7 +253,7 @@ class _CampaignContentScreenState extends State<CampaignContentScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                 SizedBox(
+                SizedBox(
                   width: 230.w,
                   height: 25.h,
                   child: TabBar(

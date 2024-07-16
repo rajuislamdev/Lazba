@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../utils/app_theme_data.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
+import 'package:lazba/src/utils/responsive.dart';
 
 class ShimmerProducts extends StatefulWidget {
   const ShimmerProducts({Key? key}) : super(key: key);
@@ -13,7 +13,6 @@ class ShimmerProducts extends StatefulWidget {
 }
 
 class _ShimmerProductsState extends State<ShimmerProducts> {
-
   @override
   Widget build(BuildContext context) {
     // Size size = MediaQuery.of(context).size;
@@ -22,15 +21,15 @@ class _ShimmerProductsState extends State<ShimmerProducts> {
       body: Container(
         alignment: Alignment.center,
         child: Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 15.w, vertical: 8.h),
+          padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 8.h),
           child: SizedBox(
             child: GridView.builder(
               physics: const NeverScrollableScrollPhysics(),
               itemCount: 15,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: isMobile(context)? 2:3,
-                crossAxisSpacing: isMobile(context)?15:20,
-                mainAxisSpacing: isMobile(context)?15:20,
+                crossAxisCount: isMobile(context) ? 2 : 3,
+                crossAxisSpacing: isMobile(context) ? 15 : 20,
+                mainAxisSpacing: isMobile(context) ? 15 : 20,
                 childAspectRatio: 0.74,
               ),
               itemBuilder: (_, __) => Container(
@@ -69,7 +68,7 @@ class _ShimmerProductsState extends State<ShimmerProducts> {
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius:
-                                    BorderRadius.all(Radius.circular(4.r))),
+                                        BorderRadius.all(Radius.circular(4.r))),
                               ),
                             ),
                             Shimmer.fromColors(
@@ -80,8 +79,8 @@ class _ShimmerProductsState extends State<ShimmerProducts> {
                                 width: 20.w,
                                 decoration: BoxDecoration(
                                     color: Colors.white,
-                                    borderRadius:
-                                    BorderRadius.all(Radius.circular(10.r))),
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(10.r))),
                               ),
                             ),
                           ],
@@ -98,7 +97,7 @@ class _ShimmerProductsState extends State<ShimmerProducts> {
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius:
-                                BorderRadius.all(Radius.circular(4.r))),
+                                    BorderRadius.all(Radius.circular(4.r))),
                           ),
                         ),
                       ),
@@ -113,7 +112,7 @@ class _ShimmerProductsState extends State<ShimmerProducts> {
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius:
-                                BorderRadius.all(Radius.circular(4.r))),
+                                    BorderRadius.all(Radius.circular(4.r))),
                           ),
                         ),
                       ),
@@ -129,11 +128,11 @@ class _ShimmerProductsState extends State<ShimmerProducts> {
                               baseColor: Colors.grey[200]!,
                               child: Container(
                                 height: 15.h,
-                                width: isMobile(context)? 50.w:35.w,
+                                width: isMobile(context) ? 50.w : 35.w,
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius:
-                                    BorderRadius.all(Radius.circular(4.r))),
+                                        BorderRadius.all(Radius.circular(4.r))),
                               ),
                             ),
                             Shimmer.fromColors(
@@ -141,11 +140,11 @@ class _ShimmerProductsState extends State<ShimmerProducts> {
                               baseColor: Colors.grey[200]!,
                               child: Container(
                                 height: 15.h,
-                                width: isMobile(context)? 50.w:35.w,
+                                width: isMobile(context) ? 50.w : 35.w,
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius:
-                                    BorderRadius.all(Radius.circular(4.r))),
+                                        BorderRadius.all(Radius.circular(4.r))),
                               ),
                             ),
                           ],

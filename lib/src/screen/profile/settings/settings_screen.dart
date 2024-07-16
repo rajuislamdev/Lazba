@@ -6,14 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:store_redirect/store_redirect.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import '../../../../config.dart';
-import 'package:yoori_ecommerce/src/_route/routes.dart';
+import 'package:lazba/src/_route/routes.dart';
 import '../../../controllers/currency_converter_controller.dart';
 import '../../../controllers/language_controller.dart';
 import '../../../controllers/setting_controller.dart';
 import '../../../data/local_data_helper.dart';
 import '../../../utils/app_tags.dart';
 import '../../../utils/app_theme_data.dart';
-import 'package:yoori_ecommerce/src/utils/responsive.dart';
+import 'package:lazba/src/utils/responsive.dart';
 import 'address_screen.dart';
 
 class Settings extends StatelessWidget {
@@ -31,45 +31,47 @@ class Settings extends StatelessWidget {
   Widget build(BuildContext context) {
     controller.getAppLanguageList();
     return Scaffold(
-      appBar:isMobile(context)? AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: Colors.black,
-          ),
-          onPressed: () {
-            Get.back();
-          },
-        ),
-        centerTitle: true,
-        title: Text(
-          AppTags.settings.tr,
-          style: AppThemeData.settingsTitleStyle,
-        ),
-      ): AppBar(
-      backgroundColor: Colors.transparent,
-      elevation: 0,
-      toolbarHeight: 60.h,
-      leadingWidth: 40.w,
-      leading: IconButton(
-        icon: Icon(
-          Icons.arrow_back,
-          color: Colors.black,
-          size: 25.r,
-        ),
+      appBar: isMobile(context)
+          ? AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              leading: IconButton(
+                icon: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.black,
+                ),
+                onPressed: () {
+                  Get.back();
+                },
+              ),
+              centerTitle: true,
+              title: Text(
+                AppTags.settings.tr,
+                style: AppThemeData.settingsTitleStyle,
+              ),
+            )
+          : AppBar(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              toolbarHeight: 60.h,
+              leadingWidth: 40.w,
+              leading: IconButton(
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: Colors.black,
+                  size: 25.r,
+                ),
 
-        onPressed: () {
-          Get.back();
-        }, // null disables the button
-      ),
-      centerTitle: true,
-      title: Text(
-        AppTags.settings.tr,
-        style: AppThemeData.headerTextStyle_14,
-      ),
-    ),
+                onPressed: () {
+                  Get.back();
+                }, // null disables the button
+              ),
+              centerTitle: true,
+              title: Text(
+                AppTags.settings.tr,
+                style: AppThemeData.headerTextStyle_14,
+              ),
+            ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -81,7 +83,9 @@ class Settings extends StatelessWidget {
                 children: [
                   Text(
                     AppTags.languages.tr,
-                    style: isMobile(context)? AppThemeData.settingsTitleStyle:AppThemeData.settingsTitleStyleTab,
+                    style: isMobile(context)
+                        ? AppThemeData.settingsTitleStyle
+                        : AppThemeData.settingsTitleStyleTab,
                   ),
                   Center(
                     child: Obx(
@@ -89,7 +93,9 @@ class Settings extends StatelessWidget {
                         isExpanded: false,
                         value: controller.locale.value,
                         icon: const Icon(Icons.arrow_drop_down_outlined),
-                        style:isMobile(context)? AppThemeData.settingsTitleStyle:AppThemeData.settingsTitleStyleTab,
+                        style: isMobile(context)
+                            ? AppThemeData.settingsTitleStyle
+                            : AppThemeData.settingsTitleStyleTab,
                         iconSize: 24.r,
                         underline: const SizedBox(),
                         hint: SizedBox(
@@ -119,18 +125,20 @@ class Settings extends StatelessWidget {
             ),
             SizedBox(height: 15.h),
             Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 15.w),
+              padding: EdgeInsets.symmetric(horizontal: 15.w),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     AppTags.notification.tr,
-                    style: isMobile(context)? AppThemeData.settingsTitleStyle:AppThemeData.settingsTitleStyleTab,
+                    style: isMobile(context)
+                        ? AppThemeData.settingsTitleStyle
+                        : AppThemeData.settingsTitleStyleTab,
                   ),
                   Center(
                     child: Obx(
                       () => FlutterSwitch(
-                        width:  isMobile(context)? 40.w:25.w,
+                        width: isMobile(context) ? 40.w : 25.w,
                         height: 20.h,
                         valueFontSize: 20,
                         toggleSize: 20.r,
@@ -163,16 +171,20 @@ class Settings extends StatelessWidget {
                   children: [
                     Text(
                       AppTags.currency.tr,
-                      style: isMobile(context)? AppThemeData.settingsTitleStyle:AppThemeData.settingsTitleStyleTab,
+                      style: isMobile(context)
+                          ? AppThemeData.settingsTitleStyle
+                          : AppThemeData.settingsTitleStyleTab,
                     ),
                     Container(
                       height: 42.h,
                       alignment: Alignment.center,
                       child: DropdownButtonHideUnderline(
                         child: DropdownButton(
-                          iconSize: isMobile(context)?18.r:25.r,
+                          iconSize: isMobile(context) ? 18.r : 25.r,
                           isExpanded: false,
-                          style: isMobile(context)? AppThemeData.settingsTitleStyle:AppThemeData.settingsTitleStyleTab,
+                          style: isMobile(context)
+                              ? AppThemeData.settingsTitleStyle
+                              : AppThemeData.settingsTitleStyleTab,
                           value: settingController.selectedCurrency.value,
                           onChanged: (newValue) {
                             int index = settingController.getIndex(newValue);
@@ -204,7 +216,9 @@ class Settings extends StatelessWidget {
               ),
             ),
             Padding(
-              padding:  EdgeInsets.symmetric(horizontal: isMobile(context)? 0.w:10.w,vertical: isMobile(context)? 0.h:8.h),
+              padding: EdgeInsets.symmetric(
+                  horizontal: isMobile(context) ? 0.w : 10.w,
+                  vertical: isMobile(context) ? 0.h : 8.h),
               child: InkWell(
                 onTap: () {
                   if (Platform.isAndroid) {
@@ -217,7 +231,9 @@ class Settings extends StatelessWidget {
                 child: ListTile(
                   title: Text(
                     AppTags.shareThisApp.tr,
-                    style: isMobile(context)? AppThemeData.settingsTitleStyle:AppThemeData.settingsTitleStyleTab,
+                    style: isMobile(context)
+                        ? AppThemeData.settingsTitleStyle
+                        : AppThemeData.settingsTitleStyleTab,
                   ),
                   trailing: Icon(
                     Icons.arrow_forward_ios,
@@ -226,19 +242,22 @@ class Settings extends StatelessWidget {
                 ),
               ),
             ),
-
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: isMobile(context)? 0.w:10.w,vertical: isMobile(context)? 0.h:8.h),
+              padding: EdgeInsets.symmetric(
+                  horizontal: isMobile(context) ? 0.w : 10.w,
+                  vertical: isMobile(context) ? 0.h : 8.h),
               child: InkWell(
                 onTap: () {
-                 Get.to(const Addresses());
+                  Get.to(const Addresses());
                 },
-                child:  ListTile(
+                child: ListTile(
                   title: Text(
                     AppTags.address.tr,
-                    style: isMobile(context)? AppThemeData.settingsTitleStyle:AppThemeData.settingsTitleStyleTab,
+                    style: isMobile(context)
+                        ? AppThemeData.settingsTitleStyle
+                        : AppThemeData.settingsTitleStyleTab,
                   ),
-                  trailing:  Icon(
+                  trailing: Icon(
                     Icons.arrow_forward_ios,
                     size: 18.r,
                   ),
@@ -246,7 +265,9 @@ class Settings extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: isMobile(context)? 0.w:10.w,vertical: isMobile(context)? 0.h:8.h),
+              padding: EdgeInsets.symmetric(
+                  horizontal: isMobile(context) ? 0.w : 10.w,
+                  vertical: isMobile(context) ? 0.h : 8.h),
               child: InkWell(
                 onTap: () {
                   StoreRedirect.redirect(
@@ -257,7 +278,9 @@ class Settings extends StatelessWidget {
                 child: ListTile(
                   title: Text(
                     AppTags.rateThisApp.tr,
-                    style: isMobile(context)? AppThemeData.settingsTitleStyle:AppThemeData.settingsTitleStyleTab,
+                    style: isMobile(context)
+                        ? AppThemeData.settingsTitleStyle
+                        : AppThemeData.settingsTitleStyleTab,
                   ),
                   trailing: Icon(
                     Icons.arrow_forward_ios,
@@ -269,18 +292,23 @@ class Settings extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: const Divider(
-                color:  AppThemeData.settingScreenDividerColor,
+                color: AppThemeData.settingScreenDividerColor,
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: isMobile(context)? 0.w:10.w,vertical: isMobile(context)? 0.h:8.h),
+              padding: EdgeInsets.symmetric(
+                  horizontal: isMobile(context) ? 0.w : 10.w,
+                  vertical: isMobile(context) ? 0.h : 8.h),
               child: InkWell(
                 onTap: () {
                   Get.toNamed(
                     Routes.wvScreen,
                     parameters: {
-                      'url':
-                          LocalDataHelper().getConfigData().data!.pages![3].link!,
+                      'url': LocalDataHelper()
+                          .getConfigData()
+                          .data!
+                          .pages![3]
+                          .link!,
                       'title': LocalDataHelper()
                           .getConfigData()
                           .data!
@@ -292,7 +320,9 @@ class Settings extends StatelessWidget {
                 child: ListTile(
                   title: Text(
                     AppTags.termsCondition.tr,
-                    style: isMobile(context)? AppThemeData.settingsTitleStyle:AppThemeData.settingsTitleStyleTab,
+                    style: isMobile(context)
+                        ? AppThemeData.settingsTitleStyle
+                        : AppThemeData.settingsTitleStyleTab,
                   ),
                   trailing: Icon(
                     Icons.arrow_forward_ios,
@@ -302,14 +332,19 @@ class Settings extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: isMobile(context)? 0.w:10.w,vertical: isMobile(context)? 0.h:8.h),
+              padding: EdgeInsets.symmetric(
+                  horizontal: isMobile(context) ? 0.w : 10.w,
+                  vertical: isMobile(context) ? 0.h : 8.h),
               child: InkWell(
                 onTap: () {
                   Get.toNamed(
                     Routes.wvScreen,
                     parameters: {
-                      'url':
-                          LocalDataHelper().getConfigData().data!.pages![4].link!,
+                      'url': LocalDataHelper()
+                          .getConfigData()
+                          .data!
+                          .pages![4]
+                          .link!,
                       'title': LocalDataHelper()
                           .getConfigData()
                           .data!
@@ -321,7 +356,9 @@ class Settings extends StatelessWidget {
                 child: ListTile(
                   title: Text(
                     AppTags.privacyPolicy.tr,
-                    style: isMobile(context)? AppThemeData.settingsTitleStyle:AppThemeData.settingsTitleStyleTab,
+                    style: isMobile(context)
+                        ? AppThemeData.settingsTitleStyle
+                        : AppThemeData.settingsTitleStyleTab,
                   ),
                   trailing: Icon(
                     Icons.arrow_forward_ios,
@@ -331,14 +368,19 @@ class Settings extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: isMobile(context)? 0.w:10.w,vertical: isMobile(context)? 0.h:8.h),
+              padding: EdgeInsets.symmetric(
+                  horizontal: isMobile(context) ? 0.w : 10.w,
+                  vertical: isMobile(context) ? 0.h : 8.h),
               child: InkWell(
                 onTap: () {
                   Get.toNamed(
                     Routes.wvScreen,
                     parameters: {
-                      'url':
-                          LocalDataHelper().getConfigData().data!.pages![5].link!,
+                      'url': LocalDataHelper()
+                          .getConfigData()
+                          .data!
+                          .pages![5]
+                          .link!,
                       'title': LocalDataHelper()
                           .getConfigData()
                           .data!
@@ -350,7 +392,9 @@ class Settings extends StatelessWidget {
                 child: ListTile(
                   title: Text(
                     AppTags.aboutThisApp.tr,
-                    style: isMobile(context)? AppThemeData.settingsTitleStyle:AppThemeData.settingsTitleStyleTab,
+                    style: isMobile(context)
+                        ? AppThemeData.settingsTitleStyle
+                        : AppThemeData.settingsTitleStyleTab,
                   ),
                   trailing: Icon(
                     Icons.arrow_forward_ios,
@@ -360,14 +404,19 @@ class Settings extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: isMobile(context)? 0.w:10.w,vertical: isMobile(context)? 0.h:8.h),
+              padding: EdgeInsets.symmetric(
+                  horizontal: isMobile(context) ? 0.w : 10.w,
+                  vertical: isMobile(context) ? 0.h : 8.h),
               child: InkWell(
                 onTap: () {
                   Get.toNamed(
                     Routes.wvScreen,
                     parameters: {
-                      'url':
-                          LocalDataHelper().getConfigData().data!.pages![6].link!,
+                      'url': LocalDataHelper()
+                          .getConfigData()
+                          .data!
+                          .pages![6]
+                          .link!,
                       'title': LocalDataHelper()
                           .getConfigData()
                           .data!
@@ -379,7 +428,9 @@ class Settings extends StatelessWidget {
                 child: ListTile(
                   title: Text(
                     AppTags.contactUS.tr,
-                    style: isMobile(context)? AppThemeData.settingsTitleStyle:AppThemeData.settingsTitleStyleTab,
+                    style: isMobile(context)
+                        ? AppThemeData.settingsTitleStyle
+                        : AppThemeData.settingsTitleStyleTab,
                   ),
                   trailing: Icon(
                     Icons.arrow_forward_ios,

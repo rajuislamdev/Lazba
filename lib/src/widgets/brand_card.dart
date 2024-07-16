@@ -1,8 +1,8 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:ribbon_widget/ribbon_widget.dart';
-import 'package:yoori_ecommerce/src/controllers/currency_converter_controller.dart';
-import 'package:yoori_ecommerce/src/controllers/home_screen_controller.dart';
+import 'package:lazba/src/controllers/currency_converter_controller.dart';
+import 'package:lazba/src/controllers/home_screen_controller.dart';
 import '../models/product_by_brand_model.dart';
 import '../utils/app_theme_data.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +50,6 @@ class BrandCard extends StatelessWidget {
         ),
         child: InkWell(
           onTap: () {
-
             Get.toNamed(
               Routes.detailsPage,
               parameters: {
@@ -69,47 +68,49 @@ class BrandCard extends StatelessWidget {
                       children: [
                         data.specialDiscountType == 'flat'
                             ? num.parse(data.specialDiscount) == 0.0
-                            ? const SizedBox()
-                            : Container(
-                                width: 56.w,
-                                height: 20.h,
-                                decoration: BoxDecoration(
-                                  color: AppThemeData.productBoxDecorationColor
-                                      .withOpacity(0.06),
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(3.r),
-                                  ),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    "${currencyConverterController.convertCurrency(homeController.removeTrailingZeros(data.specialDiscount.toString()))} OFF",
-                                    style: AppThemeData.todayDealNewStyle,
-                                  ),
-                                ),
-                              )
+                                ? const SizedBox()
+                                : Container(
+                                    width: 56.w,
+                                    height: 20.h,
+                                    decoration: BoxDecoration(
+                                      color: AppThemeData
+                                          .productBoxDecorationColor
+                                          .withOpacity(0.06),
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(3.r),
+                                      ),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        "${currencyConverterController.convertCurrency(homeController.removeTrailingZeros(data.specialDiscount.toString()))} OFF",
+                                        style: AppThemeData.todayDealNewStyle,
+                                      ),
+                                    ),
+                                  )
                             : data.specialDiscountType == 'percentage'
-                            ? num.parse(data.specialDiscount) == 0.0
-                            ? const SizedBox()
-                            : Container(
-                              width: 60.w,
-                              height: 20.h,
-                              decoration: BoxDecoration(
-                                color: AppThemeData.productBoxDecorationColor
-                                    .withOpacity(0.06),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(3.r),
-                                ),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "${currencyConverterController.convertCurrency(homeController.removeTrailingZeros(data.specialDiscount.toString()))}% OFF",
-                                  textAlign: TextAlign.center,
-                                  style:
-                                  AppThemeData.todayDealNewStyle,
-                                ),
-                              ),
-                            )
-                            : Container(),
+                                ? num.parse(data.specialDiscount) == 0.0
+                                    ? const SizedBox()
+                                    : Container(
+                                        width: 60.w,
+                                        height: 20.h,
+                                        decoration: BoxDecoration(
+                                          color: AppThemeData
+                                              .productBoxDecorationColor
+                                              .withOpacity(0.06),
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(3.r),
+                                          ),
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            "${currencyConverterController.convertCurrency(homeController.removeTrailingZeros(data.specialDiscount.toString()))}% OFF",
+                                            textAlign: TextAlign.center,
+                                            style:
+                                                AppThemeData.todayDealNewStyle,
+                                          ),
+                                        ),
+                                      )
+                                : Container(),
                       ],
                     ),
                     num.parse(data.specialDiscount) == 0.0
@@ -117,20 +118,21 @@ class BrandCard extends StatelessWidget {
                         : SizedBox(width: 5.w),
                     data.currentStock == 0
                         ? Container(
-                          width: 65.w,
-                          height: 20.h,
-                          decoration: BoxDecoration(
-                            color: AppThemeData.productBoxDecorationColor.withOpacity(0.06),
-                            borderRadius:
-                            BorderRadius.all(Radius.circular(3.r)),
-                          ),
-                          child: Center(
-                            child: Text(
-                              AppTags.stockOut.tr,
-                              style: AppThemeData.todayDealNewStyle,
+                            width: 65.w,
+                            height: 20.h,
+                            decoration: BoxDecoration(
+                              color: AppThemeData.productBoxDecorationColor
+                                  .withOpacity(0.06),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(3.r)),
                             ),
-                          ),
-                        )
+                            child: Center(
+                              child: Text(
+                                AppTags.stockOut.tr,
+                                style: AppThemeData.todayDealNewStyle,
+                              ),
+                            ),
+                          )
                         : const SizedBox(),
                   ],
                 ),
@@ -163,28 +165,28 @@ class BrandCard extends StatelessWidget {
                 child: Center(
                   child: num.parse(data.specialDiscount) == 0.0
                       ? Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "${currencyConverterController.convertCurrency(data.price!.toString())}",
-                        style: AppThemeData.todayDealDiscountPriceStyle,
-                      ),
-                    ],
-                  )
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "${currencyConverterController.convertCurrency(data.price!.toString())}",
+                              style: AppThemeData.todayDealDiscountPriceStyle,
+                            ),
+                          ],
+                        )
                       : Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "${currencyConverterController.convertCurrency(data.price!)}",
-                        style: AppThemeData.todayDealOriginalPriceStyle,
-                      ),
-                      SizedBox(width: 15.w),
-                      Text(
-                        "${currencyConverterController.convertCurrency(data.discountPrice!.toString())}",
-                        style: AppThemeData.todayDealDiscountPriceStyle,
-                      ),
-                    ],
-                  ),
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "${currencyConverterController.convertCurrency(data.price!)}",
+                              style: AppThemeData.todayDealOriginalPriceStyle,
+                            ),
+                            SizedBox(width: 15.w),
+                            Text(
+                              "${currencyConverterController.convertCurrency(data.discountPrice!.toString())}",
+                              style: AppThemeData.todayDealDiscountPriceStyle,
+                            ),
+                          ],
+                        ),
                 ),
               ),
               SizedBox(

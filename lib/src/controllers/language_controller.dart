@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:yoori_ecommerce/src/data/local_data_helper.dart';
-import 'package:yoori_ecommerce/src/data/data_storage_service.dart';
-import 'package:yoori_ecommerce/src/models/config_model.dart';
+import 'package:lazba/src/data/local_data_helper.dart';
+import 'package:lazba/src/data/data_storage_service.dart';
+import 'package:lazba/src/models/config_model.dart';
 
 class LanguageController extends GetxController {
   final storage = Get.find<StorageService>();
@@ -19,14 +19,10 @@ class LanguageController extends GetxController {
       'countryCode': 'BD',
       'description': 'বাংলা'
     },
-    'ar_SA': {
-      'languageCode': 'ar',
-      'countryCode': 'SA',
-      'description': 'عربى'
-    }
+    'ar_SA': {'languageCode': 'ar', 'countryCode': 'SA', 'description': 'عربى'}
   };
 
-  List<Languages> lang=LocalDataHelper().getConfigData().data!.languages!;
+  List<Languages> lang = LocalDataHelper().getConfigData().data!.languages!;
   void updateLocale(String? key) {
     final String languageCode = optionsLocales[key]['languageCode'];
     final String countryCode = optionsLocales[key]['countryCode'];
@@ -37,19 +33,18 @@ class LanguageController extends GetxController {
 
     //Language code check and save
     lang.asMap().forEach((index, value) {
-      if (lang[index].code!.contains(languageCode)){
+      if (lang[index].code!.contains(languageCode)) {
         LocalDataHelper().saveLanguageServer(languageCode);
         //print("=====EE====$languageCode");
       }
-    }
-    );
+    });
     // Update storage
     storage.write('languageCode', languageCode);
     storage.write('countryCode', countryCode);
   }
 
   List<Languages> getAppLanguageList() {
-     List<Languages> languageList = [];
+    List<Languages> languageList = [];
     optionsLocales.forEach((k, v) => languageList.add(Languages(
         code: optionsLocales[k]['languageCode'],
         name: optionsLocales[k]['description'])));
