@@ -1,13 +1,14 @@
 import 'dart:collection';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get.dart';
+
 import '../../../controllers/wv_screen_controller.dart';
 import '../../../utils/app_theme_data.dart';
 import '../../../widgets/loader/loader_widget.dart';
-
 
 class WVScreen extends StatelessWidget {
   WVScreen({
@@ -36,7 +37,7 @@ class WVScreen extends StatelessWidget {
           ),
           centerTitle: true,
           title: Text(
-          title,
+            title,
             style: AppThemeData.headerTextStyle_16,
           ),
         ),

@@ -10,7 +10,6 @@ class SplashScreen extends GetView<SplashController> {
 
   @override
   Widget build(BuildContext context) {
-    print('Call  the splash screen');
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: AppThemeData.splashScreenColor,

@@ -29,6 +29,13 @@
             {
               "client_id": "3512126355-35i5n4bko4q7ts906tc75qdtli16aer9.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "3512126355-m7g99p499fc29lm40j5a7ap3hmpmqrqs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.lazba.app"
+              }
             }
           ]
         }
@@ -42,6 +49,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "3512126355-138tqdiaovhj3crtks623o76qj69ob0m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lazba.app",
+            "certificate_hash": "2325ab6a9fe19ce7959954e180169e674b8de9a6"
+          }
+        },
         {
           "client_id": "3512126355-35i5n4bko4q7ts906tc75qdtli16aer9.apps.googleusercontent.com",
           "client_type": 3
@@ -58,6 +73,13 @@
             {
               "client_id": "3512126355-35i5n4bko4q7ts906tc75qdtli16aer9.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "3512126355-m7g99p499fc29lm40j5a7ap3hmpmqrqs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.lazba.app"
+              }
             }
           ]
         }
