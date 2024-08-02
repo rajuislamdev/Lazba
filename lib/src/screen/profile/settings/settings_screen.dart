@@ -1,19 +1,21 @@
 import 'dart:io';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
-import 'package:share_plus/share_plus.dart';
+
 import 'package:flutter/material.dart';
-import 'package:store_redirect/store_redirect.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_switch/flutter_switch.dart';
-import '../../../../config.dart';
+import 'package:get/get.dart';
 import 'package:lazba/src/_route/routes.dart';
+import 'package:lazba/src/utils/responsive.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:store_redirect/store_redirect.dart';
+
+import '../../../../config.dart';
 import '../../../controllers/currency_converter_controller.dart';
 import '../../../controllers/language_controller.dart';
 import '../../../controllers/setting_controller.dart';
 import '../../../data/local_data_helper.dart';
 import '../../../utils/app_tags.dart';
 import '../../../utils/app_theme_data.dart';
-import 'package:lazba/src/utils/responsive.dart';
 import 'address_screen.dart';
 
 class Settings extends StatelessWidget {
@@ -367,42 +369,42 @@ class Settings extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: isMobile(context) ? 0.w : 10.w,
-                  vertical: isMobile(context) ? 0.h : 8.h),
-              child: InkWell(
-                onTap: () {
-                  Get.toNamed(
-                    Routes.wvScreen,
-                    parameters: {
-                      'url': LocalDataHelper()
-                          .getConfigData()
-                          .data!
-                          .pages![5]
-                          .link!,
-                      'title': LocalDataHelper()
-                          .getConfigData()
-                          .data!
-                          .pages![5]
-                          .title!,
-                    },
-                  );
-                },
-                child: ListTile(
-                  title: Text(
-                    AppTags.aboutThisApp.tr,
-                    style: isMobile(context)
-                        ? AppThemeData.settingsTitleStyle
-                        : AppThemeData.settingsTitleStyleTab,
-                  ),
-                  trailing: Icon(
-                    Icons.arrow_forward_ios,
-                    size: 18.r,
-                  ),
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.symmetric(
+            //       horizontal: isMobile(context) ? 0.w : 10.w,
+            //       vertical: isMobile(context) ? 0.h : 8.h),
+            //   child: InkWell(
+            //     onTap: () {
+            //       Get.toNamed(
+            //         Routes.wvScreen,
+            //         parameters: {
+            //           'url': LocalDataHelper()
+            //               .getConfigData()
+            //               .data!
+            //               .pages![5]
+            //               .link!,
+            //           'title': LocalDataHelper()
+            //               .getConfigData()
+            //               .data!
+            //               .pages![5]
+            //               .title!,
+            //         },
+            //       );
+            //     },
+            //     child: ListTile(
+            //       title: Text(
+            //         AppTags.aboutThisApp.tr,
+            //         style: isMobile(context)
+            //             ? AppThemeData.settingsTitleStyle
+            //             : AppThemeData.settingsTitleStyleTab,
+            //       ),
+            //       trailing: Icon(
+            //         Icons.arrow_forward_ios,
+            //         size: 18.r,
+            //       ),
+            //     ),
+            //   ),
+            // ),
             Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: isMobile(context) ? 0.w : 10.w,

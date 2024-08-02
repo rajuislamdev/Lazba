@@ -19,20 +19,6 @@ class SplashScreen extends GetView<SplashController> {
             fit: BoxFit.scaleDown,
             width: MediaQuery.of(context).size.width),
       ),
-
-      //  Column(
-      //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-      //   crossAxisAlignment: CrossAxisAlignment.center,
-      //   children: [
-      //     SizedBox(
-      //       width: 142.w,
-      //       height: 142.h,
-      //       child: Center(
-      //         child: ,
-      //       ),
-      //     ),
-      //   ],
-      // ),
     );
   }
 }
