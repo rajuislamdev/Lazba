@@ -1,14 +1,16 @@
 import 'package:badges/badges.dart' as badges;
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:lazba/src/_route/routes.dart';
 import 'package:lazba/src/utils/images.dart';
+import 'package:lazba/src/utils/responsive.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import '../../../controllers/cart_content_controller.dart';
 import '../../../controllers/color_selection_controller.dart';
 import '../../../controllers/currency_converter_controller.dart';
@@ -21,7 +23,6 @@ import '../../../models/product_details_model.dart';
 import '../../../utils/app_tags.dart';
 import '../../../utils/app_theme_data.dart';
 import '../../../utils/constants.dart';
-import 'package:lazba/src/utils/responsive.dart';
 import '../../../utils/validators.dart';
 import '../../../widgets/button_widget.dart';
 import '../../../widgets/loader/shimmer_details_page.dart';
@@ -336,6 +337,7 @@ class DetailsPage extends StatelessWidget {
                               detailsController.itemCounterUpdate(index);
                             },
                             itemBuilder: (context, index) {
+                              print(detailsModel.data!.images![index]);
                               return Padding(
                                 padding: EdgeInsets.symmetric(
                                   horizontal: 15.w,

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/splash_controller.dart';
-import '../../utils/app_theme_data.dart';
 
 class SplashScreen extends GetView<SplashController> {
   const SplashScreen({Key? key}) : super(key: key);
@@ -12,26 +10,29 @@ class SplashScreen extends GetView<SplashController> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: AppThemeData.splashScreenColor,
-      body: SafeArea(
-        child: SizedBox(
-          height: size.height,
-          width: size.width,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: 142.w,
-                height: 142.h,
-                child: Center(
-                  child: Image.asset("assets/logos/logo.png"),
-                ),
-              ),
-            ],
-          ),
-        ),
+      backgroundColor: Colors.black,
+      body: SizedBox(
+        height: size.height,
+        width: size.width,
+        child: Image.asset("assets/logos/splash.gif",
+            height: MediaQuery.of(context).size.height,
+            fit: BoxFit.scaleDown,
+            width: MediaQuery.of(context).size.width),
       ),
+
+      //  Column(
+      //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+      //   crossAxisAlignment: CrossAxisAlignment.center,
+      //   children: [
+      //     SizedBox(
+      //       width: 142.w,
+      //       height: 142.h,
+      //       child: Center(
+      //         child: ,
+      //       ),
+      //     ),
+      //   ],
+      // ),
     );
   }
 }

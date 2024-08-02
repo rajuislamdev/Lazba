@@ -1,14 +1,15 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:lazba/src/utils/images.dart';
+
+import '../../controllers/cart_content_controller.dart';
 import '../../controllers/dashboard_controller.dart';
 import '../../screen/cart/cart_screen.dart';
 import '../../screen/category/category_screen.dart';
 import '../../utils/app_theme_data.dart';
-import '../../controllers/cart_content_controller.dart';
 import '../favorite/favorites_screen.dart';
 import '../home/home_screen.dart';
 import '../profile/profile_screen.dart';
@@ -45,20 +46,21 @@ class DashboardScreen extends StatelessWidget {
           showUnselectedLabels: false,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-                activeIcon: _bottomNavIconBuilder(
-                  isSelected: homeController.tabIndex.value == 0,
-                  logo: "i_icon",
-                  height: 25.w,
-                  width: 25.h,
-                ),
-                icon: _bottomNavIconBuilder(
-                  isSelected: homeController.tabIndex.value == 0,
-                  logo: "i_icon",
-                  height: 21.h,
-                  width: 21.w,
-                ),
-                label: "Home",
-                backgroundColor: Colors.white),
+              activeIcon: _bottomNavIconBuilder(
+                isSelected: homeController.tabIndex.value == 0,
+                logo: "home",
+                height: 25.w,
+                width: 25.h,
+              ),
+              icon: _bottomNavIconBuilder(
+                isSelected: homeController.tabIndex.value == 0,
+                logo: "home",
+                height: 21.h,
+                width: 21.w,
+              ),
+              label: "Home",
+              backgroundColor: Colors.white,
+            ),
             BottomNavigationBarItem(
                 activeIcon: _bottomNavIconBuilder(
                   isSelected: homeController.tabIndex.value == 1,
